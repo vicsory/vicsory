@@ -1,21 +1,13 @@
-import React from "react";
+"use client";
+
+import { useState, useEffect } from "react";
 import Cookies from "universal-cookie";
-import { cookies } from "next/headers";
-
-
 import { verifyJwtToken } from "@/utilities/auth";
 import { VerifiedToken } from "@/types/TokenProps";
 
-const fromServer = async () => {
-    const cookieList = cookies();
-    const { value: token } = (await cookieList).get("token") ?? { value: null };
-    const verifiedToken = token && (await verifyJwtToken(token));
-    return verifiedToken;
-};
-
 export default function useAuth() {
-    const [token, setToken] = React.useState<VerifiedToken>(null);
-    const [isPending, setIsPending] = React.useState<boolean>(true);
+    const [token, setToken] = useState<VerifiedToken | null>(null);
+    const [isPending, setIsPending] = useState<boolean>(true);
 
     const getVerifiedToken = async () => {
         setIsPending(true);
@@ -33,13 +25,9 @@ export default function useAuth() {
         setToken(verifiedToken);
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         getVerifiedToken();
     }, []);
 
     return { token, isPending, refreshToken };
 }
-
-useAuth.fromServer = fromServer;
-
-// Custom hook for authorization which works with server (fromServer) and client side
