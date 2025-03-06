@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { useFormik } from "formik";
 import { useQueryClient } from "@tanstack/react-query";
-import { Camera, Twitter, Music, Laugh, Star, Gamepad, Video, PersonStanding, Building, NotebookPen, Code, Paintbrush, Pen, ChefHat, Plane, Shirt, Vote, School, Dumbbell, Banknote, Microscope, Megaphone, Camera as CameraIcon, Mic, Bitcoin, Briefcase, Baby, Hammer, Joystick, BookOpen, Leaf, Car, Sun, Megaphone as MegaphoneIcon, Gavel, PawPrint, Sparkles, Home, PartyPopper, Gift, Laugh as LaughIcon, Rocket, Clapperboard, GraduationCap, Store, DraftingCompass, DumbbellIcon, BadgeCheck } from "lucide-react";
+import { Camera, Music, Laugh, Star, Gamepad, Video, PersonStanding, Building, NotebookPen, Code, Paintbrush, Pen, ChefHat, Plane, Shirt, Vote, School, Dumbbell, Banknote, Microscope, Megaphone, Camera as CameraIcon, Mic, Bitcoin, Briefcase, Baby, Hammer, Joystick, BookOpen, Leaf, Car, Sun, Megaphone as MegaphoneIcon, Gavel, PawPrint, Sparkles, Home, PartyPopper, Gift, Laugh as LaughIcon, Rocket, Clapperboard, GraduationCap, Store, DraftingCompass, DumbbellIcon, BadgeCheck } from "lucide-react";
 import * as yup from "yup";
 import Image from "next/image";
 
@@ -84,20 +84,24 @@ export default function EditProfile({ profile, refreshToken }: { profile: UserPr
 
     const queryClient = useQueryClient();
 
-    const handleHeaderChange = (event: any) => {
-        const file = event.target.files[0];
-        setHeaderPreview(URL.createObjectURL(file));
-        setHeaderFile(file);
+    const handleHeaderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (file) {
+            setHeaderPreview(URL.createObjectURL(file));
+            setHeaderFile(file);
+        }
     };
 
     const handleHeaderClick = () => {
         headerUploadInputRef.current?.click();
     };
 
-    const handlePhotoChange = (event: any) => {
-        const file = event.target.files[0];
-        setPhotoPreview(URL.createObjectURL(file));
-        setPhotoFile(file);
+    const handlePhotoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (file) {
+            setPhotoPreview(URL.createObjectURL(file));
+            setPhotoFile(file);
+        }
     };
 
     const handlePhotoClick = () => {
@@ -131,19 +135,17 @@ export default function EditProfile({ profile, refreshToken }: { profile: UserPr
         validationSchema: validationSchema,
         onSubmit: async (values) => {
             try {
-                let updatedValues = { ...values };
-
-                if (headerFile) {
-                    const headerPath = await uploadFile(headerFile);
-                    if (!headerPath) throw new Error("Header upload failed.");
-                    updatedValues.headerUrl = headerPath;
-                }
-
-                if (photoFile) {
-                    const photoPath = await uploadFile(photoFile);
-                    if (!photoPath) throw new Error("Photo upload failed.");
-                    updatedValues.photoUrl = photoPath;
-                }
+                const updatedValues = { ...values };
+            if (headerFile) {
+                const headerPath = await uploadFile(headerFile);
+                if (!headerPath) throw new Error("Header upload failed.");
+                updatedValues.headerUrl = headerPath;
+            }
+            if (photoFile) {
+                const photoPath = await uploadFile(photoFile);
+                if (!photoPath) throw new Error("Photo upload failed.");
+                updatedValues.photoUrl = photoPath;
+            }
 
                 const response = await editUser(JSON.stringify(updatedValues), profile.username);
                 if (!response || !response.success) {
@@ -412,7 +414,7 @@ export default function EditProfile({ profile, refreshToken }: { profile: UserPr
                         {profile.isPremium ? (
                             <div className="text-center space-y-4">
                                 <Image src="/assets/favicon.png" alt="Logo" width={75} height={75} className="mx-auto" />
-                                <h2 className="text-xl font-bold text-[var(--active-mode)]">You're Already Blue!</h2>
+                                <p className="text-[var(--active-mode)]/80">{"You're Already Blue!"}</p>
                                 <p className="text-[var(--active-mode)]/80">Thank you for being a premium member.</p>
                                 <Button
                                     variant="outline"
