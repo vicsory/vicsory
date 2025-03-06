@@ -1,11 +1,11 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
 import { verifyJwtToken } from "@/utilities/auth";
 import { UserProps } from "@/types/UserProps";
 import { prisma } from "@/prisma/client";
 
-export async function GET(request: NextRequest, { params: { username } }: { params: { username: string } }) {
+export async function GET({ params: { username } }: { params: { username: string } }) {
     const cookieStore = cookies();
     const token = (await cookieStore).get("token")?.value;
     const verifiedToken: UserProps = token && (await verifyJwtToken(token));
