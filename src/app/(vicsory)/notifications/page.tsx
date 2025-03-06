@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useCallback } from "react";
 
 import { AuthContext } from "../layout";
 import { getNotifications, markNotificationsRead } from "@/utilities/fetch";
@@ -28,21 +28,25 @@ export default function NotificationsPage() {
         onError: (error) => console.log(error),
     });
 
-    const handleNotificationsRead = () => {
+    const handleNotificationsRead = useCallback(() => {
         mutation.mutate();
-    };
+    }, [mutation]);
+    
 
     useEffect(() => {
-        if (isFetched && data.notifications.filter((notification: NotificationProps) => !notification.isRead).length > 0) {
+        if (!isFetched) return;
+    
+        const unreadCount = data.notifications.filter((notification: NotificationProps) => !notification.isRead).length;
+        if (unreadCount > 0) {
             const countdownForMarkAsRead = setTimeout(() => {
                 handleNotificationsRead();
             }, 1000);
-
+    
             return () => {
                 clearTimeout(countdownForMarkAsRead);
             };
         }
-    }, []);
+    }, [isFetched, data.notifications, handleNotificationsRead]);
 
     if (isPending || !token || isLoading) return <CircularLoading />;
 

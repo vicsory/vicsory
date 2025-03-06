@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { BsSearch } from "react-icons/bs";
 import {
@@ -13,6 +13,7 @@ import {
   CommandSeparator,
 } from "@/components/ui/command";
 
+// Define interfaces
 interface User {
   username: string;
   name: string;
@@ -25,7 +26,6 @@ interface User {
 interface Post {
   text: string;
   author: User;
-  // Add other fields as needed from the API response
 }
 
 interface SearchResponse {
@@ -41,7 +41,11 @@ export default function Search() {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
-  // Fetch search results from API
+  const debounceFetchResults = useCallback(
+    debounce((query: string) => fetchResults(query), 500),
+    [] 
+  );
+
   const fetchResults = async (query: string) => {
     if (query.length < 2) {
       setResults([]);
@@ -83,8 +87,8 @@ export default function Search() {
   };
 
   useEffect(() => {
-    fetchResults(searchQuery);
-  }, [searchQuery]);
+    debounceFetchResults(searchQuery);
+  }, [searchQuery, debounceFetchResults]);
 
   const onSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -181,4 +185,12 @@ export default function Search() {
       )}
     </div>
   );
+}
+
+function debounce(func: Function, delay: number) {
+  let timeout: NodeJS.Timeout;
+  return (...args: any[]) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func(...args), delay);
+  };
 }

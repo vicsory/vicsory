@@ -13,7 +13,7 @@ export default function NewPostDialog({ open, handleNewPostClose, token }: NewPo
 
     useEffect(() => {
         handleNewPostClose();
-    }, [isSubmitted]);
+    }, [isSubmitted, handleNewPostClose]);
 
     return (
         <Dialog className="dialog" open={open} onClose={handleNewPostClose} maxWidth={"xs"} fullWidth>

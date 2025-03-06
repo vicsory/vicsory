@@ -14,6 +14,10 @@ import { checkUserExists, createMessage } from "@/utilities/fetch";
 import { uploadFile } from "@/utilities/storage";
 import Uploader from "../misc/Uploader";
 
+interface LocalEmoji {
+    native: string;
+}
+
 export default function NewMessageDialog({ open, handleNewMessageClose, token, recipient = "" }: NewMessageDialogProps) {
     const [showPicker, setShowPicker] = useState(false);
     const [showDropzone, setShowDropzone] = useState(false);
@@ -138,7 +142,7 @@ export default function NewMessageDialog({ open, handleNewMessageClose, token, r
                         <div className="emoji-picker">
                             <Picker
                                 data={data}
-                                onEmojiSelect={(emoji: any) => {
+                                onEmojiSelect={(emoji: LocalEmoji) => {
                                     formik.setFieldValue("text", formik.values.text + emoji.native);
                                     setShowPicker(false);
                                 }}

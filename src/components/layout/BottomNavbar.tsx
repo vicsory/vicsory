@@ -13,7 +13,6 @@ import {
   DollarSign,
   LifeBuoy,
   Users,
-  FileText,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {

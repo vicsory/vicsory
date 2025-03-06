@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
         if (!img || typeof img !== "string" || img.trim() === "") {
             return NextResponse.json({ success: false, message: "Invalid image URL" }, { status: 400 });
         }
-    } catch (error) {
+    } catch { 
         return NextResponse.json({ success: false, message: "Invalid request body" }, { status: 400 });
     }
 

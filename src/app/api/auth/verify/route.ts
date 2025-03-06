@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
     try {
         const { payload } = await jwtVerify(token, getJwtSecretKey());
         return NextResponse.json(payload);
-    } catch (error) {
+    } catch {
         return NextResponse.json(null);
     }
 }

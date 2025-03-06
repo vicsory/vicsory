@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import * as yup from "yup";
-import { GalleryVerticalEnd } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   Dialog,

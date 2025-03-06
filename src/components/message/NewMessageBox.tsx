@@ -13,6 +13,11 @@ import { createMessage } from "@/utilities/fetch";
 import { uploadFile } from "@/utilities/storage";
 import { MessageFormProps } from "@/types/MessageProps";
 
+
+interface LocalEmoji {
+    native: string;
+}
+
 export default function NewMessageBox({ messagedUsername, token, setFreshMessages, freshMessages }: MessageFormProps) {
     const [showPicker, setShowPicker] = useState(false);
     const [showDropzone, setShowDropzone] = useState(false);
@@ -126,7 +131,7 @@ export default function NewMessageBox({ messagedUsername, token, setFreshMessage
                 <div className="emoji-picker">
                     <Picker
                         data={data}
-                        onEmojiSelect={(emoji: any) => {
+                        onEmojiSelect={(emoji: LocalEmoji) => {
                             formik.setFieldValue("text", formik.values.text + emoji.native);
                             setShowPicker(false);
                         }}

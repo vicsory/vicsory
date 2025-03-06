@@ -13,7 +13,6 @@ import { AuthContext } from "@/app/(vicsory)/layout";
 import { getFullURL } from "@/utilities/misc/getFullURL";
 import UnreadNotificationsBadge from "../misc/UnreadNotificationsBadge";
 
-import { BiPlusCircle } from "react-icons/bi";
 
 import Image from "next/image";
 import { HomeFill, HomeOutline } from "../../../public/svg/home";
@@ -22,7 +21,7 @@ import { SchoolFill, SchoolOutline } from "../../../public/svg/school";
 import { BusinessFill, BusinessOutline } from "../../../public/svg/business";
 import { NotificationFill, NotificationOutline } from "../../../public/svg/notification";
 import { ChatFill, ChatOutline } from "../../../public/svg/chat";
-import { ProfileFill, ProfileOutline } from "../../../public/svg/profile";
+import { ProfileFill } from "../../../public/svg/profile";
 import { SettingFill, SettingOutline } from "../../../public/svg/setting";
 import { Separator } from "../ui/separator";
 import { BadgeCheck, Plus } from "lucide-react";

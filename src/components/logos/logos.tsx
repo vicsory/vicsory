@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { 
   FaAmazon, 
   FaApple, 
@@ -13,14 +13,12 @@ import {
 } from 'react-icons/fa';
 import { SiX } from 'react-icons/si';
 import SwiperCore from 'swiper';
-import { Autoplay } from 'swiper/modules'; // Import Autoplay module
+import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/autoplay';
 
-// Enable Autoplay module
 SwiperCore.use([Autoplay]);
 
 interface Logo {
@@ -41,7 +39,7 @@ const logos: Logo[] = [
 ];
 
 const LogoSlider: React.FC = () => {
-  const duplicatedLogos = [...logos, ...logos]; // Duplicate for seamless looping
+  const duplicatedLogos = [...logos, ...logos];
 
   return (
     <div 
@@ -50,15 +48,15 @@ const LogoSlider: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 overflow-hidden">
         <Swiper
-          spaceBetween={32} // Gap between slides (matches your gap-8)
-          slidesPerView={5} // Adjust based on how many logos you want visible
-          loop={true} // Infinite loop
+          spaceBetween={32}
+          slidesPerView={window.innerWidth < 640 ? 3 : 5}
+          loop={true}
           autoplay={{
-            delay: 0, // No delay between transitions
-            disableOnInteraction: false, // Keep autoplaying even on interaction
+            delay: 1000,
+            disableOnInteraction: false,
           }}
-          speed={5000} // Duration of slide transition in ms (adjust for smoother effect)
-          freeMode={true} // Allows continuous scrolling
+          speed={3000} 
+          freeMode={true}
           style={{
             maskImage: 'linear-gradient(to right, transparent, var(--background-primary) 10%, var(--background-primary) 90%, transparent)',
             WebkitMaskImage: 'linear-gradient(to right, transparent, var(--background-primary) 10%, var(--background-primary) 90%, transparent)',

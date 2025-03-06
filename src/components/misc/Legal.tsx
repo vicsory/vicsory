@@ -1,4 +1,3 @@
-import { FaGithub } from "react-icons/fa";
 
 interface LegalProps {
     className?: string; // Add className to the props interface

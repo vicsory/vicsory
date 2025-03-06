@@ -87,27 +87,28 @@ export default function AboutMe() {
     >
       <CardContent className="p-8 space-y-12">
         <div className="text-center">
-          <h3
-            className="text-4xl md:text-5xl font-semibold tracking-tight"
-            style={{ color: "var(--active-mode)" }}
-          >
-            The{" "}
-            <span>
-              <span style={{ color: "var(--blue)" }}>V</span>
-              <span style={{ color: "var(--hover-blue)" }}>i</span>
-              <span style={{ color: "var(--red)" }}>s</span>
-              <span style={{ color: "var(--hover-red)" }}>i</span>
-              <span style={{ color: "var(--orange)" }}>o</span>
-              <span style={{ color: "var(--orange)" }}>n</span>
-            </span>{" "}
-            Behind Vicsory
-          </h3>
-          <p
-            className="mt-4 text-lg md:text-xl text-[var(--text-2)] max-w-2xl mx-auto leading-relaxed"
-            style={{ color: "var(--text-2)" }}
-          >
-            Discover Jean-Kael Augustin, the visionary founder, CEO, and lead developer driving Vicsory, a groundbreaking app revolutionizing the way creators connect and thrive.
-          </p>
+        <h3
+          className="text-4xl md:text-5xl font-semibold tracking-tight"
+          style={{ color: "var(--active-mode)" }}
+        >
+          The{" "}
+          <span>
+            <span style={{ color: "var(--blue)" }}>&#34;V&#34;</span>
+            <span style={{ color: "var(--hover-blue)" }}>i</span>
+            <span style={{ color: "var(--red)" }}>s</span>
+            <span style={{ color: "var(--hover-red)" }}>i</span>
+            <span style={{ color: "var(--orange)" }}>o</span>
+            <span style={{ color: "var(--orange)" }}>n</span>
+          </span>{" "}
+          Behind Vicsory
+        </h3>
+
+        <p
+          className="mt-4 text-lg md:text-xl text-[var(--text-2)] max-w-2xl mx-auto leading-relaxed"
+          style={{ color: "var(--text-2)" }}
+        >
+          Discover Jean-Kael Augustin, the visionary founder, CEO, and lead developer driving Vicsory, a groundbreaking app revolutionizing the way creators connect and thrive.
+        </p>
           <SafeAvatar />
         </div>
 

@@ -3,7 +3,6 @@
 import { useContext, useState } from "react";
 import { Switch } from "@mui/material";
 import { ThemeContext } from "@/app/providers";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
