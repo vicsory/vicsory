@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 
-import { PostOptionsProps, PostResponse } from "@/types/PostProps";
+import { PostOptionsProps } from "@/types/PostProps";
 import { AuthContext } from "@/app/(vicsory)/layout";
 import { getUserPost, updateReposts } from "@/utilities/fetch";
 import { SnackbarProps } from "@/types/SnackbarProps";
