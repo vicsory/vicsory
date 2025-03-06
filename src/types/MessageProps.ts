@@ -30,6 +30,6 @@ export type MessagesProps = {
 export type MessageFormProps = {
     token: UserProps;
     messagedUsername: string;
-    setFreshMessages: any;
+    setFreshMessages: React.Dispatch<React.SetStateAction<MessageProps[]>>;
     freshMessages: MessageProps[];
 };
