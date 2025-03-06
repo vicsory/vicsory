@@ -131,6 +131,7 @@ export default function Follow({
         },
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     useEffect(() => {
         const timer = setTimeout(() => setIsButtonDisabled(false), 1500);
         return () => clearTimeout(timer);
@@ -147,7 +148,7 @@ export default function Follow({
         }
 
         const tokenOwnerId = JSON.stringify(token.id);
-        if (!followMutation.isLoading && !unfollowMutation.isLoading) {
+        if (followMutation.status !== 'pending' && unfollowMutation.status !== 'pending') {
             isFollowed
                 ? unfollowMutation.mutate(tokenOwnerId)
                 : followMutation.mutate(tokenOwnerId);

@@ -23,7 +23,7 @@ type PricingCardProps = {
   exclusive?: boolean;
 };
 
-const PricingHeader = ({ title, subtitle }: { title: string; subtitle: string }) => (
+const PricingHeader = ({ subtitle }: { title: string; subtitle: string }) => (
   <section className="text-center mb-12 sm:mb-20 px-4">
     <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[var(--active-mode)] tracking-tight">
       <span>

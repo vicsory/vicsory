@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContext, useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { FaRegEnvelope, FaCheckCircle } from "react-icons/fa";
+import { FaRegEnvelope} from "react-icons/fa";
 import { BiCalendarCheck } from "react-icons/bi";
 import { GoLocation } from "react-icons/go";
 import { AiOutlineLink } from "react-icons/ai";
@@ -118,15 +118,9 @@ export default function Profile({ profile }: ProfileProps) {
         setIsDialogOpen(true);
     };
 
-    const handleDialogClose = () => {
-        setDialogType("");
-        setIsDialogOpen(false);
-        setFollowingSearchQuery("");
-        setFollowersSearchQuery("");
-    };
 
-    const handleImageClick = (e: any) => {
-        const clickedElement = e.target;
+    const handleImageClick = (e: React.MouseEvent<HTMLImageElement>) => {
+        const clickedElement = e.target as HTMLImageElement;
         if (clickedElement.alt === "profile-header") {
             handlePreviewClick(profile.headerUrl ? profile.headerUrl : "/assets/header.jpg");
         }

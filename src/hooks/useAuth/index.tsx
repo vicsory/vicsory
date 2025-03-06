@@ -1,13 +1,14 @@
 import React from "react";
 import Cookies from "universal-cookie";
+import { cookies } from "next/headers";
+
 
 import { verifyJwtToken } from "@/utilities/auth";
 import { VerifiedToken } from "@/types/TokenProps";
 
 const fromServer = async () => {
-    const cookies = require("next/headers").cookies;
     const cookieList = cookies();
-    const { value: token } = cookieList.get("token") ?? { value: null };
+    const { value: token } = (await cookieList).get("token") ?? { value: null };
     const verifiedToken = token && (await verifyJwtToken(token));
     return verifiedToken;
 };
