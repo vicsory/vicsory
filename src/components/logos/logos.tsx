@@ -13,10 +13,10 @@ import {
 } from "react-icons/fa";
 import { SiX } from "react-icons/si";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules"; // Keep this import
+import { Autoplay } from "swiper/modules";
 
 import "swiper/css";
-import "swiper/css/autoplay"; // Ensure Autoplay styles are included
+import "swiper/css/autoplay"; 
 
 interface Logo {
   Icon: React.ComponentType<{ className?: string }>;
