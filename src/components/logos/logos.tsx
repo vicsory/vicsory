@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 import { 
   FaAmazon, 
   FaApple, 
@@ -10,16 +10,13 @@ import {
   FaTwitch,
   FaSnapchat,
   FaTiktok
-} from 'react-icons/fa';
-import { SiX } from 'react-icons/si';
-import SwiperCore from 'swiper';
-import { Autoplay } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+} from "react-icons/fa";
+import { SiX } from "react-icons/si";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules"; // Keep this import
 
-import 'swiper/css';
-import 'swiper/css/autoplay';
-
-SwiperCore.use([Autoplay]);
+import "swiper/css";
+import "swiper/css/autoplay"; // Ensure Autoplay styles are included
 
 interface Logo {
   Icon: React.ComponentType<{ className?: string }>;
@@ -27,15 +24,15 @@ interface Logo {
 }
 
 const logos: Logo[] = [
-  { Icon: FaAmazon, name: 'Amazon' },
-  { Icon: FaApple, name: 'Apple' },
-  { Icon: FaGoogle, name: 'Google' },
-  { Icon: FaMicrosoft, name: 'Microsoft' },
-  { Icon: SiX, name: 'X' },
-  { Icon: FaYoutube, name: 'YouTube' },
-  { Icon: FaTwitch, name: 'Twitch' },
-  { Icon: FaSnapchat, name: 'Snapchat' },
-  { Icon: FaTiktok, name: 'TikTok' },
+  { Icon: FaAmazon, name: "Amazon" },
+  { Icon: FaApple, name: "Apple" },
+  { Icon: FaGoogle, name: "Google" },
+  { Icon: FaMicrosoft, name: "Microsoft" },
+  { Icon: SiX, name: "X" },
+  { Icon: FaYoutube, name: "YouTube" },
+  { Icon: FaTwitch, name: "Twitch" },
+  { Icon: FaSnapchat, name: "Snapchat" },
+  { Icon: FaTiktok, name: "TikTok" },
 ];
 
 const LogoSlider: React.FC = () => {
@@ -44,10 +41,11 @@ const LogoSlider: React.FC = () => {
   return (
     <div 
       className="w-full py-8 relative"
-      style={{ backgroundColor: 'transparent' }}
+      style={{ backgroundColor: "transparent" }}
     >
       <div className="max-w-7xl mx-auto px-4 overflow-hidden">
         <Swiper
+          modules={[Autoplay]} // Add Autoplay module here
           spaceBetween={32}
           slidesPerView={window.innerWidth < 640 ? 3 : 5}
           loop={true}
@@ -55,11 +53,11 @@ const LogoSlider: React.FC = () => {
             delay: 1000,
             disableOnInteraction: false,
           }}
-          speed={3000} 
+          speed={3000}
           freeMode={true}
           style={{
-            maskImage: 'linear-gradient(to right, transparent, var(--background-primary) 10%, var(--background-primary) 90%, transparent)',
-            WebkitMaskImage: 'linear-gradient(to right, transparent, var(--background-primary) 10%, var(--background-primary) 90%, transparent)',
+            maskImage: "linear-gradient(to right, transparent, var(--background-primary) 10%, var(--background-primary) 90%, transparent)",
+            WebkitMaskImage: "linear-gradient(to right, transparent, var(--background-primary) 10%, var(--background-primary) 90%, transparent)",
           }}
         >
           {duplicatedLogos.map((logo, index) => (

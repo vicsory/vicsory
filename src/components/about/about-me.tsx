@@ -164,21 +164,21 @@ export default function AboutMe() {
         </div>
 
         <div className="text-center space-y-6">
-          <p
-            className="text-lg italic max-w-xl mx-auto leading-relaxed"
-            style={{ color: "var(--text-2)" }}
-          >
-            "Connecting creators to{" "}
-            <span>
-              <span style={{ color: "var(--blue)" }}>u</span>
-              <span style={{ color: "var(--hover-blue)" }}>n</span>
-              <span style={{ color: "var(--red)" }}>l</span>
-              <span style={{ color: "var(--hover-red)" }}>o</span>
-              <span style={{ color: "var(--orange)" }}>c</span>
-              <span style={{ color: "var(--orange)" }}>k</span>
-            </span>{" "}
-            possibilities."
-          </p>
+        <p
+          className="text-lg italic max-w-xl mx-auto leading-relaxed"
+          style={{ color: "var(--text-2)" }}
+        >
+          {"\"Connecting creators to "}
+          <span>
+            <span style={{ color: "var(--blue)" }}>u</span>
+            <span style={{ color: "var(--hover-blue)" }}>n</span>
+            <span style={{ color: "var(--red)" }}>l</span>
+            <span style={{ color: "var(--hover-red)" }}>o</span>
+            <span style={{ color: "var(--orange)" }}>c</span>
+            <span style={{ color: "var(--orange)" }}>k</span>
+          </span>
+          {" possibilities.\""}
+        </p>
           <div className="flex justify-center gap-6">
             {socialLinks.map((social, index) => (
               <a
