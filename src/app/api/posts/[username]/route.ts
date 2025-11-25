@@ -1,5 +1,6 @@
+import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/prisma/client";
+
 
 export async function GET(request: NextRequest, { params: { username } }: { params: { username: string } }) {
     try {
@@ -20,11 +21,6 @@ export async function GET(request: NextRequest, { params: { username } }: { para
                         photoUrl: true,
                         description: true,
                         category: true,
-                        followers: {
-                            select: {
-                                id: true, // Minimal data for follow check
-                            },
-                        },
                     },
                 },
                 likedBy: {
@@ -61,11 +57,6 @@ export async function GET(request: NextRequest, { params: { username } }: { para
                                 photoUrl: true,
                                 description: true,
                                 category: true,
-                                followers: { // Optional: for repost author follow status
-                                    select: {
-                                        id: true,
-                                    },
-                                },
                             },
                         },
                         authorId: true,
@@ -146,10 +137,8 @@ export async function GET(request: NextRequest, { params: { username } }: { para
                 },
             ],
         });
-
         return NextResponse.json({ success: true, posts });
     } catch (error: unknown) {
-        console.error("Error fetching posts for user:", username, error);
-        return NextResponse.json({ success: false, error: "Internal server error" }, { status: 500 });
+        return NextResponse.json({ success: false, error });
     }
 }

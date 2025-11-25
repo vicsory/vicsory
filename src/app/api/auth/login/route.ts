@@ -3,7 +3,7 @@ import { SignJWT } from "jose";
 
 import { comparePasswords } from "@/utilities/bcrypt";
 import { getJwtSecretKey } from "@/utilities/auth";
-import { prisma } from "@/prisma/client";
+import { prisma } from "@/lib/prisma";
 
 export async function POST(request: NextRequest) {
     const { username, password } = await request.json();

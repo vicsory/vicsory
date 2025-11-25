@@ -6,12 +6,13 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState, useContext } from "react";
 import { UserProps } from "@/types/UserProps";
-import { getFullURL } from "@/utilities/misc/getFullURL";
+import { getFullURL } from "@/utilities/fetch/misc/getFullURL";
 import ProfileCard from "../user/ProfileCard";
 import { AuthContext } from "@/app/(vicsory)/layout";
 import { Badge } from "../ui/badge";
 import Follow from "./Follow";
 import { BadgeCheck } from "lucide-react";
+import { BadgeBlue, BadgeGold, BadgeRed } from "../../../public/svg/verify-badge";
 
 export default function Users({ users }: { users: UserProps[] }) {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -74,7 +75,13 @@ export default function Users({ users }: { users: UserProps[] }) {
                       {user.name || user.username}
                     </span>
                     {user.isPremium && (
-                      <BadgeCheck className="text-xl" fill="#1E90FE" stroke="#fff"/>
+                      <BadgeBlue/>
+                    )}
+                    {user.isVip && (
+                      <BadgeGold/>
+                    )}
+                    {user.isElite && (
+                      <BadgeRed/>
                     )}
                   </div>
                   <div className="flex items-center space-x-2">

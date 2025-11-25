@@ -3,8 +3,7 @@ import { cookies } from "next/headers";
 
 import { verifyJwtToken } from "@/utilities/auth";
 import { UserProps } from "@/types/UserProps";
-import { prisma } from "@/prisma/client";
-import { Post } from "@prisma/client";
+import { prisma } from "@/lib/prisma";
 
 export async function POST(request: NextRequest, { params: { postId } }: { params: { postId: string } }) {
     const tokenOwnerId = await request.json();
@@ -42,7 +41,7 @@ export async function POST(request: NextRequest, { params: { postId } }: { param
             },
         });
 
-        const repostId = originalPost?.reposts.find((repost: Post) => repost.authorId === tokenOwnerId)?.id;
+        const repostId = originalPost?.reposts.find((repost: any) => repost.authorId === tokenOwnerId)?.id;
 
         await prisma.post.delete({
             where: {

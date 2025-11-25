@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogTitle } from "@mui/material";
 import { PostProps } from "@/types/PostProps";
 import User from "../user/User";
 import { AuthContext } from "@/app/(vicsory)/layout";
-import { scrollToBottom } from "@/utilities/misc/scrollToBottom";
+import { scrollToBottom } from "@/utilities/fetch/misc/scrollToBottom";
 import CustomSnackbar from "../misc/CustomSnackbar";
 import { SnackbarProps } from "@/types/SnackbarProps";
 import { UserProps } from "@/types/UserProps";

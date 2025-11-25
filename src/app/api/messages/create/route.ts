@@ -3,9 +3,9 @@ import { cookies } from "next/headers";
 
 import { verifyJwtToken } from "@/utilities/auth";
 import { createNotification } from "@/utilities/fetch";
-import { shouldCreateNotification } from "@/utilities/misc/shouldCreateNotification";
 import { UserProps } from "@/types/UserProps";
-import { prisma } from "@/prisma/client";
+import { prisma } from "@/lib/prisma";
+import { shouldCreateNotification } from "@/utilities/fetch/misc/shouldCreateNotification";
 
 export async function POST(request: NextRequest) {
     const { recipient, sender, text, photoUrl } = await request.json();
@@ -61,8 +61,8 @@ export async function POST(request: NextRequest) {
             const notificationContent = {
                 sender: {
                     username: verifiedToken.username,
-                    name: verifiedToken.name || "",
-                    photoUrl: verifiedToken.photoUrl || "",
+                    name: verifiedToken.name,
+                    photoUrl: verifiedToken.photoUrl,
                 },
                 content: null,
             };

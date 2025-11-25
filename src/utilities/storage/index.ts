@@ -14,3 +14,5 @@ export const uploadFile = async (file: File) => {
     }
     return data.path;
 };
+
+

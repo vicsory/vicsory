@@ -17,7 +17,7 @@ interface RepostVariables {
   isReposted: boolean;
 }
 
-export default function Repost({ postId, postAuthor }: PostOptionsProps) {
+export default function Repost({ postId, postAuthorId }: PostOptionsProps) {
   const [isReposted, setIsReposted] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [snackbar, setSnackbar] = useState<SnackbarProps>({
@@ -29,16 +29,16 @@ export default function Repost({ postId, postAuthor }: PostOptionsProps) {
   const { token, isPending } = useContext(AuthContext);
   const queryClient = useQueryClient();
 
-  const queryKey = ["posts", postAuthor, postId];
+  const queryKey = ["posts", postAuthorId, postId];
 
   const { isFetched, data } = useQuery({
     queryKey: queryKey,
-    queryFn: () => getUserPost(postId, postAuthor),
+    queryFn: () => getUserPost(postId, postAuthorId),
   });
 
   const mutation = useMutation({
     mutationFn: (variables: RepostVariables) =>
-      updateReposts(postId, postAuthor, variables.tokenOwnerId, variables.isReposted),
+      updateReposts(postId, postAuthorId, variables.tokenOwnerId, variables.isReposted),
     onMutate: () => {
       setIsButtonDisabled(true);
       setIsReposted(!isReposted);
@@ -93,10 +93,10 @@ export default function Repost({ postId, postAuthor }: PostOptionsProps) {
   return (
     <>
       <motion.button
-        className={`flex items-center gap-1 p-2 rounded-full transition-colors duration-200 ${
+        className={`flex items-center gap-1 p-2 text-muted rounded-full transition-colors duration-200 ${
           isReposted
-            ? "text-green-500 hover:bg-green-50"
-            : "text-gray-500 hover:bg-gray-100"
+            ? "text-green-500"
+            : "text-muted"
         } ${isButtonDisabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
         onClick={handleRepost}
         whileTap={{ scale: 0.9 }}
@@ -107,12 +107,11 @@ export default function Repost({ postId, postAuthor }: PostOptionsProps) {
         <motion.span
           animate={{ scale: [1, 1.5, 1.2, 1] }}
           transition={{ duration: 0.25 }}
-          className="w-5 h-5"
         >
           <Repeat2 size={iconSize} />
         </motion.span>
         {data?.post?.repostedBy?.length > 0 && (
-          <span className="text-sm font-medium text-gray-600">
+          <span className="text-sm font-medium text-muted">
             {data.post.repostedBy.length}
           </span>
         )}

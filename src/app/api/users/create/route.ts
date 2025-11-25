@@ -4,7 +4,7 @@ import { SignJWT } from "jose";
 import { hashPassword } from "@/utilities/bcrypt";
 import { getJwtSecretKey } from "@/utilities/auth";
 import { createNotification } from "@/utilities/fetch";
-import { prisma } from "@/prisma/client";
+import { prisma } from "@/lib/prisma";
 
 export async function POST(request: NextRequest) {
     const userData = await request.json();
@@ -48,7 +48,6 @@ export async function POST(request: NextRequest) {
             description: newUser.description,
             location: newUser.location,
             website: newUser.website,
-            whatsapp: newUser.whatsapp,
             isPremium: newUser.isPremium,
             createdAt: newUser.createdAt,
             photoUrl: newUser.photoUrl,

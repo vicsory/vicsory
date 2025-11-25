@@ -1,4 +1,4 @@
-export const Apple = ({ size = '24px', color = 'black' }) => {
+export const Apple = ({ size = '24px', color = 'white' }) => {
     return (
       <svg 
         xmlns="http://www.w3.org/2000/svg" 

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { NotificationProps } from "@/types/NotificationProps";
-import { prisma } from "@/prisma/client";
+import { prisma } from "@/lib/prisma";
 
 export async function POST(request: NextRequest) {
     const { recipient, type, secret, notificationContent }: NotificationProps = await request.json();

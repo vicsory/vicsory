@@ -4,13 +4,13 @@ import { Avatar, Menu, MenuItem, Popover, Tooltip } from "@mui/material";
 import { RxDotsHorizontal } from "react-icons/rx";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { getFullURL } from "@/utilities/misc/getFullURL";
+import { getFullURL } from "@/utilities/fetch/misc/getFullURL";
 import { formatDate, formatDateExtended } from "@/utilities/date";
 import ProfileCard from "../user/ProfileCard";
 import { ConversationProps } from "@/types/MessageProps";
 import CircularLoading from "../misc/CircularLoading";
 import { deleteConversation } from "@/utilities/fetch";
-import { BadgeCheck } from "lucide-react";
+import { BadgeBlue, BadgeGold, BadgeRed } from "../../../public/svg/verify-badge";
 
 export default function Conversation({ conversation, token, handleConversations }: ConversationProps) {
     const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
@@ -32,7 +32,7 @@ export default function Conversation({ conversation, token, handleConversations 
 
     const messagedUsername = conversation.participants.find((user: string) => user !== token.username);
 
-    const { name, username, photoUrl, isPremium } =
+    const { name, username, photoUrl, isPremium, isVip, isElite } =
         conversation.messages[conversation.messages.length - 1].recipient.username === messagedUsername
             ? conversation.messages[conversation.messages.length - 1].recipient
             : conversation.messages[conversation.messages.length - 1].sender;
@@ -87,8 +87,18 @@ export default function Conversation({ conversation, token, handleConversations 
                         <span className="user-name">
                             {name !== "" ? name : username}
                             {isPremium && (
-                                <span className="blue-tick" data-blue="Verified Blue">
-                                    <BadgeCheck fill="#1E90FE" stroke="#fff"/>
+                                <span data-blue="Verified Blue">
+                                    <BadgeBlue/>
+                                </span>
+                            )}
+                            {isVip && (
+                                <span data-gold="Verified Gold">
+                                    <BadgeGold/>
+                                </span>
+                            )}
+                            {isElite && (
+                                <span data-red="Verified Red">
+                                    <BadgeRed/>
                                 </span>
                             )}
                         </span>

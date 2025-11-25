@@ -2,98 +2,206 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --twitter-blue: #1E90FE;
-    --twitter-dark-blue: #197CE3;
-    --twitter-gray: #657786;
-    --twitter-light-gray: #d1dce4;
-    --twitter-black: #14171a;
-    --twitter-light-black: #282e32;
-    --twitter-red: #ff0000;
-    --twitter-light-red: #fdc9ce;
-    --twitter-dark-red: #9c0000;
-    --twitter-orange: #fc5000;
-    --twitter-purple: #380038;
-    --twitter-pink: #c333d6;
-    --twitter-white: #f5f8fa;
-    --twitter-muted: #536471;
-    --const-white: #f5f8fa;
-    --twitter-like: #e0245e;
-    --twitter-like-background: #f918801a;
-    --twitter-repost: #17bf63;
-    --twitter-repost-background: #13e29d1a;
-    --twitter-reply: #1E90FE;
-    --twitter-reply-background: #158cd11a;
-    --twitter-share: #1E90FE;
-    --twitter-share-background: #158cd11a;
-    --twitter-bird: #1E90FE;
+/* Button styles */
+.btn {
+    @apply px-2 py-1 rounded-full font-medium transition-colors duration-200;
+}
 
-    --background-primary: #ffffff;
-    --background-blue: #1E90FE;
-    --border-color: #e3e3e3;
-    --hover: #f5f8fa;
-    --top-bar-bg: rgba(245, 248, 250, 0.85);
-    --blue: #1E90FE;
-    --hover-blue: #197CE3;
-    --green: #34C759;
-    --light-green: #E6F4EA; 
-    --yellow: #FFD700;
-    --hover-yellow: #FFCC00;
-    --red: #ff0000;
-    --hover-red: #df6a6a;
-    --orange: #fc5000;
-    --grey: #f5f8fa;
-    --text-2: #525252;
-    --active-mode: #000000;
+/* Base button styles for all themes */
+.btn-blue {
+    @apply bg-[var(--blue)] text-white hover:bg-[var(--hover-blue)];
+}
+
+/* Dark mode button adjustments */
+[data-theme="dark"] .btn-blue {
+    @apply bg-[var(--blue)] text-white hover:bg-[var(--hover-blue)];
+}
+
+/* Gold mode button - now gold-colored */
+[data-theme="gold"] .btn-blue {
+    @apply bg-white text-black hover:bg-[var(--hover)] hover:text-[var(--background-primary)];
+}
+
+:root {
+    --brand: oklch(66.5% 0.1804 47.04);
+    --brand-foreground: oklch(75.77% 0.159 55.91);
+    
+    /* Light mode variables unchanged */
+    --twitter-blue: #007AFF;
+    --twitter-dark-blue: #007AFF;
+    --twitter-gray: #5B7083;
+    --twitter-light-gray: #E1E8ED;
+    --twitter-black: #0F1419;
+    --twitter-light-black: #2F3336;
+    --twitter-red: #F4245E;
+    --twitter-light-red: #FEE2E9;
+    --twitter-dark-red: #C1133F;
+    --twitter-orange: #F28C38;
+    --twitter-purple: #794BC4;
+    --twitter-pink: #E0245E;
+    --twitter-white: #F7F9FA;
+    --twitter-muted: #536471;
+    --const-white: #F7F9FA;
+    --twitter-like: #E0245E;
+    --twitter-like-background: #E0245E1A;
+    --twitter-repost: #00BA7C;
+    --twitter-repost-background: #00BA7C1A;
+    --twitter-reply: #007AFF;
+    --twitter-reply-background: #1DA1F21A;
+    --twitter-share: #007AFF;
+    --twitter-share-background: #1DA1F21A;
+    --twitter-bird: #007AFF;
+    --background-primary: #FFFFFF;
+    --background-blue:  #007AFF;
+    --border-color: #D8DDE1;
+    --hover: #F7F9FA;
+    --top-bar-bg: rgba(247, 249, 250, 0.85);
+    --blue:  #007AFF;
+    --hover-blue: #005ECB;
+    --green: #00BA7C;
+    --light-green: #E6F6F1;
+    --yellow: #FFAD1F;
+    --hover-yellow: #F79A00;
+    --red: #F4245E;
+    --hover-red: #D61F4E;
+    --orange: #F28C38;
+    --grey: #F7F9FA;
+    --text-2: #536471;
+    --active-mode: #0F1419;
+    --gold-gradient-from: #8B6F47;
+    --gold-gradient-via: #1F2521;
+    --gold-gradient-to: #D4A017;
+    --gold-gradient-hover-from: #A1805A;
+    --gold-gradient-hover-via: #2F3336;
+    --gold-gradient-hover-to: #E8B923;
 }
 
 [data-theme="dark"] {
-    --twitter-blue: #1E90FE;
-    --twitter-dark-blue: #197CE3;
-    --twitter-gray: #9898a3;
-    --twitter-light-gray: #303030;
-    --twitter-black: #f8f8f8;
-    --twitter-light-black: #cecece;
-    --twitter-red: #ff4747;
-    --twitter-light-red: #210000;
-    --twitter-dark-red: #df6a6a;
-    --twitter-orange: #ffb898;
-    --twitter-purple: #a2a2ff;
-    --twitter-pink: #7cf2ff;
-    --twitter-white: #16181c;
-    --twitter-muted: #71767b;
-    --const-white: #f5f8fa;
-    --twitter-like: #ff82bc;
-    --twitter-like-background: #57183599;
-    --twitter-repost: #008559;
-    --twitter-repost-background: #13aa751a;
-    --twitter-reply: #4179a9;
-    --twitter-reply-background: #1c455f70;
-    --twitter-share: #4179a9;
-    --twitter-share-background: #1c455f70;
-    --twitter-bird: #f5f8fa;
-
-    --background-primary: #101010;
-    --background-blue: #1E90FE;
-    --border-color: #323435;
-    --hover: #212429;
-    --top-bar-bg: rgba(22, 24, 28, 0.85);
-    --blue: #1E90FE;
-    --hover-blue: #197CE3;
-    --green: #34C759;
-    --light-green: #2A4B33;
-    --yellow: #FFD700;
-    --hover-yellow: #FFCC00;
-    --red: #ff4747;
-    --hover-red: #df6a6a;
-    --orange: #ffb898;
-    --grey: #16181c;
-    --text-2: #9c9c9c;
-    --active-mode: #ffffff;
+    --twitter-blue: #4285F4;
+    --twitter-dark-blue: #4285F4;
+    --twitter-gray: #8899A6;
+    --twitter-light-gray: #2F3336;
+    --twitter-black: #D9D9D9;
+    --twitter-light-black: #AAB8C2;
+    --twitter-red: #F75A84;
+    --twitter-light-red: #3F1A24;
+    --twitter-dark-red: #D61F4E;
+    --twitter-orange: #F7A258;
+    --twitter-purple: #9B6AD9;
+    --twitter-pink: #F06690;
+    --twitter-white: #15202B;
+    --twitter-muted: #6E7C89;
+    --const-white: #F7F9FA;
+    --twitter-like: #F75A84;
+    --twitter-like-background: #F75A8433;
+    --twitter-repost: #00D897;
+    --twitter-repost-background: #00D89733;
+    --twitter-reply: #4D9EDB;
+    --twitter-reply-background: #4D9EDB33;
+    --twitter-share: #4D9EDB;
+    --twitter-share-background: #4D9EDB33;
+    --twitter-bird: #D9D9D9;
+    --background-primary: #15202B;
+    --background-blue: #4285F4;
+    --border-color: #38444D;
+    --hover: #1E2A38;
+    --top-bar-bg: rgba(21, 32, 43, 0.85);
+    --blue: #4285F4;
+    --hover-blue: #5491f5;
+    --green: #00D897;
+    --light-green: #2A4B3F;
+    --yellow: #FFCA4B;
+    --hover-yellow: #FFB61A;
+    --red: #F75A84;
+    --hover-red: #D61F4E;
+    --orange: #F7A258;
+    --grey: #15202B;
+    --text-2: #8899A6;
+    --active-mode: #D9D9D9;
+    --gold-gradient-from: #A1805A;
+    --gold-gradient-via: #2F3336;
+    --gold-gradient-to: #E8B923;
+    --gold-gradient-hover-from: #B5916C;
+    --gold-gradient-hover-via: #3F4448;
+    --gold-gradient-hover-to: #F7C933;
 }
 
-.content-width-slide {
-    width: fit-content !important;
+[data-theme="gold"] {
+    --twitter-blue: #1DA1F2;          /* Keeping Twitter blue for consistency */
+    --twitter-dark-blue: #1A91DA;
+    --twitter-gray: #6E6E6E;         /* Darker, muted gray */
+    --twitter-light-gray: #2A2A2A;   /* Very dark gray */
+    --twitter-black: #E8E8E8;       /* Off-white for text */
+    --twitter-light-black: #B0B0B0;  /* Light gray text */
+    --twitter-red: #F75A84;         /* Softer red */
+    --twitter-light-red: #3F1A24;   /* Dark red bg */
+    --twitter-dark-red: #D61F4E;    /* Deep red */
+    --twitter-orange: #F7A258;      /* Warm orange */
+    --twitter-purple: #9B6AD9;      /* Bright purple */
+    --twitter-pink: #F06690;       /* Softer pink */
+    --twitter-white: #0F0F0F;      /* Near-black background */
+    --twitter-muted: #5C5C5C;      /* Dark muted gray */
+    --const-white: #F7F9FA;        /* Consistent white */
+    --twitter-like: #F75A84;       /* Softer like */
+    --twitter-like-background: #F75A8433; /* Subtle like bg */
+    --twitter-repost: #00D897;     /* Bright green */
+    --twitter-repost-background: #00D89733; /* Subtle repost bg */
+    --twitter-reply: #4D9EDB;      /* Softer blue */
+    --twitter-reply-background: #4D9EDB33; /* Subtle reply bg */
+    --twitter-share: #4D9EDB;      /* Softer blue */
+    --twitter-share-background: #4D9EDB33; /* Subtle share bg */
+    --twitter-bird: #DBA514;       /* Rich gold for bird (from your list) */
+    --background-primary: #0F0F0F; /* Near-black primary bg */
+    --background-blue: #1DA1F2;    /* Twitter blue */
+    --border-color: #2A2A2A;       /* Very dark gray border */
+    --hover: #1A1A1A;             /* Slightly lighter black hover */
+    --top-bar-bg: rgba(15, 15, 15, 0.9); /* Deep black top bar */
+    --blue: #1DA1F2;              /* Primary blue */
+    --hover-blue: #1A91DA;        /* Hover blue */
+    --green: #00D897;            /* Bright green */
+    --light-green: #1F3A2F;      /* Very dark green bg */
+    --yellow: #EEB609;           /* Vibrant gold yellow (from your list) */
+    --hover-yellow: #C69320;     /* Medium gold hover (from your list) */
+    --red: #F75A84;             /* Softer red */
+    --hover-red: #D61F4E;       /* Darker red */
+    --orange: #F7A258;          /* Warm orange */
+    --grey: #1A1A1A;            /* Dark grey */
+    --text-2: #FCC201;          /* Bright gold text for contrast (from your list) */
+    --active-mode: #E8E8E8;     /* Off-white active */
+    --gold-gradient-from: #B78628; /* Muted gold (from your list) */
+    --gold-gradient-via: #0F0F0F;  /* Black transition */
+    --gold-gradient-to: #DBA514;   /* Rich gold (from your list) */
+    --gold-gradient-hover-from: #C69320; /* Medium gold hover (from your list) */
+    --gold-gradient-hover-via: #1A1A1A;  /* Hover black */
+    --gold-gradient-hover-to: #EEB609;   /* Vibrant gold hover (from your list) */
+    --gold-button: #DBA514;       /* Rich gold for button (from your list) */
+    --gold-button-hover: #C69320; /* Bright gold for button hover (from your list) */
+}
+
+.gold-gradient {
+    background: linear-gradient(
+        to right,
+        var(--gold-gradient-from),
+        var(--gold-gradient-via),
+        var(--gold-gradient-to)
+    );
+}
+
+@keyframes shine {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  .animate-shine {
+    animation: shine 3s infinite linear;
+  }
+
+.no-border-iframe {
+    border: none !important;
+    border-width: 0 !important;
 }
 
 .force-fit {

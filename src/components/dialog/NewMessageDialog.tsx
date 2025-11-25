@@ -9,9 +9,9 @@ import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 
 import { NewMessageDialogProps } from "@/types/DialogProps";
-import CircularLoading from "../misc/CircularLoading";
 import { checkUserExists, createMessage } from "@/utilities/fetch";
 import { uploadFile } from "@/utilities/storage";
+import CircularLoading from "../misc/CircularLoading";
 import Uploader from "../misc/Uploader";
 
 interface LocalEmoji {

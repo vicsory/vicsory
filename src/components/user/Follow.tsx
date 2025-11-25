@@ -130,11 +130,6 @@ export default function Follow({
     },
   });
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsButtonDisabled(false), 1500);
-    return () => clearTimeout(timer);
-  }, [isButtonDisabled]);
-
   const handleFollowClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!token) {
@@ -160,15 +155,11 @@ export default function Follow({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         disabled={isButtonDisabled}
-        className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ease-in-out
-          ${isFollowed
-            ? "bg-transparent border border-[var(--border-color)] text-[var(--text)] hover:bg-[var(--hover)]"
-            : "bg-[var(--blue)] text-white border border-[var(--hover-blue)] hover:bg-[var(--hover-blue)]"
-          }
-          ${isButtonDisabled ? "opacity-60 cursor-not-allowed" : "cursor-pointer"}`}
+        className={`text-[var(--blue)] font-medium transition-colors ${isButtonDisabled ? "opacity-60 cursor-not-allowed" : ""}`}
       >
         {isFollowed ? (isHovered ? "Unfollow" : "Following") : "Follow"}
       </button>
+
       {snackbar.open && (
         <CustomSnackbar
           message={snackbar.message}

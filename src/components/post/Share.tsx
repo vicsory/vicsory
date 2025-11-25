@@ -24,7 +24,7 @@ export default function Share({ postUrl }: { postUrl: string }) {
     return (
         <>
             <button
-                className="p-2 text-gray-500 rounded-full hover:bg-gray-100 hover:text-gray-700 transition-colors duration-200"
+                className="flex items-center gap-1 p-2 text-muted rounded-full transition-colors duration-200"
                 onClick={handleCopy}
             >
                 <Share2 size={iconSize} />

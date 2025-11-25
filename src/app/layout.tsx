@@ -5,7 +5,7 @@ import "../styles/globals.scss";
 import Providers from "./providers";
 
 export const metadata = {
-    title: "Vicsory | Here For you",
+    title: "Vicsory | Here For You",
 };
 
 const roboto = localFont({
@@ -58,7 +58,11 @@ const poppins = localFont({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className={`${roboto.variable} ${poppins.variable}`}>
+        <html
+            lang="en"
+            suppressHydrationWarning
+            className={`${roboto.variable} ${poppins.variable}`}
+        >
             <body>
                 <Providers>{children}</Providers>
             </body>

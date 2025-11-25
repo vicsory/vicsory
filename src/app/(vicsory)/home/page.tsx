@@ -9,15 +9,9 @@ import NothingToShow from "@/components/misc/NothingToShow";
 import NewPost from "@/components/post/NewPost";
 import { AuthContext } from "../layout";
 import Stories from "@/components/story/Stories";
-import { UserProps } from "@/types/UserProps";
-
-interface AuthContextType {
-    token: UserProps | null;
-    isPending: boolean;
-}
 
 export default function HomePage() {
-    const { token, isPending } = useContext(AuthContext) as AuthContextType;
+    const { token, isPending } = useContext(AuthContext);
 
     const { isLoading, data } = useQuery({
         queryKey: ["posts", "home"],
@@ -27,12 +21,11 @@ export default function HomePage() {
     if (isPending || isLoading) return <CircularLoading />;
 
     return (
-        <main>
-            <h1 className="page-name">Home</h1>
-            {token && <Stories stories={[]} userId={""} token={token} />}
+        <div className="w-full">
+            {token && <Stories stories={[]} userId={"userId"} token={token} />}
             {token && <NewPost token={token} />}
             {data && data.posts.length === 0 && <NothingToShow />}
-            <Posts posts={data?.posts || []} />
-        </main>
+            <Posts posts={data.posts} />
+        </div>
     );
 }

@@ -3,7 +3,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import Image from "next/image";
 
 import { PreviewDialogProps } from "@/types/DialogProps";
-import { getFullURL } from "@/utilities/misc/getFullURL";
+import { getFullURL } from "@/utilities/fetch/misc/getFullURL";
 
 export default function PreviewDialog({ open, handlePreviewClose, url }: PreviewDialogProps) {
     return (

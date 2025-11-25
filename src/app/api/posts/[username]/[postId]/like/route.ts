@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
-import { prisma } from "@/prisma/client";
 import { verifyJwtToken } from "@/utilities/auth";
 import { createNotification } from "@/utilities/fetch";
 import { UserProps } from "@/types/UserProps";
+import { prisma } from "@/lib/prisma";
 
 export async function POST(
     request: NextRequest,
@@ -49,8 +49,8 @@ export async function POST(
             const notificationContent = {
                 sender: {
                     username: verifiedToken.username,
-                    name: verifiedToken.name || "",
-                    photoUrl: verifiedToken.photoUrl || "",
+                    name: verifiedToken.name,
+                    photoUrl: verifiedToken.photoUrl,
                 },
                 content: {
                     id: postId,

@@ -17,12 +17,12 @@ export default function Reply({ post }: { post: PostProps }) {
 
     return (
         <button 
-            className="flex items-center gap-1 p-2 text-gray-500 rounded-full hover:bg-gray-100 hover:text-blue-500 transition-colors duration-200"
+            className="flex items-center gap-1 p-2 text-muted rounded-full transition-colors duration-200"
             onClick={handleClick}
         >
             <MessageSquare size={iconSize} />
             {post.replies.length > 0 && (
-                <span className="text-sm font-medium text-gray-600">
+                <span className="text-sm font-medium text-muted">
                     {post.replies.length}
                 </span>
             )}

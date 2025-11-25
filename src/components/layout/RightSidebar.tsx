@@ -4,28 +4,31 @@ import { useContext } from "react";
 import Link from "next/link";
 import { AuthContext } from "@/app/(vicsory)/layout";
 import Search from "../misc/Search";
-import WhoToFollow from "../misc/WhoToFollow";
 import CompleteProfileReminder from "../misc/CompleteProfileReminder";
 import Legal from "../misc/Legal";
+import SuggestedUserCardRightBar from "../misc/SuggestedUserCardRightBar";
 
-export default function RightSidebar() {
+
+interface RightSidebarProps {
+    isTablet: boolean;
+    className?: string;
+  }
+
+  
+  export default function RightSidebar({ isTablet, className = "" }: RightSidebarProps) {
     const { token, isPending } = useContext(AuthContext) || {};
 
     return (
-        <aside className="w-72 sticky top-0 h-screen">
+        <aside className={`w-[320px] pt-4 sticky h-screen ${className}`}>
             <div className="px-4 py-2 space-y-4">
-                {/* Search Component */}
-                <Search />
-
-                {/* Authenticated User Content */}
                 {token && (
                     <>
-                        <WhoToFollow />
+                        <Search/>
+                        <SuggestedUserCardRightBar />
                         <CompleteProfileReminder token={token} />
                     </>
                 )}
 
-                {/* Unauthenticated User Content */}
                 {!isPending && !token && (
                     <div className="bg-[var(--background-primary)] shadow-md p-4 rounded-3xl border border-solid border-[var(--border-color)]">
                         <h1 className="text-lg font-bold text-[var(--active-mode)] mb-2">

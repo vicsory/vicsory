@@ -15,8 +15,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { LogInDialogProps } from "@/types/DialogProps";
 import { logIn, checkUserExists, createUser } from "@/utilities/fetch";
-import CircularLoading from "../misc/CircularLoading";
 import { SnackbarProps } from "@/types/SnackbarProps";
+import CircularLoading from "../misc/CircularLoading";
 import CustomSnackbar from "../misc/CustomSnackbar";
 
 interface FormValues {

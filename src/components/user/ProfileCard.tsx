@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { getUser } from "@/utilities/fetch";
-import { getFullURL } from "@/utilities/misc/getFullURL";
+import { getFullURL } from "@/utilities/fetch/misc/getFullURL";
 import CircularLoading from "../misc/CircularLoading";
 import { UserProps } from "@/types/UserProps";
 import { VerifiedToken } from "@/types/TokenProps";
-import { BadgeCheck } from "lucide-react";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"; // ShadCN Avatar
-import { Badge } from "@/components/ui/badge"; // ShadCN Badge
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import Follow from "./Follow";
+import { BadgeBlue, BadgeGold, BadgeRed } from "../../../public/svg/verify-badge";
 
 export default function ProfileCard({ username, token }: { username: string; token: VerifiedToken }) {
     const { isLoading, data } = useQuery({
@@ -52,11 +52,13 @@ export default function ProfileCard({ username, token }: { username: string; tok
                 <h1 className="text-lg font-bold text-[var(--active-mode)] flex items-center gap-1">
                     {data.user.name || data.user.username}
                     {data.user.isPremium && (
-                        <BadgeCheck
-                            className="text-[var(--blue)] fill-[var(--blue)] stroke-[var(--background-primary)]"
-                            size={18}
-                            aria-label="Premium User"
-                        />
+                        <BadgeBlue/>
+                    )}
+                    {data.user.isVip && (
+                        <BadgeGold/>
+                    )}
+                    {data.user.isElite && (
+                        <BadgeRed/>
                     )}
                 </h1>
                 <span className="text-sm text-[var(--text-2)]">@{data.user.username}</span>

@@ -1,41 +1,53 @@
+// @/types/PostProps.ts
+import { ReactNode } from "react";
 import { UserProps } from "./UserProps";
 
 export type PostProps = {
-    id: string;
-    text: string;
-    createdAt: Date;
-    author: UserProps;
-    authorId: string;
-    photoUrl?: string | null; // Matches UserProps.photoUrl (string | null), but optional for posts
-    likedBy: UserProps[];
-    reposts: PostProps[];
-    replies: PostProps[];
-    isRepost: boolean;
-    repostedBy: UserProps[];
-    repostedById: string;
-    repostOf: PostProps;
-    isReply: boolean;
-    repliedTo: PostProps;
-    repliedToId: string;
+  id: string;
+  text: string;
+  content?: ReactNode; // optional for rendering
+  createdAt: Date;
+  authorId: string;
+  author: UserProps;
+  photoUrl?: string 
+  mediaUrl?: string
+
+  isRepost: boolean;
+  repostOfId?: string 
+  repostOf?: PostProps
+  repostedBy: UserProps[];
+  reposts: PostProps[];
+  repostedById: string;
+
+
+  isReply: boolean;
+  repliedToId?: string 
+  repliedTo?: PostProps
+  replies: PostProps[];
+
+  likedBy: UserProps[];
+
+  category?: string;
+  isVip?: boolean;
+  isPremium?: boolean;
+  isElite?: boolean;
 };
 
 export type PostsArray = {
-    posts: PostProps[];
+  posts: PostProps[];
 };
 
 export type PostResponse = {
-    success: boolean;
-    post: PostProps;
+  success: boolean;
+  post: PostProps;
 };
 
 export type PostOptionsProps = {
-    postId: string;
-    postAuthor: string;
+  postId: string;
+  postAuthorId: string;
 };
 
 export type NewPostProps = {
-    token: UserProps;
-    handleSubmit?: () => void;
+  token: string; // Use the auth token string
+  handleSubmit?: () => void;
 };
-
-

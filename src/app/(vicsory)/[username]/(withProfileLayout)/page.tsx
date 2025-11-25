@@ -10,13 +10,13 @@ import NotFound from "@/app/not-found";
 import NothingToShow from "@/components/misc/NothingToShow";
 
 export default function UserPosts() {
-    const params = useParams(); // Entpackt params korrekt
-    const username = Array.isArray(params.username) ? params.username[0] : params.username; // Jetzt sicher zugreifbar
+    const params = useParams();
+    const username = Array.isArray(params.username) ? params.username[0] : params.username;
 
     const { isLoading, data } = useQuery({
         queryKey: ["posts", username],
         queryFn: () => getUserPosts(username as string),
-        enabled: !!username, // Stellt sicher, dass die Abfrage nur ausgeführt wird, wenn `username` vorhanden ist
+        enabled: !!username,
     });
 
     if (!isLoading && (!data || !data.posts)) return <NotFound />;

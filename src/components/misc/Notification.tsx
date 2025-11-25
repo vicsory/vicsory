@@ -11,7 +11,7 @@ import {
   AvatarFallback,
 } from "@/components/ui/avatar"; // shadcn/ui components
 import { NotificationProps } from "@/types/NotificationProps";
-import { getFullURL } from "@/utilities/misc/getFullURL";
+import { getFullURL } from "@/utilities/fetch/misc/getFullURL";
 import ProfileCard from "../user/ProfileCard";
 import { UserProps } from "@/types/UserProps";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";

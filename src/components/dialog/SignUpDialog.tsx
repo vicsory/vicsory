@@ -15,11 +15,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import { logIn, checkUserExists, createUser } from "@/utilities/fetch";
-import CircularLoading from "../misc/CircularLoading";
 import { SnackbarProps } from "@/types/SnackbarProps";
-import CustomSnackbar from "../misc/CustomSnackbar";
 import { SignUpDialogProps } from "@/types/DialogProps";
 import { Google } from "../../../public/icons";
+import CircularLoading from "../misc/CircularLoading";
+import CustomSnackbar from "../misc/CustomSnackbar";
 
 export default function SignUpDialog({ open, handleSignUpClose }: SignUpDialogProps) {
   const [snackbar, setSnackbar] = useState<SnackbarProps>({ 

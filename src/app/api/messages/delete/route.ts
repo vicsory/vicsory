@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 
 import { verifyJwtToken } from "@/utilities/auth";
 import { UserProps } from "@/types/UserProps";
-import { prisma } from "@/prisma/client";
+import { prisma } from "@/lib/prisma";
 
 export async function POST(request: NextRequest) {
     const { tokenOwnerId, participants }: { tokenOwnerId: string; participants: string[] } = await request.json();

@@ -2,17 +2,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { 
-  Menu, 
-  Settings, 
-  School, 
-  Briefcase, 
-  Bookmark, 
+import {
+  Menu,
+  Settings,
+  School,
+  Briefcase,
+  Bookmark,
   HelpCircle,
   BarChart2,
   DollarSign,
   LifeBuoy,
   Users,
+  Plus,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -27,10 +28,18 @@ import { HomeFill, HomeOutline } from "../../../public/svg/home";
 import { NotificationFill, NotificationOutline } from "../../../public/svg/notification";
 import { ChatFill, ChatOutline } from "../../../public/svg/chat";
 import { ProfileFill, ProfileOutline } from "../../../public/svg/profile";
-import { ExploreFill, ExploreOutline } from "../../../public/svg/explore";
-import NewPostDialog from "../dialog/NewPostDialog";
+import NewPostDialog from "../AnimatedBeamMultipleOutputDemo/dialog/NewPostDialog";
 import Legal from "../misc/Legal";
-import { getFullURL } from "@/utilities/misc/getFullURL";
+import { getFullURL } from "@/utilities/fetch/misc/getFullURL";
+import { HashtagOutline } from "../../../public/svg/explore";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import NewPost from "../post/NewPost";
 
 export default function BottomNavbar() {
   const pathname = usePathname();
@@ -43,24 +52,27 @@ export default function BottomNavbar() {
   const inactiveClass = "text-gray-500 dark:text-gray-400 hover:text-[var(--hover-blue)]";
   const iconClass = "h-6 w-6";
 
-  const handleNewPostClick = () => {
-    setIsNewPostOpen(true);
-  };
-
-  const handleNewPostClose = () => {
-    setIsNewPostOpen(false);
-  };
-
   return (
     <>
       {token && (
         <div className="fixed bottom-20 right-4 z-50">
-          <Button
-            onClick={handleNewPostClick}
-            className="rounded-full w-14 h-14 bg-[var(--background-blue)] hover:bg-[var(--hover-blue)] text-white shadow-lg flex items-center justify-center"
-          >
-            <span className="text-lg font-bold">+</span>
-          </Button>
+          <Dialog open={isNewPostOpen} onOpenChange={setIsNewPostOpen} >
+            <DialogTrigger asChild>
+              <Button className="border border-solid bg-[var(--hover)] border-[var(--border-color)] rounded-full px-3 sm:px-5 py-2.5 font-medium flex items-center gap-2 hover:bg-[var(--hover)]">
+                <Plus className="w-5 h-5" />
+                <span className="hidden sm:inline">Post</span>
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-lg text-white">
+              <DialogHeader>
+                <DialogTitle className="text-white">Create New Post</DialogTitle>
+              </DialogHeader>
+              <NewPost
+                token={token}
+                handleSubmit={() => setIsNewPostOpen(false)}
+              />
+            </DialogContent>
+          </Dialog>
         </div>
       )}
       <nav className="fixed bottom-0 left-0 z-50 w-full bg-[var(--top-bar-bg)] border-t border-solid border-[var(--border-color)] shadow-xl">
@@ -78,9 +90,9 @@ export default function BottomNavbar() {
             <li>
               <Link href="/search" className={`${baseItemClass} ${pathname.startsWith("/search") ? "bg-[var(--grey)]" : "hover:bg-[var(--hover)]"}`}>
                 {pathname.startsWith("/search") ? (
-                  <ExploreFill className={`${iconClass} ${activeClass}`} />
+                  <HashtagOutline className={`${iconClass} ${activeClass}`} />
                 ) : (
-                  <ExploreOutline className={`${iconClass} ${inactiveClass}`} />
+                  <HashtagOutline className={`${iconClass} ${inactiveClass}`} />
                 )}
               </Link>
             </li>
@@ -116,17 +128,17 @@ export default function BottomNavbar() {
             <li>
               <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                 <SheetTrigger asChild>
-                  <Button 
-                    variant="ghost" 
+                  <Button
+                    variant="ghost"
                     className={`${baseItemClass} hover:bg-[var(--hover)]`}
                   >
                     <div className="rounded-full border border-solid border-[var(--border-color)] p-1.5">
-                      <Menu className={`${iconClass} ${pathname.startsWith("/settings") || pathname.startsWith("/school") || pathname.startsWith("/business") ? activeClass : inactiveClass}`} />
+                      <Menu className={`${iconClass} ${pathname.startsWith("/settings") || pathname.startsWith("/school") || pathname.startsWith("/jobs") ? activeClass : inactiveClass}`} />
                     </div>
                   </Button>
                 </SheetTrigger>
-                <SheetContent 
-                  side="right" 
+                <SheetContent
+                  side="right"
                   className="w-[300px] bg-[var(--background-primary)] border-l border-solid border-[var(--border-color)] overflow-y-auto"
                 >
                   {token && (
@@ -150,24 +162,24 @@ export default function BottomNavbar() {
                   )}
                   <div className="flex flex-col gap-2 px-3">
                     {/* Professional Section */}
-                    <Link 
-                      href="/school" 
+                    <Link
+                      href="/school"
                       className="w-full py-2 px-3 flex items-center gap-2 hover:bg-[var(--hover)] rounded-md"
                       onClick={() => setIsSheetOpen(false)}
                     >
                       <School className="h-5 w-5" />
                       Schools
                     </Link>
-                    <Link 
-                      href="/business" 
+                    <Link
+                      href="/jobs"
                       className="w-full py-2 px-3 flex items-center gap-2 hover:bg-[var(--hover)] rounded-md"
                       onClick={() => setIsSheetOpen(false)}
                     >
                       <Briefcase className="h-5 w-5" />
                       Jobs
                     </Link>
-                    <Link 
-                      href="/dashboard" 
+                    <Link
+                      href="/dashboard"
                       className="w-full py-2 px-3 flex items-center gap-2 hover:bg-[var(--hover)] rounded-md"
                       onClick={() => setIsSheetOpen(false)}
                     >
@@ -178,24 +190,24 @@ export default function BottomNavbar() {
                     <div className="my-2 border border-solid border-[var(--border-color)]" />
 
                     {/* Monetization & Content */}
-                    <Link 
-                      href="/monetize" 
+                    <Link
+                      href="/monetize"
                       className="w-full py-2 px-3 flex items-center gap-2 hover:bg-[var(--hover)] rounded-md"
                       onClick={() => setIsSheetOpen(false)}
                     >
                       <DollarSign className="h-5 w-5" />
                       Monetize
                     </Link>
-                    <Link 
-                      href="/bookmarks" 
+                    <Link
+                      href="/bookmarks"
                       className="w-full py-2 px-3 flex items-center gap-2 hover:bg-[var(--hover)] rounded-md"
                       onClick={() => setIsSheetOpen(false)}
                     >
                       <Bookmark className="h-5 w-5" />
                       Bookmarks
                     </Link>
-                    <Link 
-                      href="/analytics" 
+                    <Link
+                      href="/analytics"
                       className="w-full py-2 px-3 flex items-center gap-2 hover:bg-[var(--hover)] rounded-md"
                       onClick={() => setIsSheetOpen(false)}
                     >
@@ -206,32 +218,32 @@ export default function BottomNavbar() {
                     <div className="my-2 border border-solid border-[var(--border-color)]" />
 
                     {/* Support & Account */}
-                    <Link 
-                      href="/support" 
+                    <Link
+                      href="/support"
                       className="w-full py-2 px-3 flex items-center gap-2 hover:bg-[var(--hover)] rounded-md"
                       onClick={() => setIsSheetOpen(false)}
                     >
                       <LifeBuoy className="h-5 w-5" />
                       Support
                     </Link>
-                    <Link 
-                      href="/help" 
+                    <Link
+                      href="/help"
                       className="w-full py-2 px-3 flex items-center gap-2 hover:bg-[var(--hover)] rounded-md"
                       onClick={() => setIsSheetOpen(false)}
                     >
                       <HelpCircle className="h-5 w-5" />
                       Help Center
                     </Link>
-                    <Link 
-                      href="/team" 
+                    <Link
+                      href="/team"
                       className="w-full py-2 px-3 flex items-center gap-2 hover:bg-[var(--hover)] rounded-md"
                       onClick={() => setIsSheetOpen(false)}
                     >
                       <Users className="h-5 w-5" />
                       Team
                     </Link>
-                    <Link 
-                      href="/settings" 
+                    <Link
+                      href="/settings"
                       className="w-full py-2 px-3 flex items-center gap-2 hover:bg-[var(--hover)] rounded-md"
                       onClick={() => setIsSheetOpen(false)}
                     >
@@ -250,13 +262,6 @@ export default function BottomNavbar() {
           </ul>
         </div>
       </nav>
-      {token && (
-        <NewPostDialog 
-          open={isNewPostOpen} 
-          handleNewPostClose={handleNewPostClose} 
-          token={token} 
-        />
-      )}
     </>
   );
 }

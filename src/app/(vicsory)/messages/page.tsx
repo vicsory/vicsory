@@ -5,13 +5,13 @@ import { useQuery } from "@tanstack/react-query";
 import { BsEnvelopePlus } from "react-icons/bs";
 
 import NothingToShow from "@/components/misc/NothingToShow";
-import NewMessageDialog from "@/components/dialog/NewMessageDialog";
 import { AuthContext } from "../layout";
 import CircularLoading from "@/components/misc/CircularLoading";
 import { getUserMessages } from "@/utilities/fetch";
 import Conversation from "@/components/message/Conversation";
 import { ConversationResponse, MessageProps } from "@/types/MessageProps";
 import Messages from "@/components/message/Messages";
+import NewMessageDialog from "@/components/dialog/NewMessageDialog";
 
 export default function MessagesPage() {
     const [isNewMessageOpen, setIsNewMessageOpen] = useState(false);
@@ -37,9 +37,9 @@ export default function MessagesPage() {
         setIsConversationSelected({ selected: isSelected, messages, messagedUsername });
     };
 
-    if (isPending || !token || isLoading) return <CircularLoading />;
+    if (isPending || !token || isLoading || !data) return <CircularLoading />;
 
-    const conversations = data.formattedConversations;
+    const conversations = data.formattedConversations || []; // Fallback to empty array
 
     return (
         <main className="messages-page">

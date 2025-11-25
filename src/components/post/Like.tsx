@@ -1,8 +1,7 @@
-"use client";
-
 import { useContext, useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { motion } from "framer-motion";
+
 import { PostOptionsProps, PostResponse } from "@/types/PostProps";
 import { getUserPost, updatePostLikes } from "@/utilities/fetch";
 import { AuthContext } from "@/app/(vicsory)/layout";
@@ -14,11 +13,7 @@ import { Heart } from "lucide-react";
 export default function Like({ postId, postAuthor }: PostOptionsProps) {
     const [isLiked, setIsLiked] = useState(false);
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-    const [snackbar, setSnackbar] = useState<SnackbarProps>({
-        message: "",
-        severity: "success",
-        open: false,
-    });
+    const [snackbar, setSnackbar] = useState<SnackbarProps>({ message: "", severity: "success", open: false });
 
     const { token, isPending } = useContext(AuthContext);
     const queryClient = useQueryClient();
@@ -31,8 +26,7 @@ export default function Like({ postId, postAuthor }: PostOptionsProps) {
     });
 
     const likeMutation = useMutation({
-        mutationFn: (tokenOwnerId: string) =>
-            updatePostLikes(postId, postAuthor, tokenOwnerId, false),
+        mutationFn: (tokenOwnerId: string) => updatePostLikes(postId, postAuthor, tokenOwnerId, false),
         onMutate: async (tokenOwnerId: string) => {
             setIsButtonDisabled(true);
             await queryClient.cancelQueries({ queryKey: queryKey });
@@ -60,8 +54,7 @@ export default function Like({ postId, postAuthor }: PostOptionsProps) {
     });
 
     const unlikeMutation = useMutation({
-        mutationFn: (tokenOwnerId) =>
-            updatePostLikes(postId, postAuthor, tokenOwnerId, true),
+        mutationFn: (tokenOwnerId) => updatePostLikes(postId, postAuthor, tokenOwnerId, true),
         onMutate: async (tokenOwnerId: string) => {
             setIsButtonDisabled(true);
             await queryClient.cancelQueries({ queryKey: queryKey });
@@ -98,16 +91,14 @@ export default function Like({ postId, postAuthor }: PostOptionsProps) {
                 open: true,
             });
         }
-
-        if (!data || !data.post) return;
-
+    
+        if (!data || !data.post) return; // Sicherstellen, dass `data.post` existiert
+    
         const tokenOwnerId = JSON.stringify(token.id);
-        const likedBy = data.post.likedBy || [];
-        const isLikedByTokenOwner = likedBy.some(
-            (user: { id: string }) => JSON.stringify(user.id) === tokenOwnerId
-        );
-
-        if (likeMutation.status !== 'pending' && unlikeMutation.status !== 'pending') {
+        const likedBy = data.post.likedBy || []; // Fallback zu leerem Array, falls `likedBy` nicht existiert
+        const isLikedByTokenOwner = likedBy.some((user: { id: string }) => JSON.stringify(user.id) === tokenOwnerId);
+    
+        if (!likeMutation.isLoading && !unlikeMutation.isLoading) {
             if (isLikedByTokenOwner) {
                 unlikeMutation.mutate(tokenOwnerId);
             } else {
@@ -115,17 +106,16 @@ export default function Like({ postId, postAuthor }: PostOptionsProps) {
             }
         }
     };
+    
 
     useEffect(() => {
-        if (!isPending && isFetched && data?.post && token) {
+        if (!isPending && isFetched) {
             const tokenOwnerId = JSON.stringify(token?.id);
-            const likedBy = data?.post?.likedBy || [];
-            const isLikedByTokenOwner = likedBy.some(
-                (user: { id: string }) => JSON.stringify(user.id) === tokenOwnerId
-            );
-            setIsLiked(!!isLikedByTokenOwner); // Ensure boolean value
+            const likedBy = data?.post?.likedBy;
+            const isLikedByTokenOwner = likedBy?.some((user: { id: string }) => JSON.stringify(user.id) === tokenOwnerId);
+            setIsLiked(isLikedByTokenOwner);
         }
-    }, [isPending, isFetched, data?.post?.likedBy, token?.id]); // Added missing dependencies
+    }, [isPending, isFetched]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -135,14 +125,15 @@ export default function Like({ postId, postAuthor }: PostOptionsProps) {
         return () => clearTimeout(timer);
     }, [isButtonDisabled]);
 
+    // Define a consistent icon size (e.g., 24px)
     const iconSize = 16;
 
     return (
         <>
             <motion.button
                 className={`flex items-center gap-1 p-2 rounded-full transition-colors duration-200 ${
-                    isLiked
-                        ? "text-red-500 hover:bg-red-50"
+                    isLiked 
+                        ? "text-red-500 hover:bg-red-50" 
                         : "text-red-500 hover:bg-gray-100"
                 } ${isButtonDisabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
                 onClick={handleLike}
@@ -152,15 +143,15 @@ export default function Like({ postId, postAuthor }: PostOptionsProps) {
                 disabled={isButtonDisabled}
             >
                 {isLiked ? (
-                    <motion.span
-                        animate={{ scale: [1, 1.5, 1.2, 1] }}
+                    <motion.span 
+                        animate={{ scale: [1, 1.5, 1.2, 1] }} 
                         transition={{ duration: 0.25 }}
                     >
-                        <Heart size={iconSize} className="fill-red-500" />
+                       <Heart size={iconSize} className="fill-red-500" />
                     </motion.span>
                 ) : (
-                    <motion.span
-                        animate={{ scale: [1, 0.8, 1] }}
+                    <motion.span 
+                        animate={{ scale: [1, 0.8, 1] }} 
                         transition={{ duration: 0.25 }}
                     >
                         <Heart size={iconSize} />
@@ -173,10 +164,10 @@ export default function Like({ postId, postAuthor }: PostOptionsProps) {
                 )}
             </motion.button>
             {snackbar.open && (
-                <CustomSnackbar
-                    message={snackbar.message}
-                    severity={snackbar.severity}
-                    setSnackbar={setSnackbar}
+                <CustomSnackbar 
+                    message={snackbar.message} 
+                    severity={snackbar.severity} 
+                    setSnackbar={setSnackbar} 
                 />
             )}
         </>

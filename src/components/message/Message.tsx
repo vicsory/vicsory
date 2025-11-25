@@ -3,9 +3,9 @@ import { useState } from "react";
 import Image from "next/image";
 
 import { formatDate } from "@/utilities/date";
-import { getFullURL } from "@/utilities/misc/getFullURL";
+import { getFullURL } from "@/utilities/fetch/misc/getFullURL";
+import { shimmer } from "@/utilities/fetch/misc/shimmer";
 import PreviewDialog from "../dialog/PreviewDialog";
-import { shimmer } from "@/utilities/misc/shimmer";
 
 export default function Message({ message, messagedUsername }: { message: MessageProps; messagedUsername: string }) {
     const [isPreviewOpen, setIsPreviewOpen] = useState(false);

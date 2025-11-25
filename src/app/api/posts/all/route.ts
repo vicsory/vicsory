@@ -1,18 +1,18 @@
-import { prisma } from "@/prisma/client";
+import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
+
 export async function GET(request: NextRequest) {
-    const { searchParams } = new URL(request.url);
-    const page = searchParams.get("page") || "1";
-    const limit = 10; // Use number directly instead of string
+    let page = request.nextUrl.searchParams.get("page");
+    const limit = "10";
 
-    const parsedPage = parseInt(page, 10);
-    const parsedLimit = limit;
-    const nextPage = parsedPage + 1;
-
-    if (isNaN(parsedPage) || parsedPage < 1) {
-        return NextResponse.json({ success: false, error: "Invalid page number" }, { status: 400 });
+    if (!page) {
+        page = "1";
     }
+
+    const parsedPage = Number(page);
+    const parsedLimit = Number(limit);
+    let nextPage = parsedPage + 1;
 
     try {
         const posts = await prisma.post.findMany({
@@ -29,16 +29,29 @@ export async function GET(request: NextRequest) {
                         photoUrl: true,
                         description: true,
                         category: true,
-                        followers: {
-                            select: { id: true }, // Essential for Follow button
-                        },
                     },
                 },
                 likedBy: {
-                    select: { id: true }, // Optimize: only id if counting likes
+                    select: {
+                        id: true,
+                        username: true,
+                        name: true,
+                        isPremium: true,
+                        photoUrl: true,
+                        description: true,
+                        category: true,
+                    },
                 },
                 repostedBy: {
-                    select: { id: true }, // Optimize: only id if counting reposts
+                    select: {
+                        id: true,
+                        username: true,
+                        name: true,
+                        isPremium: true,
+                        photoUrl: true,
+                        description: true,
+                        category: true,
+                    },
                 },
                 repostOf: {
                     select: {
@@ -52,46 +65,94 @@ export async function GET(request: NextRequest) {
                                 photoUrl: true,
                                 description: true,
                                 category: true,
-                                followers: { // Optional: for repost author
-                                    select: { id: true },
-                                },
                             },
                         },
                         authorId: true,
                         createdAt: true,
-                        likedBy: { select: { id: true } },
-                        repostedBy: { select: { id: true } },
+                        likedBy: {
+                            select: {
+                                id: true,
+                                username: true,
+                                name: true,
+                                isPremium: true,
+                                photoUrl: true,
+                                description: true,
+                                category: true,
+                            },
+                        },
+                        repostedBy: {
+                            select: {
+                                id: true,
+                                username: true,
+                                name: true,
+                                isPremium: true,
+                                photoUrl: true,
+                                description: true,
+                                category: true,
+                            },
+                        },
                         photoUrl: true,
                         text: true,
                         isReply: true,
                         repliedTo: {
                             select: {
                                 id: true,
-                                author: { select: { id: true, username: true } },
+                                author: {
+                                    select: {
+                                        id: true,
+                                        username: true,
+                                        name: true,
+                                        isPremium: true,
+                                        photoUrl: true,
+                                        description: true,
+                                        category: true,
+                                    },
+                                },
                             },
                         },
-                        replies: { select: { authorId: true } },
+                        replies: {
+                            select: {
+                                authorId: true,
+                            },
+                        },
                     },
                 },
-                replies: { select: { id: true } },
+                replies: {
+                    select: {
+                        id: true,
+                    },
+                },
                 repliedTo: {
                     select: {
                         id: true,
-                        author: { select: { id: true, username: true } },
+                        author: {
+                            select: {
+                                id: true,
+                                username: true,
+                                name: true,
+                                isPremium: true,
+                                photoUrl: true,
+                                description: true,
+                                category: true,
+                            },
+                        },
                     },
                 },
             },
-            orderBy: { createdAt: "desc" }, // Simplified from array
+            orderBy: [
+                {
+                    createdAt: "desc",
+                },
+            ],
             skip: (parsedPage - 1) * parsedLimit,
             take: parsedLimit,
         });
 
-        const totalPosts = await prisma.post.count({ where: { isReply: false } });
+        const totalPosts = await prisma.post.count();
         const lastPage = Math.ceil(totalPosts / parsedLimit);
 
         return NextResponse.json({ success: true, posts, nextPage, lastPage });
     } catch (error: unknown) {
-        console.error("Error fetching all posts:", error);
-        return NextResponse.json({ success: false, error: "Internal server error" }, { status: 500 });
+        return NextResponse.json({ success: false, error });
     }
 }

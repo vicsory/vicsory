@@ -1,9 +1,8 @@
-"use server"; // Optional: Use if this is a Server Action, otherwise keep as-is for API route
-
-import { prisma } from "@/prisma/client";
+import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: NextRequest, { params: { postId } }: { params: { postId: string } }) {
+
+export async function GET(_request: NextRequest, { params: { postId } }: { params: { postId: string } }) {
     try {
         const post = await prisma.post.findUnique({
             where: {
@@ -19,11 +18,6 @@ export async function GET(request: NextRequest, { params: { postId } }: { params
                         photoUrl: true,
                         description: true,
                         category: true,
-                        followers: {
-                            select: {
-                                id: true, // Minimal data needed for follow check
-                            },
-                        },
                     },
                 },
                 likedBy: {
@@ -82,11 +76,6 @@ export async function GET(request: NextRequest, { params: { postId } }: { params
                                 photoUrl: true,
                                 description: true,
                                 category: true,
-                                followers: { // Also add followers here if repost author follow status is needed
-                                    select: {
-                                        id: true,
-                                    },
-                                },
                             },
                         },
                         authorId: true,
@@ -146,14 +135,8 @@ export async function GET(request: NextRequest, { params: { postId } }: { params
                 },
             },
         });
-
-        if (!post) {
-            return NextResponse.json({ success: false, error: "Post not found" }, { status: 404 });
-        }
-
         return NextResponse.json({ success: true, post });
     } catch (error: unknown) {
-        console.error("Error fetching post:", error);
-        return NextResponse.json({ success: false, error: "Internal server error" }, { status: 500 });
+        return NextResponse.json({ success: false, error });
     }
 }

@@ -1,36 +1,43 @@
+// ProfileLayout.tsx
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { use } from "react"; // Import React's use hook
-
+import { use } from "react";
 import NotFound from "@/app/not-found";
 import Profile from "@/components/user/Profile";
 import CircularLoading from "@/components/misc/CircularLoading";
 import { getUser } from "@/utilities/fetch";
+import { UserProps } from "@/types/UserProps"; // Import UserProps
+
+interface UserResponse {
+  success: boolean;
+  user?: UserProps; // Use UserProps instead of { [key: string]: any }
+}
 
 export default function ProfileLayout({
-    children,
-    params,
+  children,
+  params,
 }: {
-    children: React.ReactNode;
-    params: Promise<{ username: string }>; // Type params as a Promise
+  children: React.ReactNode;
+  params: Promise<{ username: string }>;
 }) {
-    // Unwrap the params Promise using React.use()
-    const { username } = use(params);
+  const { username } = use(params);
 
-    const { isLoading, isFetched, data } = useQuery({
-        queryKey: ["users", username],
-        queryFn: () => getUser(username),
-    });
+  const { isLoading, isFetched, data } = useQuery<UserResponse>({
+    queryKey: ["users", username],
+    queryFn: () => getUser(username),
+  });
 
-    if (isLoading) return <CircularLoading />;
+  if (isLoading) return <CircularLoading />;
 
-    if (isFetched && !data.user) return <NotFound />;
+  if (!data || !data.success || !data.user) {
+    return isFetched ? <NotFound /> : <CircularLoading />;
+  }
 
-    return (
-        <div className="profile-layout">
-            {isFetched && <Profile profile={data.user} />}
-            {children}
-        </div>
-    );
+  return (
+    <div className="profile-layout">
+      <Profile profile={data.user} />
+      {children}
+    </div>
+  );
 }
