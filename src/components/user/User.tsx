@@ -5,9 +5,9 @@ import Link from "next/link";
 import { AiFillTwitterCircle } from "react-icons/ai";
 
 import { UserProps } from "@/types/UserProps";
-import { AuthContext } from "@/app/(twitter)/layout";
 import Follow from "./Follow";
 import { getFullURL } from "@/utilities/misc/getFullURL";
+import { AuthContext } from "@/contexts/auth-context";
 
 export default function User({ user }: { user: UserProps }) {
     const { token } = useContext(AuthContext);

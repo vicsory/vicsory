@@ -16,9 +16,9 @@ import { usePathname } from "next/navigation";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Link from "next/link";
 import LogInDialog from "@/components/dialog/LogInDialog";
-import { AuthContext } from "@/app/(twitter)/layout";
 import { getFullURL } from "@/utilities/misc/getFullURL";
 import NewTweet from "../tweet/NewTweet";
+import { AuthContext } from "@/contexts/auth-context";
 
 const Topbar = () => {
   const [isLogInOpen, setIsLogInOpen] = useState(false);
@@ -98,7 +98,7 @@ const Topbar = () => {
                       <DialogTitle className="text-white">Create New Post</DialogTitle>
                     </DialogHeader>
                     <NewTweet
-                      token={token.id}
+                      token={token}
                       handleSubmit={() => {
                         setIsNewPostOpen(false);
                       }}

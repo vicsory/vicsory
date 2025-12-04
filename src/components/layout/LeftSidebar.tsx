@@ -24,7 +24,6 @@ import LogOutDialog from "../dialog/LogOutDialog";
 import { logout } from "@/utilities/fetch";
 import { getFullURL } from "@/utilities/misc/getFullURL";
 import UnreadNotificationsBadge from "../misc/UnreadNotificationsBadge";
-import { AuthContext } from "@/app/(twitter)/layout";
 import { BusinessFill, BusinessOutline } from "../../../public/svg/business";
 import { ChatFill, ChatOutline } from "../../../public/svg/chat";
 import { HomeFill, HomeOutline } from "../../../public/svg/home";
@@ -32,6 +31,7 @@ import { NotificationFill, NotificationOutline } from "../../../public/svg/notif
 import { ProfileFill, ProfileOutline } from "../../../public/svg/profile";
 import { SchoolFill, SchoolOutline } from "../../../public/svg/school";
 import { SettingFill, SettingOutline } from "../../../public/svg/setting";
+import { AuthContext } from "@/contexts/auth-context";
 
 // Reusable classNames
 const linkBase = "flex px-3 py-2 rounded-full hover:bg-[var(--background-secondary)] cursor-pointer";
@@ -179,7 +179,7 @@ export default function LeftSidebar({ className = "" }: { className?: string }) 
                             <DialogHeader>
                                 <DialogTitle className="text-white">Create New Post</DialogTitle>
                             </DialogHeader>
-                            <NewTweet token={token.id} handleSubmit={() => setIsNewPostOpen(false)} />
+                            <NewTweet token={token} handleSubmit={() => setIsNewPostOpen(false)} />
                         </DialogContent>
                     </Dialog>
 

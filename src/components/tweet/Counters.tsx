@@ -3,11 +3,11 @@ import { Dialog, DialogContent, DialogTitle } from "@mui/material";
 
 import { TweetProps } from "@/types/TweetProps";
 import User from "../user/User";
-import { AuthContext } from "@/app/(twitter)/layout";
 import { scrollToBottom } from "@/utilities/misc/scrollToBottom";
 import CustomSnackbar from "../misc/CustomSnackbar";
 import { SnackbarProps } from "@/types/SnackbarProps";
 import { UserProps } from "@/types/UserProps";
+import { AuthContext } from "@/contexts/auth-context";
 
 export default function Counters({ tweet }: { tweet: TweetProps }) {
     const [dialogType, setDialogType] = useState("");

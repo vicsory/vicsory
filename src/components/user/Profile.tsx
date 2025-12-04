@@ -11,7 +11,6 @@ import { GoLocation } from "react-icons/go";
 import { AiFillTwitterCircle, AiOutlineLink } from "react-icons/ai";
 
 import { formatDateForProfile } from "@/utilities/date";
-import { AuthContext } from "@/app/(twitter)/layout";
 import { UserProps } from "@/types/UserProps";
 import TweetArrayLength from "../tweet/TweetArrayLength";
 import Follow from "./Follow";
@@ -21,6 +20,7 @@ import PreviewDialog from "../dialog/PreviewDialog";
 import { SnackbarProps } from "@/types/SnackbarProps";
 import CustomSnackbar from "../misc/CustomSnackbar";
 import NewMessageDialog from "../dialog/NewMessageDialog";
+import { AuthContext } from "@/contexts/auth-context";
 
 export default function Profile({ profile }: { profile: UserProps }) {
     const [dialogType, setDialogType] = useState("");

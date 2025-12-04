@@ -7,8 +7,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { getAllTweets } from "@/utilities/fetch";
 import NewTweet from "@/components/tweet/NewTweet";
 import Tweets from "@/components/tweet/Tweets";
-import { AuthContext } from "../layout";
 import CircularLoading from "@/components/misc/CircularLoading";
+import { AuthContext } from "@/contexts/auth-context";
 
 export default function ExplorePage() {
   const { token, isPending } = useContext(AuthContext);

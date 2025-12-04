@@ -3,12 +3,12 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useContext, useEffect } from "react";
 
-import { AuthContext } from "../layout";
 import { getNotifications, markNotificationsRead } from "@/utilities/fetch";
 import CircularLoading from "@/components/misc/CircularLoading";
 import NothingToShow from "@/components/misc/NothingToShow";
 import { NotificationProps } from "@/types/NotificationProps";
 import Notification from "@/components/misc/Notification";
+import { AuthContext } from "@/contexts/auth-context";
 
 export default function NotificationsPage() {
     const { token, isPending } = useContext(AuthContext);

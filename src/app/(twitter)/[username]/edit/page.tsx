@@ -2,10 +2,10 @@
 
 import { useContext } from "react";
 
-import { AuthContext } from "../../layout";
 import CircularLoading from "@/components/misc/CircularLoading";
 import EditProfile from "@/components/user/EditProfile";
 import BackToArrow from "@/components/misc/BackToArrow";
+import { AuthContext } from "@/contexts/auth-context";
 
 export default function EditPage({ params: { username } }: { params: { username: string } }) {
     const { token, isPending, refreshToken } = useContext(AuthContext);

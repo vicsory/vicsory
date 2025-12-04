@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { AuthContext } from "@/app/(twitter)/layout";
 import { updateUserFollows } from "@/utilities/fetch";
 import { UserProps, UserResponse } from "@/types/UserProps";
 import CustomSnackbar from "../misc/CustomSnackbar";
 import { SnackbarProps } from "@/types/SnackbarProps";
+import { AuthContext } from "@/contexts/auth-context";
 
 export default function Follow({ profile }: { profile: UserProps }) {
     const [isFollowed, setIsFollowed] = useState(false);

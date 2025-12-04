@@ -4,11 +4,11 @@ import { useContext } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { AuthContext } from "@/app/(twitter)/layout";
 import Search from "../misc/Search";
 import WhoToFollow from "../misc/WhoToFollow";
 import CompleteProfileReminder from "../misc/CompleteProfileReminder";
 import Legal from "../misc/Legal";
+import { AuthContext } from "@/contexts/auth-context";
 
 export default function RightSidebar() {
   const { token, isPending } = useContext(AuthContext);

@@ -2,8 +2,8 @@
 
 import { useContext } from "react";
 import Link from "next/link";
+import { AuthContext } from "@/contexts/auth-context";
 
-import { AuthContext } from "@/app/(twitter)/layout";
 
 export default function Footer() {
     const { token, isPending } = useContext(AuthContext);

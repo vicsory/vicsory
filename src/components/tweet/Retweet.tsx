@@ -3,11 +3,11 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 
 import { TweetOptionsProps } from "@/types/TweetProps";
-import { AuthContext } from "@/app/(twitter)/layout";
 import { getUserTweet, updateRetweets } from "@/utilities/fetch";
 import RetweetIcon from "../misc/RetweetIcon";
 import { SnackbarProps } from "@/types/SnackbarProps";
 import CustomSnackbar from "../misc/CustomSnackbar";
+import { AuthContext } from "@/contexts/auth-context";
 
 export default function Retweet({ tweetId, tweetAuthor }: TweetOptionsProps) {
     const [isRetweeted, setIsRetweeted] = useState(false);
