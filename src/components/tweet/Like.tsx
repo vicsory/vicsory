@@ -54,7 +54,7 @@ export default function Like({ tweetId, tweetAuthor }: TweetOptionsProps) {
     });
 
     const unlikeMutation = useMutation({
-        mutationFn: (tokenOwnerId) => updateTweetLikes(tweetId, tweetAuthor, tokenOwnerId, true),
+        mutationFn: (tokenOwnerId: string) => updateTweetLikes(tweetId, tweetAuthor, tokenOwnerId, true),
         onMutate: async (tokenOwnerId: string) => {
             setIsButtonDisabled(true);
             await queryClient.cancelQueries({ queryKey: queryKey });
@@ -117,7 +117,8 @@ export default function Like({ tweetId, tweetAuthor }: TweetOptionsProps) {
             const isLikedByTokenOwner = likedBy?.some((user: { id: string }) => JSON.stringify(user.id) === tokenOwnerId);
             setIsLiked(isLikedByTokenOwner);
         }
-    }, [isPending, isFetched]);
+    }, [isPending, isFetched, data?.tweet?.likedBy, token?.id]);
+
 
     useEffect(() => {
         const timer = setTimeout(() => {
