@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 
 import { TweetOptionsProps, TweetResponse } from "@/types/TweetProps";
 import { getUserTweet, updateTweetLikes } from "@/utilities/fetch";
-import { AuthContext } from "@/app/(twitter)/layout";
 import { SnackbarProps } from "@/types/SnackbarProps";
 import CustomSnackbar from "../misc/CustomSnackbar";
 import { UserProps } from "@/types/UserProps";
+import { AuthContext } from "@/contexts/auth-context";
 
 export default function Like({ tweetId, tweetAuthor }: TweetOptionsProps) {
     const [isLiked, setIsLiked] = useState(false);
