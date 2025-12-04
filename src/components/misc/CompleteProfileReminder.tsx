@@ -100,7 +100,7 @@ export default function CompleteProfileReminder({ token }: { token: UserProps })
                                     <li className="cursor-pointer">Specify your location</li>
                                 </TooltipTrigger>
                                 <TooltipContent className={tooltipClass}>
-                                    Sharing your location helps others know where you're posting from.
+                                    Sharing your location helps others know where you are posting from.
                                 </TooltipContent>
                             </Tooltip>
                         )}

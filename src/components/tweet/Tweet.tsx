@@ -63,12 +63,14 @@ export default function Tweet({ tweet }: { tweet: TweetProps }) {
                 onMouseLeave={closePopover}
                 className="shrink-0"
             >
-                <img
+                <Image
                     src={
                         displayedTweet.author.photoUrl
                             ? getFullURL(displayedTweet.author.photoUrl)
                             : "/assets/egg.jpg"
                     }
+                    width={600}
+                    height={600}
                     alt=""
                     className="w-12 h-12 rounded-full object-cover ring-1 ring-transparent hover:ring-zinc-300 transition"
                 />
