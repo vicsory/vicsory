@@ -3,6 +3,8 @@
 import { useContext } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
+
 
 import Search from "../misc/Search";
 import WhoToFollow from "../misc/WhoToFollow";
@@ -29,21 +31,36 @@ export default function RightSidebar() {
 
         {/* Login / Signup Reminder */}
         {!isPending && !token && (
-          <div className="flex flex-col gap-4 p-4 rounded-lg border border-solid">
-            <h2 className="text-lg font-semibold">Don’t miss what’s happening</h2>
-            <p className="text-sm">People on Vicsory are the first to know.</p>
+          <div className="flex flex-col gap-4 p-4 rounded-2xl border border-solid border-[var(--border)]">
+            <div className="flex gap-4">
+              <Image
+                src="/assets/jean-kael-augustin.png"
+                alt="Jean Kael Augustin"
+                width={60}
+                height={60}
+                className="w-12 h-12 flex items-center justify-center bg-[var(--background-secondary)] rounded-full border border-solid border-[var(--border)]"
+              />
+              <div className="flex flex-col">
+                <h2 className="text-2xl font-semibold text-[var(--text)]">Welcome to Vicsory</h2>
+                <p className="text-base text-[var(--text)]">
+                  I am Jean Kael Augustin, CEO of Vicsory. I am excited to welcome you to the platform.
+                </p>
+              </div>
+            </div>
             <div className="flex gap-2 mt-2">
               <Link
                 href="/"
-                className="flex-1 px-4 py-2 border rounded-full text-center font-semibold transition"
+                className="text-base bg-[var(--background-secondary)] text-[var(--text)] flex-1 px-4 py-2 rounded-full text-center font-semibold hover:opacity-70 transition border border-solid border-[var(--border)]"
               >
-                Log In
+                Learn More
               </Link>
+
               <Link
-                href="/"
-                className="flex-1 px-4 py-2 rounded-full text-center font-semibold hover:opacity-90 transition"
+                href="https://www.linkedin.com/in/jean-kael-augustin-7aa1182b8/"
+                target="_blank"
+                className="text-base bg-[var(--background-secondary)] text-[var(--text)] flex-1 px-4 py-2 rounded-full text-center font-semibold hover:opacity-70 transition border border-solid border-[var(--border)]"
               >
-                Sign Up
+                LinkedIn
               </Link>
             </div>
           </div>

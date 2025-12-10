@@ -14,9 +14,10 @@ import Like from "./Like";
 import Share from "./Share";
 import PreviewDialog from "../dialog/PreviewDialog";
 import { getFullURL } from "@/utilities/misc/getFullURL";
-import RetweetIcon from "../misc/RetweetIcon";
 import ProfileCard from "../user/ProfileCard";
 import { AuthContext } from "@/contexts/auth-context";
+import { BsArrowRepeat } from "react-icons/bs";
+import RepostIcon from "../../../public/svg/repost";
 
 export default function Tweet({ tweet }: { tweet: TweetProps }) {
     const [isPreviewOpen, setIsPreviewOpen] = useState(false);
@@ -50,7 +51,7 @@ export default function Tweet({ tweet }: { tweet: TweetProps }) {
     return (
         <motion.div
             onClick={goToTweet}
-            className="relative flex gap-3 px-4 py-3 border-b cursor-pointer hover:bg-zinc-50/50 transition"
+            className="relative flex gap-3 px-4 py-6 border-b border-solid border-[var(--border)] cursor-pointer hover:bg-[var(--background-secondary)] transition"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
@@ -72,7 +73,7 @@ export default function Tweet({ tweet }: { tweet: TweetProps }) {
                     width={600}
                     height={600}
                     alt=""
-                    className="w-12 h-12 rounded-full object-cover ring-1 ring-transparent hover:ring-zinc-300 transition"
+                    className="w-12 h-12 rounded-full object-cover ring-1 ring-transparent hover:bg-[var(--background-secondary)] transition"
                 />
             </Link>
 
@@ -88,7 +89,7 @@ export default function Tweet({ tweet }: { tweet: TweetProps }) {
                         onMouseLeave={closePopover}
                         className="flex items-center gap-1 hover:underline"
                     >
-                        <span className="font-semibold truncate">
+                        <span className="font-semibold truncate text-[var(--text)]">
                             {displayedTweet.author.name || displayedTweet.author.username}
                         </span>
                         {displayedTweet.author.isPremium && (
@@ -96,11 +97,11 @@ export default function Tweet({ tweet }: { tweet: TweetProps }) {
                         )}
                     </Link>
 
-                    <span className="truncate opacity-70">@{displayedTweet.author.username}</span>
-                    <span>·</span>
+                    <span className="truncate text-[var(--text-secondary)]">@{displayedTweet.author.username}</span>
+                    <span className="text-[var(--text-secondary)]">·</span>
 
                     <time
-                        className="hover:underline opacity-70"
+                        className="hover:underline text-[var(--text-secondary)]"
                         title={formatDateExtended(displayedTweet.createdAt)}
                     >
                         {formatDate(displayedTweet.createdAt)}
@@ -109,7 +110,7 @@ export default function Tweet({ tweet }: { tweet: TweetProps }) {
 
                 {/* Reply information */}
                 {displayedTweet.isReply && (
-                    <div className="mt-1 text-[15px] opacity-70">
+                    <div className="mt-1 text-[15px] text-[var(--text-secondary)]">
                         Replying to{" "}
                         <Link
                             href={`/${displayedTweet.repliedTo.author.username}`}
@@ -126,7 +127,7 @@ export default function Tweet({ tweet }: { tweet: TweetProps }) {
                 )}
 
                 {/* Text */}
-                <p className="mt-2 text-[15px] leading-5 whitespace-pre-wrap break-words">
+                <p className="mt-2 text-[15px] text-[var(--text)] leading-5 whitespace-pre-wrap break-words">
                     <span className="font-semibold">
                         {displayedTweet.text.split("\n")[0]}
                     </span>
@@ -166,30 +167,30 @@ export default function Tweet({ tweet }: { tweet: TweetProps }) {
                 {/* Actions */}
                 <div
                     onClick={stop}
-                    className="flex justify-between mt-4 max-w-md text-[15px]"
+                    className="flex items-center justify-between mt-4 max-w-md"
+
                 >
-                    <Reply tweet={displayedTweet} />
-                    <Retweet
-                        tweetId={displayedTweet.id}
-                        tweetAuthor={displayedTweet.author.username}
-                    />
-                    <Like
-                        tweetId={displayedTweet.id}
-                        tweetAuthor={displayedTweet.author.username}
-                    />
-                    <Share
-                        tweetUrl={`https://${window.location.hostname}/${displayedTweet.author.username}/tweets/${displayedTweet.id}`}
-                    />
+                    <div className="flex space-x-12">
+                        <Like
+                            tweetId={displayedTweet.id}
+                            tweetAuthor={displayedTweet.author.username}
+                        />
+                        <Reply tweet={displayedTweet} />
+                        <Retweet
+                            tweetId={displayedTweet.id}
+                            tweetAuthor={displayedTweet.author.username} 
+                            tweetUrl={`https://${window.location.hostname}/${displayedTweet.author.username}/tweets/${displayedTweet.id}`}                     />
+                    </div>
                 </div>
             </div>
 
             {/* Retweet Indicator */}
             {tweet.isRetweet && (
-                <div className="absolute top-1 left-16 flex items-center gap-1.5 text-sm opacity-70">
-                    <RetweetIcon />
+                <div className="absolute top-[1px] left-16 flex items-center gap-1.5 text-sm opacity-70">
+                    <RepostIcon className="text-[var(--text-secondary)] w-4 h-4"/>
                     {token?.username === tweet.author.username ? (
-                        <Link href={`/${token?.username}`} onClick={stop} className="hover:underline">
-                            You retweeted
+                        <Link href={`/${token?.username}`} onClick={stop} className="hover:underline text-[var(--text-secondary)]">
+                            You reposted
                         </Link>
                     ) : (
                         <Link
@@ -197,9 +198,9 @@ export default function Tweet({ tweet }: { tweet: TweetProps }) {
                             onClick={stop}
                             onMouseEnter={(e) => openPopover(e, tweet.author.username)}
                             onMouseLeave={closePopover}
-                            className="hover:underline"
+                            className="hover:underline text-[var(--text-secondary)]"
                         >
-                            {tweet.author.name || tweet.author.username} retweeted
+                            {tweet.author.name || tweet.author.username} reposted
                         </Link>
                     )}
                 </div>

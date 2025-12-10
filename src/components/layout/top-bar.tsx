@@ -76,7 +76,7 @@ const Topbar = () => {
             {!token ? (
               <Button
                 onClick={() => setIsLogInOpen(true)}
-                className="border border-solid bg-[var(--background-primary)] border-[var(--border)] rounded-full px-3 sm:px-5 py-2.5 font-medium flex items-center gap-2 hover:bg-[var(--background-secondary)]"
+                className="text-base hover:bg-[var(--blue-secondary)] bg-[var(--blue)] text-[var(--text)] px-4 py-2 rounded-full text-center font-semibold hover:opacity-70 transition border border-solid border-[var(--border)]"
               >
                 <LogIn className="w-4 h-4" />
                 <span className="hidden sm:inline">Log In</span>

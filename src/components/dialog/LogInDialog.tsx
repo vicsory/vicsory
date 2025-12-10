@@ -131,7 +131,7 @@ export default function LogInDialog({ open, handleLogInClose }: LogInDialogProps
         className="sm:max-w-[425px]"
         style={{ 
           backgroundColor: 'var(--background-primary)',
-          borderColor: 'var(--border-color)'
+          borderColor: 'var(--border)'
         }}
       >
         <DialogHeader>
@@ -144,14 +144,12 @@ export default function LogInDialog({ open, handleLogInClose }: LogInDialogProps
             />
           </div>
           <DialogTitle 
-            className="text-center text-2xl font-bold"
-            style={{ color: 'var(--active-mode)' }}
+            className="text-center text-2xl font-bold text-[var(--text)]"
           >
             {isSignUpMode ? "Sign up for Vicsory" : "Sign in to Vicsory"}
           </DialogTitle>
           <p 
-            className="text-center text-sm text-muted-foreground"
-            style={{ color: 'var(--text-2)' }}
+            className="text-center text-sm text-[var(--text-secondary)]"
           >
             {isSignUpMode 
               ? "Create your account to join the conversation"
@@ -160,7 +158,7 @@ export default function LogInDialog({ open, handleLogInClose }: LogInDialogProps
         </DialogHeader>
         <form onSubmit={formik.handleSubmit} className="grid gap-6 py-4">
           <div className="grid gap-2">
-            <Label htmlFor="username" style={{ color: 'var(--active-mode)' }}>
+            <Label htmlFor="username" className="text-[var(--text)]">
               Username
             </Label>
             <div className="relative">
@@ -175,16 +173,15 @@ export default function LogInDialog({ open, handleLogInClose }: LogInDialogProps
                   backgroundColor: 'var(--grey)',
                   borderColor: formik.touched.username && formik.errors.username 
                     ? 'var(--red)' 
-                    : 'var(--border-color)',
-                  color: 'var(--active-mode)',
+                    : 'var(--border)',
+                  color: 'var(--text-secondary)',
                 }}
                 required
                 aria-label="Username"
                 aria-required="true"
               />
               <span 
-                className="absolute left-2 top-1/2 -translate-y-1/2"
-                style={{ color: 'var(--text-2)' }}
+                className="absolute left-2 top-1/2 -translate-y-1/2 text-[var(--text)]"
               >
                 @
               </span>
@@ -196,7 +193,7 @@ export default function LogInDialog({ open, handleLogInClose }: LogInDialogProps
             )}
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="password" style={{ color: 'var(--active-mode)' }}>
+            <Label htmlFor="password" className="text-[var(--text)]">
               Password
             </Label>
             <Input
@@ -210,8 +207,8 @@ export default function LogInDialog({ open, handleLogInClose }: LogInDialogProps
                 backgroundColor: 'var(--grey)',
                 borderColor: formik.touched.password && formik.errors.password 
                   ? 'var(--red)' 
-                  : 'var(--border-color)',
-                color: 'var(--active-mode)',
+                  : 'var(--border)',
+                color: 'var(--text-secondary)',
               }}
               required
               aria-label="Password"
@@ -236,7 +233,7 @@ export default function LogInDialog({ open, handleLogInClose }: LogInDialogProps
           </div>
           {isSignUpMode && (
             <div className="grid gap-2">
-              <Label htmlFor="name" style={{ color: 'var(--active-mode)' }}>
+              <Label htmlFor="name" className="text-[var(--text)]">
                 Name
               </Label>
               <Input
@@ -249,8 +246,8 @@ export default function LogInDialog({ open, handleLogInClose }: LogInDialogProps
                   backgroundColor: 'var(--grey)',
                   borderColor: formik.touched.name && formik.errors.name 
                     ? 'var(--red)' 
-                    : 'var(--border-color)',
-                  color: 'var(--active-mode)',
+                    : 'var(--border)',
+                  color: 'var(--text-secondary)',
                 }}
                 aria-label="Display name"
               />
@@ -271,16 +268,16 @@ export default function LogInDialog({ open, handleLogInClose }: LogInDialogProps
                 backgroundColor: 'var(--blue)',
                 color: 'white',
               }}
-              onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'var(--hover-blue)'}
+              onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'var(--blue-secondary)'}
               onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'var(--blue)'}
             >
               {isSignUpMode ? "Sign Up" : "Log In"}
             </Button>
           )}
           <div className="text-center text-sm">
-            <span style={{ color: 'var(--text-2)' }}>
+            <span className="text-[var(--text)] pr-2">
               {isSignUpMode ? "Already have an account?" : "Don't have an account?"}
-            </span>{" "}
+            </span>
             <button
               type="button"
               onClick={isSignUpMode ? handleSwitchToLogin : handleSwitchToSignUp}

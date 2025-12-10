@@ -1,7 +1,7 @@
-import { FaRegComment } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 
 import { TweetProps } from "@/types/TweetProps";
+import ReplyIcon from "../../../public/svg/reply";
 
 export default function Reply({ tweet }: { tweet: TweetProps }) {
     const router = useRouter();
@@ -11,8 +11,8 @@ export default function Reply({ tweet }: { tweet: TweetProps }) {
     };
 
     return (
-        <button className="icon reply" onClick={handleClick}>
-            <FaRegComment /> {tweet.replies.length === 0 ? null : <span className="count">{tweet.replies.length}</span>}
-        </button>
+        <div className="flex items-center space-x-2 transition-colors text-[var(--text)] hover:text-[var(--text-secondary)]" onClick={handleClick}>
+            <ReplyIcon/> {tweet.replies.length === 0 ? null : <span className="font-bold">{tweet.replies.length}</span>}
+        </div>
     );
 }

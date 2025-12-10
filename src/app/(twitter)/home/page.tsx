@@ -22,7 +22,7 @@ export default function HomePage() {
 
     return (
         <main>
-            <h1 className="page-name">Home</h1>
+            <h1 className="text-[var(--text)] text-2xl font-bold p-4">Home</h1>
             {token && <NewTweet token={token} />}
             {data && data.tweets.length === 0 && <NothingToShow />}
             <Tweets tweets={data.tweets} />

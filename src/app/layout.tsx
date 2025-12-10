@@ -3,10 +3,9 @@ import localFont from "next/font/local";
 import "../styles/reset.scss";
 import "../styles/globals.scss";
 import Providers from "./providers";
-import { SidebarProvider } from "@/components/ui/sidebar";
 
 export const metadata = {
-  title: "Fettan | Twitter",
+  title: "Vicsory | Here For You",
 };
 
 const roboto = localFont({

@@ -157,15 +157,6 @@ export default function LeftSidebar({ className = "" }: { className?: string }) 
                             </DropdownMenu>
                         </>
                     )}
-
-                    {!token && (
-                        <Button onClick={() => setIsLogInOpen(true)} className="fixed bottom-6 text-lg text-center py-2 px-4 border border-solid border-[var(--border)] rounded-full text-[var(--text)] hover:text-[var(--text-secondary)] hover:bg-[var(--background-secondary)] transition-colors duration-200 flex items-center gap-2">
-                            <LogIn />
-                            Log In
-                        </Button>
-                    )}
-
-                    <LogInDialog open={isLogInOpen} handleLogInClose={() => setIsLogInOpen(false)} />
                 </div>
             </aside>
 
@@ -182,7 +173,6 @@ export default function LeftSidebar({ className = "" }: { className?: string }) 
                             <NewTweet token={token} handleSubmit={() => setIsNewPostOpen(false)} />
                         </DialogContent>
                     </Dialog>
-
                     <LogOutDialog open={isLogOutOpen} handleLogOutClose={() => setIsLogOutOpen(false)} logout={handleLogout} isLoggingOut={isLoggingOut} />
                 </>
             )}

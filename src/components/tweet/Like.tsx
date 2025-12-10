@@ -9,6 +9,7 @@ import { SnackbarProps } from "@/types/SnackbarProps";
 import CustomSnackbar from "../misc/CustomSnackbar";
 import { UserProps } from "@/types/UserProps";
 import { AuthContext } from "@/contexts/auth-context";
+import { HeartFillIcon, HeartOutlineIcon } from "../../../public/svg/heart";
 
 export default function Like({ tweetId, tweetAuthor }: TweetOptionsProps) {
     const [isLiked, setIsLiked] = useState(false);
@@ -131,7 +132,8 @@ export default function Like({ tweetId, tweetAuthor }: TweetOptionsProps) {
     return (
         <>
             <motion.button
-                className={`icon like ${isLiked ? "active" : ""}`}
+                className={`flex items-center space-x-1 transition-colors  ${isLiked ? "text-[var(--blue)]" : "text-[var(--text)] hover:text-[var(--text-secondary)]"}
+                disabled:opacity-50 disabled:cursor-not-allowed`}
                 onClick={handleLike}
                 whileTap={{ scale: 0.9 }}
                 animate={{ scale: isLiked ? [1, 1.5, 1.2, 1] : 1 }}
@@ -140,15 +142,15 @@ export default function Like({ tweetId, tweetAuthor }: TweetOptionsProps) {
             >
                 {isLiked ? (
                     <motion.span animate={{ scale: [1, 1.5, 1.2, 1] }} transition={{ duration: 0.25 }}>
-                        <FaHeart />
+                        <HeartFillIcon />
                     </motion.span>
                 ) : (
                     <motion.span animate={{ scale: [1, 0.8, 1] }} transition={{ duration: 0.25 }}>
-                        <FaRegHeart />
+                        <HeartOutlineIcon />
                     </motion.span>
                 )}
                 <motion.span animate={{ scale: isLiked ? [0, 1.2, 1] : 0 }} transition={{ duration: 0.25 }} />
-                {data?.tweet?.likedBy?.length === 0 ? null : <span className="count">{data?.tweet?.likedBy?.length}</span>}
+                {data?.tweet?.likedBy?.length === 0 ? null : <span className="font-bold">{data?.tweet?.likedBy?.length}</span>}
             </motion.button>
             {snackbar.open && (
                 <CustomSnackbar message={snackbar.message} severity={snackbar.severity} setSnackbar={setSnackbar} />
