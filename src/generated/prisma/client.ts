@@ -45,10 +45,10 @@ export { Prisma }
  */
 export type User = Prisma.UserModel
 /**
- * Model Tweet
+ * Model Post
  * 
  */
-export type Tweet = Prisma.TweetModel
+export type Post = Prisma.PostModel
 /**
  * Model Message
  * 

@@ -30,13 +30,19 @@ export type UserMinAggregateOutputType = {
   description: string | null
   location: string | null
   website: string | null
+  whatsapp: string | null
   photoUrl: string | null
   headerUrl: string | null
   username: string | null
   password: string | null
+  category: $Enums.USER_CATEGORY | null
   isPremium: boolean | null
+  isVip: boolean | null
+  isElite: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  youtubePlayerUrl: string | null
+  youtubePlayerTitle: string | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -45,13 +51,19 @@ export type UserMaxAggregateOutputType = {
   description: string | null
   location: string | null
   website: string | null
+  whatsapp: string | null
   photoUrl: string | null
   headerUrl: string | null
   username: string | null
   password: string | null
+  category: $Enums.USER_CATEGORY | null
   isPremium: boolean | null
+  isVip: boolean | null
+  isElite: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  youtubePlayerUrl: string | null
+  youtubePlayerTitle: string | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -60,13 +72,19 @@ export type UserCountAggregateOutputType = {
   description: number
   location: number
   website: number
+  whatsapp: number
   photoUrl: number
   headerUrl: number
   username: number
   password: number
+  category: number
   isPremium: number
+  isVip: number
+  isElite: number
   createdAt: number
   updatedAt: number
+  youtubePlayerUrl: number
+  youtubePlayerTitle: number
   _all: number
 }
 
@@ -77,13 +95,19 @@ export type UserMinAggregateInputType = {
   description?: true
   location?: true
   website?: true
+  whatsapp?: true
   photoUrl?: true
   headerUrl?: true
   username?: true
   password?: true
+  category?: true
   isPremium?: true
+  isVip?: true
+  isElite?: true
   createdAt?: true
   updatedAt?: true
+  youtubePlayerUrl?: true
+  youtubePlayerTitle?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -92,13 +116,19 @@ export type UserMaxAggregateInputType = {
   description?: true
   location?: true
   website?: true
+  whatsapp?: true
   photoUrl?: true
   headerUrl?: true
   username?: true
   password?: true
+  category?: true
   isPremium?: true
+  isVip?: true
+  isElite?: true
   createdAt?: true
   updatedAt?: true
+  youtubePlayerUrl?: true
+  youtubePlayerTitle?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -107,13 +137,19 @@ export type UserCountAggregateInputType = {
   description?: true
   location?: true
   website?: true
+  whatsapp?: true
   photoUrl?: true
   headerUrl?: true
   username?: true
   password?: true
+  category?: true
   isPremium?: true
+  isVip?: true
+  isElite?: true
   createdAt?: true
   updatedAt?: true
+  youtubePlayerUrl?: true
+  youtubePlayerTitle?: true
   _all?: true
 }
 
@@ -195,13 +231,19 @@ export type UserGroupByOutputType = {
   description: string | null
   location: string | null
   website: string | null
+  whatsapp: string | null
   photoUrl: string | null
   headerUrl: string | null
   username: string
   password: string
+  category: $Enums.USER_CATEGORY
   isPremium: boolean
+  isVip: boolean
+  isElite: boolean
   createdAt: Date
   updatedAt: Date
+  youtubePlayerUrl: string | null
+  youtubePlayerTitle: string | null
   _count: UserCountAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
@@ -231,16 +273,22 @@ export type UserWhereInput = {
   description?: Prisma.StringNullableFilter<"User"> | string | null
   location?: Prisma.StringNullableFilter<"User"> | string | null
   website?: Prisma.StringNullableFilter<"User"> | string | null
+  whatsapp?: Prisma.StringNullableFilter<"User"> | string | null
   photoUrl?: Prisma.StringNullableFilter<"User"> | string | null
   headerUrl?: Prisma.StringNullableFilter<"User"> | string | null
   username?: Prisma.StringFilter<"User"> | string
   password?: Prisma.StringFilter<"User"> | string
+  category?: Prisma.EnumUSER_CATEGORYFilter<"User"> | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFilter<"User"> | boolean
+  isVip?: Prisma.BoolFilter<"User"> | boolean
+  isElite?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  createdTweets?: Prisma.TweetListRelationFilter
-  retweets?: Prisma.TweetListRelationFilter
-  likedTweets?: Prisma.TweetListRelationFilter
+  youtubePlayerUrl?: Prisma.StringNullableFilter<"User"> | string | null
+  youtubePlayerTitle?: Prisma.StringNullableFilter<"User"> | string | null
+  createdPosts?: Prisma.PostListRelationFilter
+  reposts?: Prisma.PostListRelationFilter
+  likedPosts?: Prisma.PostListRelationFilter
   following?: Prisma.UserListRelationFilter
   followers?: Prisma.UserListRelationFilter
   sentMessages?: Prisma.MessageListRelationFilter
@@ -254,16 +302,22 @@ export type UserOrderByWithRelationInput = {
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   website?: Prisma.SortOrderInput | Prisma.SortOrder
+  whatsapp?: Prisma.SortOrderInput | Prisma.SortOrder
   photoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   headerUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   isPremium?: Prisma.SortOrder
+  isVip?: Prisma.SortOrder
+  isElite?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  createdTweets?: Prisma.TweetOrderByRelationAggregateInput
-  retweets?: Prisma.TweetOrderByRelationAggregateInput
-  likedTweets?: Prisma.TweetOrderByRelationAggregateInput
+  youtubePlayerUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  youtubePlayerTitle?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdPosts?: Prisma.PostOrderByRelationAggregateInput
+  reposts?: Prisma.PostOrderByRelationAggregateInput
+  likedPosts?: Prisma.PostOrderByRelationAggregateInput
   following?: Prisma.UserOrderByRelationAggregateInput
   followers?: Prisma.UserOrderByRelationAggregateInput
   sentMessages?: Prisma.MessageOrderByRelationAggregateInput
@@ -281,15 +335,21 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringNullableFilter<"User"> | string | null
   location?: Prisma.StringNullableFilter<"User"> | string | null
   website?: Prisma.StringNullableFilter<"User"> | string | null
+  whatsapp?: Prisma.StringNullableFilter<"User"> | string | null
   photoUrl?: Prisma.StringNullableFilter<"User"> | string | null
   headerUrl?: Prisma.StringNullableFilter<"User"> | string | null
   password?: Prisma.StringFilter<"User"> | string
+  category?: Prisma.EnumUSER_CATEGORYFilter<"User"> | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFilter<"User"> | boolean
+  isVip?: Prisma.BoolFilter<"User"> | boolean
+  isElite?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  createdTweets?: Prisma.TweetListRelationFilter
-  retweets?: Prisma.TweetListRelationFilter
-  likedTweets?: Prisma.TweetListRelationFilter
+  youtubePlayerUrl?: Prisma.StringNullableFilter<"User"> | string | null
+  youtubePlayerTitle?: Prisma.StringNullableFilter<"User"> | string | null
+  createdPosts?: Prisma.PostListRelationFilter
+  reposts?: Prisma.PostListRelationFilter
+  likedPosts?: Prisma.PostListRelationFilter
   following?: Prisma.UserListRelationFilter
   followers?: Prisma.UserListRelationFilter
   sentMessages?: Prisma.MessageListRelationFilter
@@ -303,13 +363,19 @@ export type UserOrderByWithAggregationInput = {
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   website?: Prisma.SortOrderInput | Prisma.SortOrder
+  whatsapp?: Prisma.SortOrderInput | Prisma.SortOrder
   photoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   headerUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   isPremium?: Prisma.SortOrder
+  isVip?: Prisma.SortOrder
+  isElite?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  youtubePlayerUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  youtubePlayerTitle?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
@@ -324,13 +390,19 @@ export type UserScalarWhereWithAggregatesInput = {
   description?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   location?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   website?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  whatsapp?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   photoUrl?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   headerUrl?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   username?: Prisma.StringWithAggregatesFilter<"User"> | string
   password?: Prisma.StringWithAggregatesFilter<"User"> | string
+  category?: Prisma.EnumUSER_CATEGORYWithAggregatesFilter<"User"> | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  isVip?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  isElite?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
+  youtubePlayerUrl?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  youtubePlayerTitle?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
 }
 
 export type UserCreateInput = {
@@ -339,16 +411,22 @@ export type UserCreateInput = {
   description?: string | null
   location?: string | null
   website?: string | null
+  whatsapp?: string | null
   photoUrl?: string | null
   headerUrl?: string | null
   username: string
   password: string
+  category?: $Enums.USER_CATEGORY
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdTweets?: Prisma.TweetCreateNestedManyWithoutAuthorInput
-  retweets?: Prisma.TweetCreateNestedManyWithoutRetweetedByInput
-  likedTweets?: Prisma.TweetCreateNestedManyWithoutLikedByInput
+  youtubePlayerUrl?: string | null
+  youtubePlayerTitle?: string | null
+  createdPosts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  reposts?: Prisma.PostCreateNestedManyWithoutRepostedByInput
+  likedPosts?: Prisma.PostCreateNestedManyWithoutLikedByInput
   following?: Prisma.UserCreateNestedManyWithoutFollowersInput
   followers?: Prisma.UserCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
@@ -362,16 +440,22 @@ export type UserUncheckedCreateInput = {
   description?: string | null
   location?: string | null
   website?: string | null
+  whatsapp?: string | null
   photoUrl?: string | null
   headerUrl?: string | null
   username: string
   password: string
+  category?: $Enums.USER_CATEGORY
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdTweets?: Prisma.TweetUncheckedCreateNestedManyWithoutAuthorInput
-  retweets?: Prisma.TweetUncheckedCreateNestedManyWithoutRetweetedByInput
-  likedTweets?: Prisma.TweetUncheckedCreateNestedManyWithoutLikedByInput
+  youtubePlayerUrl?: string | null
+  youtubePlayerTitle?: string | null
+  createdPosts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  reposts?: Prisma.PostUncheckedCreateNestedManyWithoutRepostedByInput
+  likedPosts?: Prisma.PostUncheckedCreateNestedManyWithoutLikedByInput
   following?: Prisma.UserUncheckedCreateNestedManyWithoutFollowersInput
   followers?: Prisma.UserUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
@@ -385,16 +469,22 @@ export type UserUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdTweets?: Prisma.TweetUpdateManyWithoutAuthorNestedInput
-  retweets?: Prisma.TweetUpdateManyWithoutRetweetedByNestedInput
-  likedTweets?: Prisma.TweetUpdateManyWithoutLikedByNestedInput
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdPosts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  reposts?: Prisma.PostUpdateManyWithoutRepostedByNestedInput
+  likedPosts?: Prisma.PostUpdateManyWithoutLikedByNestedInput
   following?: Prisma.UserUpdateManyWithoutFollowersNestedInput
   followers?: Prisma.UserUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
@@ -408,16 +498,22 @@ export type UserUncheckedUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdTweets?: Prisma.TweetUncheckedUpdateManyWithoutAuthorNestedInput
-  retweets?: Prisma.TweetUncheckedUpdateManyWithoutRetweetedByNestedInput
-  likedTweets?: Prisma.TweetUncheckedUpdateManyWithoutLikedByNestedInput
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdPosts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  reposts?: Prisma.PostUncheckedUpdateManyWithoutRepostedByNestedInput
+  likedPosts?: Prisma.PostUncheckedUpdateManyWithoutLikedByNestedInput
   following?: Prisma.UserUncheckedUpdateManyWithoutFollowersNestedInput
   followers?: Prisma.UserUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
@@ -431,13 +527,19 @@ export type UserCreateManyInput = {
   description?: string | null
   location?: string | null
   website?: string | null
+  whatsapp?: string | null
   photoUrl?: string | null
   headerUrl?: string | null
   username: string
   password: string
+  category?: $Enums.USER_CATEGORY
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  youtubePlayerUrl?: string | null
+  youtubePlayerTitle?: string | null
 }
 
 export type UserUpdateManyMutationInput = {
@@ -446,13 +548,19 @@ export type UserUpdateManyMutationInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -461,13 +569,19 @@ export type UserUncheckedUpdateManyInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type UserListRelationFilter = {
@@ -486,13 +600,19 @@ export type UserCountOrderByAggregateInput = {
   description?: Prisma.SortOrder
   location?: Prisma.SortOrder
   website?: Prisma.SortOrder
+  whatsapp?: Prisma.SortOrder
   photoUrl?: Prisma.SortOrder
   headerUrl?: Prisma.SortOrder
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   isPremium?: Prisma.SortOrder
+  isVip?: Prisma.SortOrder
+  isElite?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  youtubePlayerUrl?: Prisma.SortOrder
+  youtubePlayerTitle?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -501,13 +621,19 @@ export type UserMaxOrderByAggregateInput = {
   description?: Prisma.SortOrder
   location?: Prisma.SortOrder
   website?: Prisma.SortOrder
+  whatsapp?: Prisma.SortOrder
   photoUrl?: Prisma.SortOrder
   headerUrl?: Prisma.SortOrder
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   isPremium?: Prisma.SortOrder
+  isVip?: Prisma.SortOrder
+  isElite?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  youtubePlayerUrl?: Prisma.SortOrder
+  youtubePlayerTitle?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -516,13 +642,19 @@ export type UserMinOrderByAggregateInput = {
   description?: Prisma.SortOrder
   location?: Prisma.SortOrder
   website?: Prisma.SortOrder
+  whatsapp?: Prisma.SortOrder
   photoUrl?: Prisma.SortOrder
   headerUrl?: Prisma.SortOrder
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   isPremium?: Prisma.SortOrder
+  isVip?: Prisma.SortOrder
+  isElite?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  youtubePlayerUrl?: Prisma.SortOrder
+  youtubePlayerTitle?: Prisma.SortOrder
 }
 
 export type UserScalarRelationFilter = {
@@ -560,6 +692,10 @@ export type StringFieldUpdateOperationsInput = {
 
 export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
+}
+
+export type EnumUSER_CATEGORYFieldUpdateOperationsInput = {
+  set?: $Enums.USER_CATEGORY
 }
 
 export type BoolFieldUpdateOperationsInput = {
@@ -622,93 +758,93 @@ export type UserUncheckedUpdateManyWithoutFollowingNestedInput = {
   deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
-export type UserCreateNestedOneWithoutCreatedTweetsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutCreatedTweetsInput, Prisma.UserUncheckedCreateWithoutCreatedTweetsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreatedTweetsInput
+export type UserCreateNestedOneWithoutCreatedPostsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCreatedPostsInput, Prisma.UserUncheckedCreateWithoutCreatedPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreatedPostsInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserCreateNestedManyWithoutLikedTweetsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutLikedTweetsInput, Prisma.UserUncheckedCreateWithoutLikedTweetsInput> | Prisma.UserCreateWithoutLikedTweetsInput[] | Prisma.UserUncheckedCreateWithoutLikedTweetsInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLikedTweetsInput | Prisma.UserCreateOrConnectWithoutLikedTweetsInput[]
+export type UserCreateNestedManyWithoutLikedPostsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLikedPostsInput, Prisma.UserUncheckedCreateWithoutLikedPostsInput> | Prisma.UserCreateWithoutLikedPostsInput[] | Prisma.UserUncheckedCreateWithoutLikedPostsInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLikedPostsInput | Prisma.UserCreateOrConnectWithoutLikedPostsInput[]
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
 }
 
-export type UserCreateNestedManyWithoutRetweetsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutRetweetsInput, Prisma.UserUncheckedCreateWithoutRetweetsInput> | Prisma.UserCreateWithoutRetweetsInput[] | Prisma.UserUncheckedCreateWithoutRetweetsInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRetweetsInput | Prisma.UserCreateOrConnectWithoutRetweetsInput[]
+export type UserCreateNestedManyWithoutRepostsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRepostsInput, Prisma.UserUncheckedCreateWithoutRepostsInput> | Prisma.UserCreateWithoutRepostsInput[] | Prisma.UserUncheckedCreateWithoutRepostsInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRepostsInput | Prisma.UserCreateOrConnectWithoutRepostsInput[]
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
 }
 
-export type UserUncheckedCreateNestedManyWithoutLikedTweetsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutLikedTweetsInput, Prisma.UserUncheckedCreateWithoutLikedTweetsInput> | Prisma.UserCreateWithoutLikedTweetsInput[] | Prisma.UserUncheckedCreateWithoutLikedTweetsInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLikedTweetsInput | Prisma.UserCreateOrConnectWithoutLikedTweetsInput[]
+export type UserUncheckedCreateNestedManyWithoutLikedPostsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLikedPostsInput, Prisma.UserUncheckedCreateWithoutLikedPostsInput> | Prisma.UserCreateWithoutLikedPostsInput[] | Prisma.UserUncheckedCreateWithoutLikedPostsInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLikedPostsInput | Prisma.UserCreateOrConnectWithoutLikedPostsInput[]
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
 }
 
-export type UserUncheckedCreateNestedManyWithoutRetweetsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutRetweetsInput, Prisma.UserUncheckedCreateWithoutRetweetsInput> | Prisma.UserCreateWithoutRetweetsInput[] | Prisma.UserUncheckedCreateWithoutRetweetsInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRetweetsInput | Prisma.UserCreateOrConnectWithoutRetweetsInput[]
+export type UserUncheckedCreateNestedManyWithoutRepostsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRepostsInput, Prisma.UserUncheckedCreateWithoutRepostsInput> | Prisma.UserCreateWithoutRepostsInput[] | Prisma.UserUncheckedCreateWithoutRepostsInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRepostsInput | Prisma.UserCreateOrConnectWithoutRepostsInput[]
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
 }
 
-export type UserUpdateOneRequiredWithoutCreatedTweetsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutCreatedTweetsInput, Prisma.UserUncheckedCreateWithoutCreatedTweetsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreatedTweetsInput
-  upsert?: Prisma.UserUpsertWithoutCreatedTweetsInput
+export type UserUpdateOneRequiredWithoutCreatedPostsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCreatedPostsInput, Prisma.UserUncheckedCreateWithoutCreatedPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreatedPostsInput
+  upsert?: Prisma.UserUpsertWithoutCreatedPostsInput
   connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCreatedTweetsInput, Prisma.UserUpdateWithoutCreatedTweetsInput>, Prisma.UserUncheckedUpdateWithoutCreatedTweetsInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCreatedPostsInput, Prisma.UserUpdateWithoutCreatedPostsInput>, Prisma.UserUncheckedUpdateWithoutCreatedPostsInput>
 }
 
-export type UserUpdateManyWithoutLikedTweetsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutLikedTweetsInput, Prisma.UserUncheckedCreateWithoutLikedTweetsInput> | Prisma.UserCreateWithoutLikedTweetsInput[] | Prisma.UserUncheckedCreateWithoutLikedTweetsInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLikedTweetsInput | Prisma.UserCreateOrConnectWithoutLikedTweetsInput[]
-  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutLikedTweetsInput | Prisma.UserUpsertWithWhereUniqueWithoutLikedTweetsInput[]
+export type UserUpdateManyWithoutLikedPostsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLikedPostsInput, Prisma.UserUncheckedCreateWithoutLikedPostsInput> | Prisma.UserCreateWithoutLikedPostsInput[] | Prisma.UserUncheckedCreateWithoutLikedPostsInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLikedPostsInput | Prisma.UserCreateOrConnectWithoutLikedPostsInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutLikedPostsInput | Prisma.UserUpsertWithWhereUniqueWithoutLikedPostsInput[]
   set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  update?: Prisma.UserUpdateWithWhereUniqueWithoutLikedTweetsInput | Prisma.UserUpdateWithWhereUniqueWithoutLikedTweetsInput[]
-  updateMany?: Prisma.UserUpdateManyWithWhereWithoutLikedTweetsInput | Prisma.UserUpdateManyWithWhereWithoutLikedTweetsInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutLikedPostsInput | Prisma.UserUpdateWithWhereUniqueWithoutLikedPostsInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutLikedPostsInput | Prisma.UserUpdateManyWithWhereWithoutLikedPostsInput[]
   deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
-export type UserUpdateManyWithoutRetweetsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutRetweetsInput, Prisma.UserUncheckedCreateWithoutRetweetsInput> | Prisma.UserCreateWithoutRetweetsInput[] | Prisma.UserUncheckedCreateWithoutRetweetsInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRetweetsInput | Prisma.UserCreateOrConnectWithoutRetweetsInput[]
-  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutRetweetsInput | Prisma.UserUpsertWithWhereUniqueWithoutRetweetsInput[]
+export type UserUpdateManyWithoutRepostsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRepostsInput, Prisma.UserUncheckedCreateWithoutRepostsInput> | Prisma.UserCreateWithoutRepostsInput[] | Prisma.UserUncheckedCreateWithoutRepostsInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRepostsInput | Prisma.UserCreateOrConnectWithoutRepostsInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutRepostsInput | Prisma.UserUpsertWithWhereUniqueWithoutRepostsInput[]
   set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  update?: Prisma.UserUpdateWithWhereUniqueWithoutRetweetsInput | Prisma.UserUpdateWithWhereUniqueWithoutRetweetsInput[]
-  updateMany?: Prisma.UserUpdateManyWithWhereWithoutRetweetsInput | Prisma.UserUpdateManyWithWhereWithoutRetweetsInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutRepostsInput | Prisma.UserUpdateWithWhereUniqueWithoutRepostsInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutRepostsInput | Prisma.UserUpdateManyWithWhereWithoutRepostsInput[]
   deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
-export type UserUncheckedUpdateManyWithoutLikedTweetsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutLikedTweetsInput, Prisma.UserUncheckedCreateWithoutLikedTweetsInput> | Prisma.UserCreateWithoutLikedTweetsInput[] | Prisma.UserUncheckedCreateWithoutLikedTweetsInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLikedTweetsInput | Prisma.UserCreateOrConnectWithoutLikedTweetsInput[]
-  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutLikedTweetsInput | Prisma.UserUpsertWithWhereUniqueWithoutLikedTweetsInput[]
+export type UserUncheckedUpdateManyWithoutLikedPostsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLikedPostsInput, Prisma.UserUncheckedCreateWithoutLikedPostsInput> | Prisma.UserCreateWithoutLikedPostsInput[] | Prisma.UserUncheckedCreateWithoutLikedPostsInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLikedPostsInput | Prisma.UserCreateOrConnectWithoutLikedPostsInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutLikedPostsInput | Prisma.UserUpsertWithWhereUniqueWithoutLikedPostsInput[]
   set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  update?: Prisma.UserUpdateWithWhereUniqueWithoutLikedTweetsInput | Prisma.UserUpdateWithWhereUniqueWithoutLikedTweetsInput[]
-  updateMany?: Prisma.UserUpdateManyWithWhereWithoutLikedTweetsInput | Prisma.UserUpdateManyWithWhereWithoutLikedTweetsInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutLikedPostsInput | Prisma.UserUpdateWithWhereUniqueWithoutLikedPostsInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutLikedPostsInput | Prisma.UserUpdateManyWithWhereWithoutLikedPostsInput[]
   deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
-export type UserUncheckedUpdateManyWithoutRetweetsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutRetweetsInput, Prisma.UserUncheckedCreateWithoutRetweetsInput> | Prisma.UserCreateWithoutRetweetsInput[] | Prisma.UserUncheckedCreateWithoutRetweetsInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRetweetsInput | Prisma.UserCreateOrConnectWithoutRetweetsInput[]
-  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutRetweetsInput | Prisma.UserUpsertWithWhereUniqueWithoutRetweetsInput[]
+export type UserUncheckedUpdateManyWithoutRepostsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRepostsInput, Prisma.UserUncheckedCreateWithoutRepostsInput> | Prisma.UserCreateWithoutRepostsInput[] | Prisma.UserUncheckedCreateWithoutRepostsInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRepostsInput | Prisma.UserCreateOrConnectWithoutRepostsInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutRepostsInput | Prisma.UserUpsertWithWhereUniqueWithoutRepostsInput[]
   set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  update?: Prisma.UserUpdateWithWhereUniqueWithoutRetweetsInput | Prisma.UserUpdateWithWhereUniqueWithoutRetweetsInput[]
-  updateMany?: Prisma.UserUpdateManyWithWhereWithoutRetweetsInput | Prisma.UserUpdateManyWithWhereWithoutRetweetsInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutRepostsInput | Prisma.UserUpdateWithWhereUniqueWithoutRepostsInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutRepostsInput | Prisma.UserUpdateManyWithWhereWithoutRepostsInput[]
   deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
@@ -760,16 +896,22 @@ export type UserCreateWithoutFollowersInput = {
   description?: string | null
   location?: string | null
   website?: string | null
+  whatsapp?: string | null
   photoUrl?: string | null
   headerUrl?: string | null
   username: string
   password: string
+  category?: $Enums.USER_CATEGORY
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdTweets?: Prisma.TweetCreateNestedManyWithoutAuthorInput
-  retweets?: Prisma.TweetCreateNestedManyWithoutRetweetedByInput
-  likedTweets?: Prisma.TweetCreateNestedManyWithoutLikedByInput
+  youtubePlayerUrl?: string | null
+  youtubePlayerTitle?: string | null
+  createdPosts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  reposts?: Prisma.PostCreateNestedManyWithoutRepostedByInput
+  likedPosts?: Prisma.PostCreateNestedManyWithoutLikedByInput
   following?: Prisma.UserCreateNestedManyWithoutFollowersInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutRecipientInput
@@ -782,16 +924,22 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   description?: string | null
   location?: string | null
   website?: string | null
+  whatsapp?: string | null
   photoUrl?: string | null
   headerUrl?: string | null
   username: string
   password: string
+  category?: $Enums.USER_CATEGORY
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdTweets?: Prisma.TweetUncheckedCreateNestedManyWithoutAuthorInput
-  retweets?: Prisma.TweetUncheckedCreateNestedManyWithoutRetweetedByInput
-  likedTweets?: Prisma.TweetUncheckedCreateNestedManyWithoutLikedByInput
+  youtubePlayerUrl?: string | null
+  youtubePlayerTitle?: string | null
+  createdPosts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  reposts?: Prisma.PostUncheckedCreateNestedManyWithoutRepostedByInput
+  likedPosts?: Prisma.PostUncheckedCreateNestedManyWithoutLikedByInput
   following?: Prisma.UserUncheckedCreateNestedManyWithoutFollowersInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutRecipientInput
@@ -809,16 +957,22 @@ export type UserCreateWithoutFollowingInput = {
   description?: string | null
   location?: string | null
   website?: string | null
+  whatsapp?: string | null
   photoUrl?: string | null
   headerUrl?: string | null
   username: string
   password: string
+  category?: $Enums.USER_CATEGORY
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdTweets?: Prisma.TweetCreateNestedManyWithoutAuthorInput
-  retweets?: Prisma.TweetCreateNestedManyWithoutRetweetedByInput
-  likedTweets?: Prisma.TweetCreateNestedManyWithoutLikedByInput
+  youtubePlayerUrl?: string | null
+  youtubePlayerTitle?: string | null
+  createdPosts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  reposts?: Prisma.PostCreateNestedManyWithoutRepostedByInput
+  likedPosts?: Prisma.PostCreateNestedManyWithoutLikedByInput
   followers?: Prisma.UserCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutRecipientInput
@@ -831,16 +985,22 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   description?: string | null
   location?: string | null
   website?: string | null
+  whatsapp?: string | null
   photoUrl?: string | null
   headerUrl?: string | null
   username: string
   password: string
+  category?: $Enums.USER_CATEGORY
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdTweets?: Prisma.TweetUncheckedCreateNestedManyWithoutAuthorInput
-  retweets?: Prisma.TweetUncheckedCreateNestedManyWithoutRetweetedByInput
-  likedTweets?: Prisma.TweetUncheckedCreateNestedManyWithoutLikedByInput
+  youtubePlayerUrl?: string | null
+  youtubePlayerTitle?: string | null
+  createdPosts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  reposts?: Prisma.PostUncheckedCreateNestedManyWithoutRepostedByInput
+  likedPosts?: Prisma.PostUncheckedCreateNestedManyWithoutLikedByInput
   followers?: Prisma.UserUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutRecipientInput
@@ -877,13 +1037,19 @@ export type UserScalarWhereInput = {
   description?: Prisma.StringNullableFilter<"User"> | string | null
   location?: Prisma.StringNullableFilter<"User"> | string | null
   website?: Prisma.StringNullableFilter<"User"> | string | null
+  whatsapp?: Prisma.StringNullableFilter<"User"> | string | null
   photoUrl?: Prisma.StringNullableFilter<"User"> | string | null
   headerUrl?: Prisma.StringNullableFilter<"User"> | string | null
   username?: Prisma.StringFilter<"User"> | string
   password?: Prisma.StringFilter<"User"> | string
+  category?: Prisma.EnumUSER_CATEGORYFilter<"User"> | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFilter<"User"> | boolean
+  isVip?: Prisma.BoolFilter<"User"> | boolean
+  isElite?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  youtubePlayerUrl?: Prisma.StringNullableFilter<"User"> | string | null
+  youtubePlayerTitle?: Prisma.StringNullableFilter<"User"> | string | null
 }
 
 export type UserUpsertWithWhereUniqueWithoutFollowingInput = {
@@ -902,21 +1068,27 @@ export type UserUpdateManyWithWhereWithoutFollowingInput = {
   data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutFollowingInput>
 }
 
-export type UserCreateWithoutCreatedTweetsInput = {
+export type UserCreateWithoutCreatedPostsInput = {
   id?: string
   name?: string | null
   description?: string | null
   location?: string | null
   website?: string | null
+  whatsapp?: string | null
   photoUrl?: string | null
   headerUrl?: string | null
   username: string
   password: string
+  category?: $Enums.USER_CATEGORY
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  retweets?: Prisma.TweetCreateNestedManyWithoutRetweetedByInput
-  likedTweets?: Prisma.TweetCreateNestedManyWithoutLikedByInput
+  youtubePlayerUrl?: string | null
+  youtubePlayerTitle?: string | null
+  reposts?: Prisma.PostCreateNestedManyWithoutRepostedByInput
+  likedPosts?: Prisma.PostCreateNestedManyWithoutLikedByInput
   following?: Prisma.UserCreateNestedManyWithoutFollowersInput
   followers?: Prisma.UserCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
@@ -924,21 +1096,27 @@ export type UserCreateWithoutCreatedTweetsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
 }
 
-export type UserUncheckedCreateWithoutCreatedTweetsInput = {
+export type UserUncheckedCreateWithoutCreatedPostsInput = {
   id?: string
   name?: string | null
   description?: string | null
   location?: string | null
   website?: string | null
+  whatsapp?: string | null
   photoUrl?: string | null
   headerUrl?: string | null
   username: string
   password: string
+  category?: $Enums.USER_CATEGORY
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  retweets?: Prisma.TweetUncheckedCreateNestedManyWithoutRetweetedByInput
-  likedTweets?: Prisma.TweetUncheckedCreateNestedManyWithoutLikedByInput
+  youtubePlayerUrl?: string | null
+  youtubePlayerTitle?: string | null
+  reposts?: Prisma.PostUncheckedCreateNestedManyWithoutRepostedByInput
+  likedPosts?: Prisma.PostUncheckedCreateNestedManyWithoutLikedByInput
   following?: Prisma.UserUncheckedCreateNestedManyWithoutFollowersInput
   followers?: Prisma.UserUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
@@ -946,26 +1124,32 @@ export type UserUncheckedCreateWithoutCreatedTweetsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
 }
 
-export type UserCreateOrConnectWithoutCreatedTweetsInput = {
+export type UserCreateOrConnectWithoutCreatedPostsInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutCreatedTweetsInput, Prisma.UserUncheckedCreateWithoutCreatedTweetsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCreatedPostsInput, Prisma.UserUncheckedCreateWithoutCreatedPostsInput>
 }
 
-export type UserCreateWithoutLikedTweetsInput = {
+export type UserCreateWithoutLikedPostsInput = {
   id?: string
   name?: string | null
   description?: string | null
   location?: string | null
   website?: string | null
+  whatsapp?: string | null
   photoUrl?: string | null
   headerUrl?: string | null
   username: string
   password: string
+  category?: $Enums.USER_CATEGORY
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdTweets?: Prisma.TweetCreateNestedManyWithoutAuthorInput
-  retweets?: Prisma.TweetCreateNestedManyWithoutRetweetedByInput
+  youtubePlayerUrl?: string | null
+  youtubePlayerTitle?: string | null
+  createdPosts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  reposts?: Prisma.PostCreateNestedManyWithoutRepostedByInput
   following?: Prisma.UserCreateNestedManyWithoutFollowersInput
   followers?: Prisma.UserCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
@@ -973,21 +1157,27 @@ export type UserCreateWithoutLikedTweetsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
 }
 
-export type UserUncheckedCreateWithoutLikedTweetsInput = {
+export type UserUncheckedCreateWithoutLikedPostsInput = {
   id?: string
   name?: string | null
   description?: string | null
   location?: string | null
   website?: string | null
+  whatsapp?: string | null
   photoUrl?: string | null
   headerUrl?: string | null
   username: string
   password: string
+  category?: $Enums.USER_CATEGORY
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdTweets?: Prisma.TweetUncheckedCreateNestedManyWithoutAuthorInput
-  retweets?: Prisma.TweetUncheckedCreateNestedManyWithoutRetweetedByInput
+  youtubePlayerUrl?: string | null
+  youtubePlayerTitle?: string | null
+  createdPosts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  reposts?: Prisma.PostUncheckedCreateNestedManyWithoutRepostedByInput
   following?: Prisma.UserUncheckedCreateNestedManyWithoutFollowersInput
   followers?: Prisma.UserUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
@@ -995,26 +1185,32 @@ export type UserUncheckedCreateWithoutLikedTweetsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
 }
 
-export type UserCreateOrConnectWithoutLikedTweetsInput = {
+export type UserCreateOrConnectWithoutLikedPostsInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutLikedTweetsInput, Prisma.UserUncheckedCreateWithoutLikedTweetsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLikedPostsInput, Prisma.UserUncheckedCreateWithoutLikedPostsInput>
 }
 
-export type UserCreateWithoutRetweetsInput = {
+export type UserCreateWithoutRepostsInput = {
   id?: string
   name?: string | null
   description?: string | null
   location?: string | null
   website?: string | null
+  whatsapp?: string | null
   photoUrl?: string | null
   headerUrl?: string | null
   username: string
   password: string
+  category?: $Enums.USER_CATEGORY
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdTweets?: Prisma.TweetCreateNestedManyWithoutAuthorInput
-  likedTweets?: Prisma.TweetCreateNestedManyWithoutLikedByInput
+  youtubePlayerUrl?: string | null
+  youtubePlayerTitle?: string | null
+  createdPosts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.PostCreateNestedManyWithoutLikedByInput
   following?: Prisma.UserCreateNestedManyWithoutFollowersInput
   followers?: Prisma.UserCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
@@ -1022,21 +1218,27 @@ export type UserCreateWithoutRetweetsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
 }
 
-export type UserUncheckedCreateWithoutRetweetsInput = {
+export type UserUncheckedCreateWithoutRepostsInput = {
   id?: string
   name?: string | null
   description?: string | null
   location?: string | null
   website?: string | null
+  whatsapp?: string | null
   photoUrl?: string | null
   headerUrl?: string | null
   username: string
   password: string
+  category?: $Enums.USER_CATEGORY
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdTweets?: Prisma.TweetUncheckedCreateNestedManyWithoutAuthorInput
-  likedTweets?: Prisma.TweetUncheckedCreateNestedManyWithoutLikedByInput
+  youtubePlayerUrl?: string | null
+  youtubePlayerTitle?: string | null
+  createdPosts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.PostUncheckedCreateNestedManyWithoutLikedByInput
   following?: Prisma.UserUncheckedCreateNestedManyWithoutFollowersInput
   followers?: Prisma.UserUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
@@ -1044,37 +1246,43 @@ export type UserUncheckedCreateWithoutRetweetsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
 }
 
-export type UserCreateOrConnectWithoutRetweetsInput = {
+export type UserCreateOrConnectWithoutRepostsInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutRetweetsInput, Prisma.UserUncheckedCreateWithoutRetweetsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRepostsInput, Prisma.UserUncheckedCreateWithoutRepostsInput>
 }
 
-export type UserUpsertWithoutCreatedTweetsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutCreatedTweetsInput, Prisma.UserUncheckedUpdateWithoutCreatedTweetsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutCreatedTweetsInput, Prisma.UserUncheckedCreateWithoutCreatedTweetsInput>
+export type UserUpsertWithoutCreatedPostsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCreatedPostsInput, Prisma.UserUncheckedUpdateWithoutCreatedPostsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCreatedPostsInput, Prisma.UserUncheckedCreateWithoutCreatedPostsInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutCreatedTweetsInput = {
+export type UserUpdateToOneWithWhereWithoutCreatedPostsInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutCreatedTweetsInput, Prisma.UserUncheckedUpdateWithoutCreatedTweetsInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCreatedPostsInput, Prisma.UserUncheckedUpdateWithoutCreatedPostsInput>
 }
 
-export type UserUpdateWithoutCreatedTweetsInput = {
+export type UserUpdateWithoutCreatedPostsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  retweets?: Prisma.TweetUpdateManyWithoutRetweetedByNestedInput
-  likedTweets?: Prisma.TweetUpdateManyWithoutLikedByNestedInput
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reposts?: Prisma.PostUpdateManyWithoutRepostedByNestedInput
+  likedPosts?: Prisma.PostUpdateManyWithoutLikedByNestedInput
   following?: Prisma.UserUpdateManyWithoutFollowersNestedInput
   followers?: Prisma.UserUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
@@ -1082,21 +1290,27 @@ export type UserUpdateWithoutCreatedTweetsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
 }
 
-export type UserUncheckedUpdateWithoutCreatedTweetsInput = {
+export type UserUncheckedUpdateWithoutCreatedPostsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  retweets?: Prisma.TweetUncheckedUpdateManyWithoutRetweetedByNestedInput
-  likedTweets?: Prisma.TweetUncheckedUpdateManyWithoutLikedByNestedInput
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reposts?: Prisma.PostUncheckedUpdateManyWithoutRepostedByNestedInput
+  likedPosts?: Prisma.PostUncheckedUpdateManyWithoutLikedByNestedInput
   following?: Prisma.UserUncheckedUpdateManyWithoutFollowersNestedInput
   followers?: Prisma.UserUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
@@ -1104,36 +1318,36 @@ export type UserUncheckedUpdateWithoutCreatedTweetsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
 }
 
-export type UserUpsertWithWhereUniqueWithoutLikedTweetsInput = {
+export type UserUpsertWithWhereUniqueWithoutLikedPostsInput = {
   where: Prisma.UserWhereUniqueInput
-  update: Prisma.XOR<Prisma.UserUpdateWithoutLikedTweetsInput, Prisma.UserUncheckedUpdateWithoutLikedTweetsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutLikedTweetsInput, Prisma.UserUncheckedCreateWithoutLikedTweetsInput>
+  update: Prisma.XOR<Prisma.UserUpdateWithoutLikedPostsInput, Prisma.UserUncheckedUpdateWithoutLikedPostsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLikedPostsInput, Prisma.UserUncheckedCreateWithoutLikedPostsInput>
 }
 
-export type UserUpdateWithWhereUniqueWithoutLikedTweetsInput = {
+export type UserUpdateWithWhereUniqueWithoutLikedPostsInput = {
   where: Prisma.UserWhereUniqueInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutLikedTweetsInput, Prisma.UserUncheckedUpdateWithoutLikedTweetsInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutLikedPostsInput, Prisma.UserUncheckedUpdateWithoutLikedPostsInput>
 }
 
-export type UserUpdateManyWithWhereWithoutLikedTweetsInput = {
+export type UserUpdateManyWithWhereWithoutLikedPostsInput = {
   where: Prisma.UserScalarWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutLikedTweetsInput>
+  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutLikedPostsInput>
 }
 
-export type UserUpsertWithWhereUniqueWithoutRetweetsInput = {
+export type UserUpsertWithWhereUniqueWithoutRepostsInput = {
   where: Prisma.UserWhereUniqueInput
-  update: Prisma.XOR<Prisma.UserUpdateWithoutRetweetsInput, Prisma.UserUncheckedUpdateWithoutRetweetsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutRetweetsInput, Prisma.UserUncheckedCreateWithoutRetweetsInput>
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRepostsInput, Prisma.UserUncheckedUpdateWithoutRepostsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRepostsInput, Prisma.UserUncheckedCreateWithoutRepostsInput>
 }
 
-export type UserUpdateWithWhereUniqueWithoutRetweetsInput = {
+export type UserUpdateWithWhereUniqueWithoutRepostsInput = {
   where: Prisma.UserWhereUniqueInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutRetweetsInput, Prisma.UserUncheckedUpdateWithoutRetweetsInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRepostsInput, Prisma.UserUncheckedUpdateWithoutRepostsInput>
 }
 
-export type UserUpdateManyWithWhereWithoutRetweetsInput = {
+export type UserUpdateManyWithWhereWithoutRepostsInput = {
   where: Prisma.UserScalarWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutRetweetsInput>
+  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutRepostsInput>
 }
 
 export type UserCreateWithoutSentMessagesInput = {
@@ -1142,16 +1356,22 @@ export type UserCreateWithoutSentMessagesInput = {
   description?: string | null
   location?: string | null
   website?: string | null
+  whatsapp?: string | null
   photoUrl?: string | null
   headerUrl?: string | null
   username: string
   password: string
+  category?: $Enums.USER_CATEGORY
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdTweets?: Prisma.TweetCreateNestedManyWithoutAuthorInput
-  retweets?: Prisma.TweetCreateNestedManyWithoutRetweetedByInput
-  likedTweets?: Prisma.TweetCreateNestedManyWithoutLikedByInput
+  youtubePlayerUrl?: string | null
+  youtubePlayerTitle?: string | null
+  createdPosts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  reposts?: Prisma.PostCreateNestedManyWithoutRepostedByInput
+  likedPosts?: Prisma.PostCreateNestedManyWithoutLikedByInput
   following?: Prisma.UserCreateNestedManyWithoutFollowersInput
   followers?: Prisma.UserCreateNestedManyWithoutFollowingInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutRecipientInput
@@ -1164,16 +1384,22 @@ export type UserUncheckedCreateWithoutSentMessagesInput = {
   description?: string | null
   location?: string | null
   website?: string | null
+  whatsapp?: string | null
   photoUrl?: string | null
   headerUrl?: string | null
   username: string
   password: string
+  category?: $Enums.USER_CATEGORY
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdTweets?: Prisma.TweetUncheckedCreateNestedManyWithoutAuthorInput
-  retweets?: Prisma.TweetUncheckedCreateNestedManyWithoutRetweetedByInput
-  likedTweets?: Prisma.TweetUncheckedCreateNestedManyWithoutLikedByInput
+  youtubePlayerUrl?: string | null
+  youtubePlayerTitle?: string | null
+  createdPosts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  reposts?: Prisma.PostUncheckedCreateNestedManyWithoutRepostedByInput
+  likedPosts?: Prisma.PostUncheckedCreateNestedManyWithoutLikedByInput
   following?: Prisma.UserUncheckedCreateNestedManyWithoutFollowersInput
   followers?: Prisma.UserUncheckedCreateNestedManyWithoutFollowingInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutRecipientInput
@@ -1191,16 +1417,22 @@ export type UserCreateWithoutReceivedMessagesInput = {
   description?: string | null
   location?: string | null
   website?: string | null
+  whatsapp?: string | null
   photoUrl?: string | null
   headerUrl?: string | null
   username: string
   password: string
+  category?: $Enums.USER_CATEGORY
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdTweets?: Prisma.TweetCreateNestedManyWithoutAuthorInput
-  retweets?: Prisma.TweetCreateNestedManyWithoutRetweetedByInput
-  likedTweets?: Prisma.TweetCreateNestedManyWithoutLikedByInput
+  youtubePlayerUrl?: string | null
+  youtubePlayerTitle?: string | null
+  createdPosts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  reposts?: Prisma.PostCreateNestedManyWithoutRepostedByInput
+  likedPosts?: Prisma.PostCreateNestedManyWithoutLikedByInput
   following?: Prisma.UserCreateNestedManyWithoutFollowersInput
   followers?: Prisma.UserCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
@@ -1213,16 +1445,22 @@ export type UserUncheckedCreateWithoutReceivedMessagesInput = {
   description?: string | null
   location?: string | null
   website?: string | null
+  whatsapp?: string | null
   photoUrl?: string | null
   headerUrl?: string | null
   username: string
   password: string
+  category?: $Enums.USER_CATEGORY
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdTweets?: Prisma.TweetUncheckedCreateNestedManyWithoutAuthorInput
-  retweets?: Prisma.TweetUncheckedCreateNestedManyWithoutRetweetedByInput
-  likedTweets?: Prisma.TweetUncheckedCreateNestedManyWithoutLikedByInput
+  youtubePlayerUrl?: string | null
+  youtubePlayerTitle?: string | null
+  createdPosts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  reposts?: Prisma.PostUncheckedCreateNestedManyWithoutRepostedByInput
+  likedPosts?: Prisma.PostUncheckedCreateNestedManyWithoutLikedByInput
   following?: Prisma.UserUncheckedCreateNestedManyWithoutFollowersInput
   followers?: Prisma.UserUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
@@ -1251,16 +1489,22 @@ export type UserUpdateWithoutSentMessagesInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdTweets?: Prisma.TweetUpdateManyWithoutAuthorNestedInput
-  retweets?: Prisma.TweetUpdateManyWithoutRetweetedByNestedInput
-  likedTweets?: Prisma.TweetUpdateManyWithoutLikedByNestedInput
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdPosts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  reposts?: Prisma.PostUpdateManyWithoutRepostedByNestedInput
+  likedPosts?: Prisma.PostUpdateManyWithoutLikedByNestedInput
   following?: Prisma.UserUpdateManyWithoutFollowersNestedInput
   followers?: Prisma.UserUpdateManyWithoutFollowingNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutRecipientNestedInput
@@ -1273,16 +1517,22 @@ export type UserUncheckedUpdateWithoutSentMessagesInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdTweets?: Prisma.TweetUncheckedUpdateManyWithoutAuthorNestedInput
-  retweets?: Prisma.TweetUncheckedUpdateManyWithoutRetweetedByNestedInput
-  likedTweets?: Prisma.TweetUncheckedUpdateManyWithoutLikedByNestedInput
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdPosts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  reposts?: Prisma.PostUncheckedUpdateManyWithoutRepostedByNestedInput
+  likedPosts?: Prisma.PostUncheckedUpdateManyWithoutLikedByNestedInput
   following?: Prisma.UserUncheckedUpdateManyWithoutFollowersNestedInput
   followers?: Prisma.UserUncheckedUpdateManyWithoutFollowingNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutRecipientNestedInput
@@ -1306,16 +1556,22 @@ export type UserUpdateWithoutReceivedMessagesInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdTweets?: Prisma.TweetUpdateManyWithoutAuthorNestedInput
-  retweets?: Prisma.TweetUpdateManyWithoutRetweetedByNestedInput
-  likedTweets?: Prisma.TweetUpdateManyWithoutLikedByNestedInput
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdPosts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  reposts?: Prisma.PostUpdateManyWithoutRepostedByNestedInput
+  likedPosts?: Prisma.PostUpdateManyWithoutLikedByNestedInput
   following?: Prisma.UserUpdateManyWithoutFollowersNestedInput
   followers?: Prisma.UserUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
@@ -1328,16 +1584,22 @@ export type UserUncheckedUpdateWithoutReceivedMessagesInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdTweets?: Prisma.TweetUncheckedUpdateManyWithoutAuthorNestedInput
-  retweets?: Prisma.TweetUncheckedUpdateManyWithoutRetweetedByNestedInput
-  likedTweets?: Prisma.TweetUncheckedUpdateManyWithoutLikedByNestedInput
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdPosts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  reposts?: Prisma.PostUncheckedUpdateManyWithoutRepostedByNestedInput
+  likedPosts?: Prisma.PostUncheckedUpdateManyWithoutLikedByNestedInput
   following?: Prisma.UserUncheckedUpdateManyWithoutFollowersNestedInput
   followers?: Prisma.UserUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
@@ -1350,16 +1612,22 @@ export type UserCreateWithoutNotificationsInput = {
   description?: string | null
   location?: string | null
   website?: string | null
+  whatsapp?: string | null
   photoUrl?: string | null
   headerUrl?: string | null
   username: string
   password: string
+  category?: $Enums.USER_CATEGORY
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdTweets?: Prisma.TweetCreateNestedManyWithoutAuthorInput
-  retweets?: Prisma.TweetCreateNestedManyWithoutRetweetedByInput
-  likedTweets?: Prisma.TweetCreateNestedManyWithoutLikedByInput
+  youtubePlayerUrl?: string | null
+  youtubePlayerTitle?: string | null
+  createdPosts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  reposts?: Prisma.PostCreateNestedManyWithoutRepostedByInput
+  likedPosts?: Prisma.PostCreateNestedManyWithoutLikedByInput
   following?: Prisma.UserCreateNestedManyWithoutFollowersInput
   followers?: Prisma.UserCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
@@ -1372,16 +1640,22 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   description?: string | null
   location?: string | null
   website?: string | null
+  whatsapp?: string | null
   photoUrl?: string | null
   headerUrl?: string | null
   username: string
   password: string
+  category?: $Enums.USER_CATEGORY
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  createdTweets?: Prisma.TweetUncheckedCreateNestedManyWithoutAuthorInput
-  retweets?: Prisma.TweetUncheckedCreateNestedManyWithoutRetweetedByInput
-  likedTweets?: Prisma.TweetUncheckedCreateNestedManyWithoutLikedByInput
+  youtubePlayerUrl?: string | null
+  youtubePlayerTitle?: string | null
+  createdPosts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  reposts?: Prisma.PostUncheckedCreateNestedManyWithoutRepostedByInput
+  likedPosts?: Prisma.PostUncheckedCreateNestedManyWithoutLikedByInput
   following?: Prisma.UserUncheckedCreateNestedManyWithoutFollowersInput
   followers?: Prisma.UserUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
@@ -1410,16 +1684,22 @@ export type UserUpdateWithoutNotificationsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdTweets?: Prisma.TweetUpdateManyWithoutAuthorNestedInput
-  retweets?: Prisma.TweetUpdateManyWithoutRetweetedByNestedInput
-  likedTweets?: Prisma.TweetUpdateManyWithoutLikedByNestedInput
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdPosts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  reposts?: Prisma.PostUpdateManyWithoutRepostedByNestedInput
+  likedPosts?: Prisma.PostUpdateManyWithoutLikedByNestedInput
   following?: Prisma.UserUpdateManyWithoutFollowersNestedInput
   followers?: Prisma.UserUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
@@ -1432,16 +1712,22 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdTweets?: Prisma.TweetUncheckedUpdateManyWithoutAuthorNestedInput
-  retweets?: Prisma.TweetUncheckedUpdateManyWithoutRetweetedByNestedInput
-  likedTweets?: Prisma.TweetUncheckedUpdateManyWithoutLikedByNestedInput
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdPosts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  reposts?: Prisma.PostUncheckedUpdateManyWithoutRepostedByNestedInput
+  likedPosts?: Prisma.PostUncheckedUpdateManyWithoutLikedByNestedInput
   following?: Prisma.UserUncheckedUpdateManyWithoutFollowersNestedInput
   followers?: Prisma.UserUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
@@ -1454,16 +1740,22 @@ export type UserUpdateWithoutFollowersInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdTweets?: Prisma.TweetUpdateManyWithoutAuthorNestedInput
-  retweets?: Prisma.TweetUpdateManyWithoutRetweetedByNestedInput
-  likedTweets?: Prisma.TweetUpdateManyWithoutLikedByNestedInput
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdPosts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  reposts?: Prisma.PostUpdateManyWithoutRepostedByNestedInput
+  likedPosts?: Prisma.PostUpdateManyWithoutLikedByNestedInput
   following?: Prisma.UserUpdateManyWithoutFollowersNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutRecipientNestedInput
@@ -1476,16 +1768,22 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdTweets?: Prisma.TweetUncheckedUpdateManyWithoutAuthorNestedInput
-  retweets?: Prisma.TweetUncheckedUpdateManyWithoutRetweetedByNestedInput
-  likedTweets?: Prisma.TweetUncheckedUpdateManyWithoutLikedByNestedInput
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdPosts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  reposts?: Prisma.PostUncheckedUpdateManyWithoutRepostedByNestedInput
+  likedPosts?: Prisma.PostUncheckedUpdateManyWithoutLikedByNestedInput
   following?: Prisma.UserUncheckedUpdateManyWithoutFollowersNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutRecipientNestedInput
@@ -1498,13 +1796,19 @@ export type UserUncheckedUpdateManyWithoutFollowersInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type UserUpdateWithoutFollowingInput = {
@@ -1513,16 +1817,22 @@ export type UserUpdateWithoutFollowingInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdTweets?: Prisma.TweetUpdateManyWithoutAuthorNestedInput
-  retweets?: Prisma.TweetUpdateManyWithoutRetweetedByNestedInput
-  likedTweets?: Prisma.TweetUpdateManyWithoutLikedByNestedInput
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdPosts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  reposts?: Prisma.PostUpdateManyWithoutRepostedByNestedInput
+  likedPosts?: Prisma.PostUpdateManyWithoutLikedByNestedInput
   followers?: Prisma.UserUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutRecipientNestedInput
@@ -1535,16 +1845,22 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdTweets?: Prisma.TweetUncheckedUpdateManyWithoutAuthorNestedInput
-  retweets?: Prisma.TweetUncheckedUpdateManyWithoutRetweetedByNestedInput
-  likedTweets?: Prisma.TweetUncheckedUpdateManyWithoutLikedByNestedInput
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdPosts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  reposts?: Prisma.PostUncheckedUpdateManyWithoutRepostedByNestedInput
+  likedPosts?: Prisma.PostUncheckedUpdateManyWithoutLikedByNestedInput
   followers?: Prisma.UserUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutRecipientNestedInput
@@ -1557,30 +1873,42 @@ export type UserUncheckedUpdateManyWithoutFollowingInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
-export type UserUpdateWithoutLikedTweetsInput = {
+export type UserUpdateWithoutLikedPostsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdTweets?: Prisma.TweetUpdateManyWithoutAuthorNestedInput
-  retweets?: Prisma.TweetUpdateManyWithoutRetweetedByNestedInput
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdPosts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  reposts?: Prisma.PostUpdateManyWithoutRepostedByNestedInput
   following?: Prisma.UserUpdateManyWithoutFollowersNestedInput
   followers?: Prisma.UserUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
@@ -1588,21 +1916,27 @@ export type UserUpdateWithoutLikedTweetsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
 }
 
-export type UserUncheckedUpdateWithoutLikedTweetsInput = {
+export type UserUncheckedUpdateWithoutLikedPostsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdTweets?: Prisma.TweetUncheckedUpdateManyWithoutAuthorNestedInput
-  retweets?: Prisma.TweetUncheckedUpdateManyWithoutRetweetedByNestedInput
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdPosts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  reposts?: Prisma.PostUncheckedUpdateManyWithoutRepostedByNestedInput
   following?: Prisma.UserUncheckedUpdateManyWithoutFollowersNestedInput
   followers?: Prisma.UserUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
@@ -1610,36 +1944,48 @@ export type UserUncheckedUpdateWithoutLikedTweetsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
 }
 
-export type UserUncheckedUpdateManyWithoutLikedTweetsInput = {
+export type UserUncheckedUpdateManyWithoutLikedPostsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
-export type UserUpdateWithoutRetweetsInput = {
+export type UserUpdateWithoutRepostsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdTweets?: Prisma.TweetUpdateManyWithoutAuthorNestedInput
-  likedTweets?: Prisma.TweetUpdateManyWithoutLikedByNestedInput
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdPosts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.PostUpdateManyWithoutLikedByNestedInput
   following?: Prisma.UserUpdateManyWithoutFollowersNestedInput
   followers?: Prisma.UserUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
@@ -1647,21 +1993,27 @@ export type UserUpdateWithoutRetweetsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
 }
 
-export type UserUncheckedUpdateWithoutRetweetsInput = {
+export type UserUncheckedUpdateWithoutRepostsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdTweets?: Prisma.TweetUncheckedUpdateManyWithoutAuthorNestedInput
-  likedTweets?: Prisma.TweetUncheckedUpdateManyWithoutLikedByNestedInput
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdPosts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.PostUncheckedUpdateManyWithoutLikedByNestedInput
   following?: Prisma.UserUncheckedUpdateManyWithoutFollowersNestedInput
   followers?: Prisma.UserUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
@@ -1669,19 +2021,25 @@ export type UserUncheckedUpdateWithoutRetweetsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
 }
 
-export type UserUncheckedUpdateManyWithoutRetweetsInput = {
+export type UserUncheckedUpdateManyWithoutRepostsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   headerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumUSER_CATEGORYFieldUpdateOperationsInput | $Enums.USER_CATEGORY
   isPremium?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isElite?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  youtubePlayerUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubePlayerTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -1690,9 +2048,9 @@ export type UserUncheckedUpdateManyWithoutRetweetsInput = {
  */
 
 export type UserCountOutputType = {
-  createdTweets: number
-  retweets: number
-  likedTweets: number
+  createdPosts: number
+  reposts: number
+  likedPosts: number
   following: number
   followers: number
   sentMessages: number
@@ -1701,9 +2059,9 @@ export type UserCountOutputType = {
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  createdTweets?: boolean | UserCountOutputTypeCountCreatedTweetsArgs
-  retweets?: boolean | UserCountOutputTypeCountRetweetsArgs
-  likedTweets?: boolean | UserCountOutputTypeCountLikedTweetsArgs
+  createdPosts?: boolean | UserCountOutputTypeCountCreatedPostsArgs
+  reposts?: boolean | UserCountOutputTypeCountRepostsArgs
+  likedPosts?: boolean | UserCountOutputTypeCountLikedPostsArgs
   following?: boolean | UserCountOutputTypeCountFollowingArgs
   followers?: boolean | UserCountOutputTypeCountFollowersArgs
   sentMessages?: boolean | UserCountOutputTypeCountSentMessagesArgs
@@ -1724,22 +2082,22 @@ export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountCreatedTweetsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.TweetWhereInput
+export type UserCountOutputTypeCountCreatedPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PostWhereInput
 }
 
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountRetweetsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.TweetWhereInput
+export type UserCountOutputTypeCountRepostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PostWhereInput
 }
 
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountLikedTweetsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.TweetWhereInput
+export type UserCountOutputTypeCountLikedPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PostWhereInput
 }
 
 /**
@@ -1784,16 +2142,22 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   description?: boolean
   location?: boolean
   website?: boolean
+  whatsapp?: boolean
   photoUrl?: boolean
   headerUrl?: boolean
   username?: boolean
   password?: boolean
+  category?: boolean
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  createdTweets?: boolean | Prisma.User$createdTweetsArgs<ExtArgs>
-  retweets?: boolean | Prisma.User$retweetsArgs<ExtArgs>
-  likedTweets?: boolean | Prisma.User$likedTweetsArgs<ExtArgs>
+  youtubePlayerUrl?: boolean
+  youtubePlayerTitle?: boolean
+  createdPosts?: boolean | Prisma.User$createdPostsArgs<ExtArgs>
+  reposts?: boolean | Prisma.User$repostsArgs<ExtArgs>
+  likedPosts?: boolean | Prisma.User$likedPostsArgs<ExtArgs>
   following?: boolean | Prisma.User$followingArgs<ExtArgs>
   followers?: boolean | Prisma.User$followersArgs<ExtArgs>
   sentMessages?: boolean | Prisma.User$sentMessagesArgs<ExtArgs>
@@ -1808,13 +2172,19 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   description?: boolean
   location?: boolean
   website?: boolean
+  whatsapp?: boolean
   photoUrl?: boolean
   headerUrl?: boolean
   username?: boolean
   password?: boolean
+  category?: boolean
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  youtubePlayerUrl?: boolean
+  youtubePlayerTitle?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1823,13 +2193,19 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   description?: boolean
   location?: boolean
   website?: boolean
+  whatsapp?: boolean
   photoUrl?: boolean
   headerUrl?: boolean
   username?: boolean
   password?: boolean
+  category?: boolean
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  youtubePlayerUrl?: boolean
+  youtubePlayerTitle?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -1838,20 +2214,26 @@ export type UserSelectScalar = {
   description?: boolean
   location?: boolean
   website?: boolean
+  whatsapp?: boolean
   photoUrl?: boolean
   headerUrl?: boolean
   username?: boolean
   password?: boolean
+  category?: boolean
   isPremium?: boolean
+  isVip?: boolean
+  isElite?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  youtubePlayerUrl?: boolean
+  youtubePlayerTitle?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "location" | "website" | "photoUrl" | "headerUrl" | "username" | "password" | "isPremium" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "location" | "website" | "whatsapp" | "photoUrl" | "headerUrl" | "username" | "password" | "category" | "isPremium" | "isVip" | "isElite" | "createdAt" | "updatedAt" | "youtubePlayerUrl" | "youtubePlayerTitle", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  createdTweets?: boolean | Prisma.User$createdTweetsArgs<ExtArgs>
-  retweets?: boolean | Prisma.User$retweetsArgs<ExtArgs>
-  likedTweets?: boolean | Prisma.User$likedTweetsArgs<ExtArgs>
+  createdPosts?: boolean | Prisma.User$createdPostsArgs<ExtArgs>
+  reposts?: boolean | Prisma.User$repostsArgs<ExtArgs>
+  likedPosts?: boolean | Prisma.User$likedPostsArgs<ExtArgs>
   following?: boolean | Prisma.User$followingArgs<ExtArgs>
   followers?: boolean | Prisma.User$followersArgs<ExtArgs>
   sentMessages?: boolean | Prisma.User$sentMessagesArgs<ExtArgs>
@@ -1865,9 +2247,9 @@ export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
-    createdTweets: Prisma.$TweetPayload<ExtArgs>[]
-    retweets: Prisma.$TweetPayload<ExtArgs>[]
-    likedTweets: Prisma.$TweetPayload<ExtArgs>[]
+    createdPosts: Prisma.$PostPayload<ExtArgs>[]
+    reposts: Prisma.$PostPayload<ExtArgs>[]
+    likedPosts: Prisma.$PostPayload<ExtArgs>[]
     following: Prisma.$UserPayload<ExtArgs>[]
     followers: Prisma.$UserPayload<ExtArgs>[]
     sentMessages: Prisma.$MessagePayload<ExtArgs>[]
@@ -1880,13 +2262,19 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     description: string | null
     location: string | null
     website: string | null
+    whatsapp: string | null
     photoUrl: string | null
     headerUrl: string | null
     username: string
     password: string
+    category: $Enums.USER_CATEGORY
     isPremium: boolean
+    isVip: boolean
+    isElite: boolean
     createdAt: Date
     updatedAt: Date
+    youtubePlayerUrl: string | null
+    youtubePlayerTitle: string | null
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -2281,9 +2669,9 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  createdTweets<T extends Prisma.User$createdTweetsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdTweetsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TweetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  retweets<T extends Prisma.User$retweetsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$retweetsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TweetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  likedTweets<T extends Prisma.User$likedTweetsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$likedTweetsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TweetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  createdPosts<T extends Prisma.User$createdPostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdPostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reposts<T extends Prisma.User$repostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$repostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  likedPosts<T extends Prisma.User$likedPostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$likedPostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   following<T extends Prisma.User$followingArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$followingArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   followers<T extends Prisma.User$followersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$followersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   sentMessages<T extends Prisma.User$sentMessagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sentMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -2323,13 +2711,19 @@ export interface UserFieldRefs {
   readonly description: Prisma.FieldRef<"User", 'String'>
   readonly location: Prisma.FieldRef<"User", 'String'>
   readonly website: Prisma.FieldRef<"User", 'String'>
+  readonly whatsapp: Prisma.FieldRef<"User", 'String'>
   readonly photoUrl: Prisma.FieldRef<"User", 'String'>
   readonly headerUrl: Prisma.FieldRef<"User", 'String'>
   readonly username: Prisma.FieldRef<"User", 'String'>
   readonly password: Prisma.FieldRef<"User", 'String'>
+  readonly category: Prisma.FieldRef<"User", 'USER_CATEGORY'>
   readonly isPremium: Prisma.FieldRef<"User", 'Boolean'>
+  readonly isVip: Prisma.FieldRef<"User", 'Boolean'>
+  readonly isElite: Prisma.FieldRef<"User", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
+  readonly youtubePlayerUrl: Prisma.FieldRef<"User", 'String'>
+  readonly youtubePlayerTitle: Prisma.FieldRef<"User", 'String'>
 }
     
 
@@ -2718,75 +3112,75 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * User.createdTweets
+ * User.createdPosts
  */
-export type User$createdTweetsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$createdPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Tweet
+   * Select specific fields to fetch from the Post
    */
-  select?: Prisma.TweetSelect<ExtArgs> | null
+  select?: Prisma.PostSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Tweet
+   * Omit specific fields from the Post
    */
-  omit?: Prisma.TweetOmit<ExtArgs> | null
+  omit?: Prisma.PostOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.TweetInclude<ExtArgs> | null
-  where?: Prisma.TweetWhereInput
-  orderBy?: Prisma.TweetOrderByWithRelationInput | Prisma.TweetOrderByWithRelationInput[]
-  cursor?: Prisma.TweetWhereUniqueInput
+  include?: Prisma.PostInclude<ExtArgs> | null
+  where?: Prisma.PostWhereInput
+  orderBy?: Prisma.PostOrderByWithRelationInput | Prisma.PostOrderByWithRelationInput[]
+  cursor?: Prisma.PostWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.TweetScalarFieldEnum | Prisma.TweetScalarFieldEnum[]
+  distinct?: Prisma.PostScalarFieldEnum | Prisma.PostScalarFieldEnum[]
 }
 
 /**
- * User.retweets
+ * User.reposts
  */
-export type User$retweetsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$repostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Tweet
+   * Select specific fields to fetch from the Post
    */
-  select?: Prisma.TweetSelect<ExtArgs> | null
+  select?: Prisma.PostSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Tweet
+   * Omit specific fields from the Post
    */
-  omit?: Prisma.TweetOmit<ExtArgs> | null
+  omit?: Prisma.PostOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.TweetInclude<ExtArgs> | null
-  where?: Prisma.TweetWhereInput
-  orderBy?: Prisma.TweetOrderByWithRelationInput | Prisma.TweetOrderByWithRelationInput[]
-  cursor?: Prisma.TweetWhereUniqueInput
+  include?: Prisma.PostInclude<ExtArgs> | null
+  where?: Prisma.PostWhereInput
+  orderBy?: Prisma.PostOrderByWithRelationInput | Prisma.PostOrderByWithRelationInput[]
+  cursor?: Prisma.PostWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.TweetScalarFieldEnum | Prisma.TweetScalarFieldEnum[]
+  distinct?: Prisma.PostScalarFieldEnum | Prisma.PostScalarFieldEnum[]
 }
 
 /**
- * User.likedTweets
+ * User.likedPosts
  */
-export type User$likedTweetsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$likedPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Tweet
+   * Select specific fields to fetch from the Post
    */
-  select?: Prisma.TweetSelect<ExtArgs> | null
+  select?: Prisma.PostSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Tweet
+   * Omit specific fields from the Post
    */
-  omit?: Prisma.TweetOmit<ExtArgs> | null
+  omit?: Prisma.PostOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.TweetInclude<ExtArgs> | null
-  where?: Prisma.TweetWhereInput
-  orderBy?: Prisma.TweetOrderByWithRelationInput | Prisma.TweetOrderByWithRelationInput[]
-  cursor?: Prisma.TweetWhereUniqueInput
+  include?: Prisma.PostInclude<ExtArgs> | null
+  where?: Prisma.PostWhereInput
+  orderBy?: Prisma.PostOrderByWithRelationInput | Prisma.PostOrderByWithRelationInput[]
+  cursor?: Prisma.PostWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.TweetScalarFieldEnum | Prisma.TweetScalarFieldEnum[]
+  distinct?: Prisma.PostScalarFieldEnum | Prisma.PostScalarFieldEnum[]
 }
 
 /**

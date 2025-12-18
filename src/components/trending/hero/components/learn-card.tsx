@@ -30,7 +30,7 @@ export default function LearnCard() {
         duration-300
         bg-white
         text-black
-        border border-solid border-[var(--border-color)]
+        border border-solid border-[var(--border)]
       "
     >
       <CardContent className="p-4 md:p-6 flex flex-col md:flex-row items-center gap-4 md:gap-6 w-full">
@@ -47,7 +47,7 @@ export default function LearnCard() {
 
           <Button
             size="lg"
-            className="bg-white text-blue-700 font-semibold hover:bg-blue-50 transition rounded-xl py-3 text-sm mt-3 border border-solid border-[var(--border-color)]"
+            className="bg-white text-blue-700 font-semibold hover:bg-blue-50 transition rounded-xl py-3 text-sm mt-3 border border-solid border-[var(--border)]"
           >
             Join Now
           </Button>

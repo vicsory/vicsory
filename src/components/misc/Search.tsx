@@ -31,11 +31,11 @@ export default function Search() {
           type="text"
           value={searchQuery}
           onChange={handleInputChange}
-          placeholder="Search Vicsory"
+          placeholder="Search"
           required
           className="
             w-full py-2 px-4 rounded-full
-            bg-[var(--hover)]
+            bg-[var(--background-secondary)]
             text-[var(--text-secondary)]
             border border-[var(--border)]
             focus:outline-none

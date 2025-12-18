@@ -8,48 +8,53 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-
 }
 
 model User {
-  id               String         @id @default(uuid())
-  name             String?        @db.VarChar(50)
-  description      String?        @db.VarChar(160)
-  location         String?        @db.VarChar(30)
-  website          String?        @db.VarChar(30)
-  photoUrl         String?
-  headerUrl        String?
-  username         String         @unique @db.VarChar(20)
-  password         String
-  isPremium        Boolean        @default(false)
-  createdAt        DateTime       @default(now())
-  updatedAt        DateTime       @default(now()) @updatedAt
-  createdTweets    Tweet[]        @relation("userTweets")
-  retweets         Tweet[]        @relation("userRetweets")
-  likedTweets      Tweet[]        @relation("userLikes")
-  following        User[]         @relation("userFollows")
-  followers        User[]         @relation("userFollows")
-  sentMessages     Message[]      @relation("userMessagesSent")
-  receivedMessages Message[]      @relation("userMessagesRecieved")
-  notifications    Notification[]
+  id                 String         @id @default(uuid())
+  name               String?        @db.VarChar(50)
+  description        String?        @db.VarChar(160)
+  location           String?        @db.VarChar(30)
+  website            String?        @db.VarChar(255)
+  whatsapp           String?        @db.VarChar(30)
+  photoUrl           String?
+  headerUrl          String?
+  username           String         @unique @db.VarChar(20)
+  password           String
+  category           USER_CATEGORY  @default(None)
+  isPremium          Boolean        @default(false)
+  isVip              Boolean        @default(false)
+  isElite            Boolean        @default(false)
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @default(now()) @updatedAt
+  createdPosts       Post[]         @relation("userPosts")
+  reposts            Post[]         @relation("userReposts")
+  likedPosts         Post[]         @relation("userLikes")
+  following          User[]         @relation("userFollows")
+  followers          User[]         @relation("userFollows")
+  sentMessages       Message[]      @relation("userMessagesSent")
+  receivedMessages   Message[]      @relation("userMessagesRecieved")
+  notifications      Notification[]
+  youtubePlayerUrl   String?
+  youtubePlayerTitle String?
 }
 
-model Tweet {
+model Post {
   id          String   @id @default(uuid())
   text        String   @db.VarChar(280)
   createdAt   DateTime @default(now())
-  author      User     @relation("userTweets", fields: [authorId], references: [id])
+  author      User     @relation("userPosts", fields: [authorId], references: [id])
   authorId    String
   photoUrl    String?
   likedBy     User[]   @relation("userLikes")
-  retweetedBy User[]   @relation("userRetweets")
-  replies     Tweet[]  @relation("tweetReplies")
-  retweets    Tweet[]  @relation("retweetOf")
-  isRetweet   Boolean  @default(false)
-  retweetOf   Tweet?   @relation("retweetOf", fields: [retweetOfId], references: [id], onDelete: Cascade)
-  retweetOfId String?
+  repostedBy  User[]   @relation("userReposts")
+  replies     Post[]   @relation("postReplies")
+  reposts     Post[]   @relation("repostOf")
+  isRepost    Boolean  @default(false)
+  repostOf    Post?    @relation("repostOf", fields: [repostOfId], references: [id], onDelete: Cascade)
+  repostOfId  String?
   isReply     Boolean  @default(false)
-  repliedTo   Tweet?   @relation("tweetReplies", fields: [repliedToId], references: [id], onDelete: Cascade)
+  repliedTo   Post?    @relation("postReplies", fields: [repliedToId], references: [id], onDelete: Cascade)
   repliedToId String?
 }
 
@@ -72,4 +77,37 @@ model Notification {
   isRead    Boolean  @default(false)
   user      User     @relation(fields: [userId], references: [id])
   userId    String
+}
+
+enum USER_CATEGORY {
+  None
+  Company
+  Startup
+  Entrepreneur
+  SmallBusiness
+  Freelancer
+  Creator
+  Professional
+  Student
+  Investor
+  Marketing
+  Sales
+  Engineering
+  Product
+  Design
+  Technology
+  Media
+  Education
+  Consulting
+  NonProfit
+  Government
+  HumanResources
+  Operations
+  Finance
+  Legal
+  Healthcare
+  RealEstate
+  Manufacturing
+  Retail
+  Other
 }

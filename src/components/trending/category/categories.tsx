@@ -82,14 +82,14 @@ const Categories = memo(function Categories({
   );
 
   const getCategoryClass = useCallback(
-    (name: string) => {
+    (name: string) => { 
       const isActive = activeCategory === name || pendingCategory === name;
       return [
         "flex items-center px-3 py-1.5 rounded-xl cursor-pointer transition-colors duration-200 text-sm",
-        "border border-solid border-[var(--border-color)]",
+        "border border-solid border-[var(--border)]",
         isActive
-          ? "bg-[var(--hover)] text-[var(--active-mode)]"
-          : "bg-[var(--background-primary)] text-[var(--text-2)]",
+          ? "bg-[var(--background-primary)] text-[var(--text)]"
+          : "bg-[var(--background-secondary)] text-[var(--text-secondary)]",
         "whitespace-nowrap flex-shrink-0",
       ].join(" ");
     },
@@ -129,15 +129,15 @@ const Categories = memo(function Categories({
   }, [handleScroll]);
 
   return (
-    <div className="sticky py-3 top-0 z-10 w-full transition-shadow duration-300">
+    <div className="py-3 top-0 z-10 w-full transition-shadow duration-300">
       <div className="relative flex items-center h-8">
         {/* Left scroll control (visible when you can scroll left) */}
         {showLeftArrow && (
           <div className="absolute left-0 z-20 h-full flex items-center pointer-events-none">
-            <div className="w-12 h-full bg-gradient-to-r from-[var(--bg-dark)] to-transparent" />
+            <div className="w-12 h-full bg-gradient-to-r from-[var(--background-secondary)] to-transparent" />
             <button
               onClick={() => scrollHorizontally("left")}
-              className="flex items-center justify-center p-2 rounded-full shadow-lg pointer-events-auto text-[var(--active-mode)] bg-[var(--hover)] transition-all duration-150 ml-[-8px]"
+              className="flex items-center justify-center p-2 rounded-full shadow-lg pointer-events-auto text-[var(--text)] bg-[var(--background-secondary)] transition-all duration-150 ml-[-8px]"
               aria-label="Scroll categories left"
               style={{ width: 40, height: 40, flexShrink: 0 }}
             >
@@ -185,7 +185,7 @@ const Categories = memo(function Categories({
             <div className="w-12 h-full" />
             <button
               onClick={() => scrollHorizontally("right")}
-              className="flex items-center justify-center p-2 rounded-full shadow-lg pointer-events-auto text-[var(--active-mode)] bg-[var(--hover)] transition-all duration-150 ml-[-8px]"
+              className="flex items-center justify-center p-2 rounded-full shadow-lg pointer-events-auto text-[var(--text)] bg-[var(--background-secondary)] transition-all duration-150 ml-[-8px]"
               aria-label="Scroll categories right"
               style={{ width: 40, height: 40, flexShrink: 0 }}
             >

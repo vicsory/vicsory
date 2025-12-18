@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import LogInDialog from "@/components/dialog/LogInDialog";
-import HomeLayout from "./(twitter)/layout";
-import ExplorePage from "./(twitter)/explore/page";
+import HomeLayout from "./(vicsory)/layout";
+import ExplorePage from "./(vicsory)/explore/page";
 
 export default function RootPage() {
     const [isLogInOpen, setIsLogInOpen] = useState(true);

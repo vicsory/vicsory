@@ -9,9 +9,9 @@ import { Avatar, Popover } from "@mui/material";
 
 import { NotificationProps } from "@/types/NotificationProps";
 import { getFullURL } from "@/utilities/misc/getFullURL";
-import RetweetIcon from "./RetweetIcon";
 import ProfileCard from "../user/ProfileCard";
 import { UserProps } from "@/types/UserProps";
+import RepostIcon from "../../../public/svg/repost";
 
 export default function Notification({ notification, token }: { notification: NotificationProps; token: UserProps }) {
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -25,7 +25,7 @@ export default function Notification({ notification, token }: { notification: No
 
     const content = JSON.parse(notification.content);
 
-    const tweetUrl = `/${notification.user.username}/tweets/${content?.content?.id}`;
+    const postUrl = `/${notification.user.username}/posts/${content?.content?.id}`;
     const profileUrl = `/${content?.sender.username}`;
 
     const popoverJSX = (
@@ -51,10 +51,10 @@ export default function Notification({ notification, token }: { notification: No
     );
 
     const sharedJSX = (
-        <div className="notification-sender">
+        <div className="flex items-center gap-2">
             <Link
                 href={profileUrl}
-                className="avatar-wrapper"
+                className="flex items-center gap-2"
                 onMouseEnter={handlePopoverOpen}
                 onMouseLeave={handlePopoverClose}
             >
@@ -63,10 +63,10 @@ export default function Notification({ notification, token }: { notification: No
                     alt=""
                     src={content?.sender.photoUrl ? getFullURL(content?.sender.photoUrl) : "/assets/egg.jpg"}
                 />
-                <div className="profile-info-main">
-                    <h1>
+                <div className="flex flex-col">
+                    <h1 className="text-sm font-semibold text-[var(--text)] flex items-center gap-1">
                         {content?.sender.name !== "" ? content?.sender.name : content?.sender.username}{" "}
-                        <span className="text-muted">(@{content?.sender.username})</span>
+                        <span className="text-[var(--text)] text-xs">(@{content?.sender.username})</span>
                     </h1>
                 </div>
             </Link>
@@ -76,13 +76,14 @@ export default function Notification({ notification, token }: { notification: No
 
     if (notification.type === "message") {
         return (
-            <div className="notification">
-                <div className="icon-div message">
+            <div className="flex items-start gap-3 p-3 border-b border-solid border-[var(--border)]">
+                <div className="text-blue-500 text-xl">
                     <FaRegEnvelope />
                 </div>
-                <div>
-                    {sharedJSX} <span className={!notification.isRead ? "bold" : ""}>Sent you a direct message.</span>{" "}
-                    <Link className={`notification-link ${!notification.isRead ? "bold" : ""}`} href="/messages">
+                <div className="text-sm text-[var(--text)]">
+                    {sharedJSX}{" "}
+                    <span className={!notification.isRead ? "text-[var(--text-secondary)]" : ""}>Sent you a direct message.</span>{" "}
+                    <Link className={`text-blue-600 hover:underline ${!notification.isRead ? "text-[var(--text-secondary)]" : ""}`} href="/messages">
                         Check it out!
                     </Link>
                 </div>
@@ -90,13 +91,13 @@ export default function Notification({ notification, token }: { notification: No
         );
     } else if (notification.type === "follow") {
         return (
-            <div className="notification">
-                <div className="icon-div follow">
+            <div className="flex items-start gap-3 p-3 border-b border-solid border-[var(--border)]">
+                <div className="text-purple-500 text-xl">
                     <RiChatFollowUpLine />
                 </div>
-                <div>
+                <div className="text-sm text-[var(--text)]">
                     {sharedJSX}{" "}
-                    <span className={!notification.isRead ? "bold" : ""}>
+                    <span className={!notification.isRead ? "text-[var(--text-secondary)]" : ""}>
                         Started following you. Stay connected and discover their updates!
                     </span>
                 </div>
@@ -104,55 +105,55 @@ export default function Notification({ notification, token }: { notification: No
         );
     } else if (notification.type === "like") {
         return (
-            <div className="notification">
-                <div className="icon-div like">
+            <div className="flex items-start gap-3 p-3 border-b border-solid border-[var(--border)]">
+                <div className="text-red-500 text-xl">
                     <FaHeart />
                 </div>
-                <div>
-                    {sharedJSX} <span className={!notification.isRead ? "bold" : ""}>Liked your</span>{" "}
-                    <Link className={`notification-link ${!notification.isRead ? "bold" : ""}`} href={tweetUrl}>
-                        tweet.
+                <div className="text-sm text-[var(--text)]">
+                    {sharedJSX} <span className={!notification.isRead ? "text-[var(--text-secondary)]" : ""}>Liked your</span>{" "}
+                    <Link className={`text-blue-600 hover:underline ${!notification.isRead ? "text-[var(--text-secondary)]" : ""}`} href={postUrl}>
+                        post.
                     </Link>
                 </div>
             </div>
         );
     } else if (notification.type === "reply") {
         return (
-            <div className="notification ">
-                <div className="icon-div reply">
+            <div className="fflex items-start gap-3 p-3 border-b border-solid border-[var(--border)]">
+                <div className="text-green-600 text-xl">
                     <FaRegComment />
                 </div>
-                <div>
-                    {sharedJSX} <span className={!notification.isRead ? "bold" : ""}>Replied to your</span>{" "}
-                    <Link className={`notification-link ${!notification.isRead ? "bold" : ""}`} href={tweetUrl}>
-                        tweet.
+                <div className="text-sm text-[var(--text)]">
+                    {sharedJSX} <span className={!notification.isRead ? "text-[var(--text-secondary)]" : ""}>Replied to your</span>{" "}
+                    <Link className={`text-blue-600 hover:underline ${!notification.isRead ? "text-[var(--text-secondary)]" : ""}`} href={postUrl}>
+                        post.
                     </Link>
                 </div>
             </div>
         );
-    } else if (notification.type === "retweet") {
+    } else if (notification.type === "repost") {
         return (
-            <div className="notification">
-                <div className="icon-div retweet">
-                    <RetweetIcon />
+            <div className="flex items-start gap-3 p-3 border-b border-solid border-[var(--border)]">
+                <div className="text-yellow-500 text-xl">
+                    <RepostIcon />
                 </div>
-                <div>
-                    {sharedJSX} <span className={!notification.isRead ? "bold" : ""}>Retweeted your</span>{" "}
-                    <Link className={`notification-link ${!notification.isRead ? "bold" : ""}`} href={tweetUrl}>
-                        tweet.
+                <div className="text-sm text-[var(--text)]">
+                    {sharedJSX} <span className={!notification.isRead ? "text-[var(--text-secondary)]" : ""}>Reposted your</span>{" "}
+                    <Link className={`text-blue-600 hover:underline ${!notification.isRead ? "text-[var(--text-secondary)]" : ""}`} href={postUrl}>
+                        post.
                     </Link>
                 </div>
             </div>
         );
     } else {
         return (
-            <div className="notification">
-                <div className="icon-div welcome">
+            <div className="flex items-start gap-3 p-3 border-b border-solid border-[var(--border)]">
+                <div className="text-orange-500 text-xl">
                     <GiPartyPopper />
                 </div>
-                <div className={!notification.isRead ? "bold" : ""}>
-                    Welcome to the Twitter! <br />
-                    Start exploring and sharing your thoughts with the world.
+                <div className={`text-base text-[var(--text)] ${!notification.isRead ? "text-[var(--text-secondary)]" : ""}`}>
+                    Welcome to Vicsory! <br />
+                    Share your ideas, expand your network, and unlock new opportunities.
                 </div>
             </div>
         );

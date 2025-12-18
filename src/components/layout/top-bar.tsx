@@ -12,12 +12,11 @@ import {
 } from "@/components/ui/dialog";
 import { LogIn, Plus } from "lucide-react";
 import { useContext, useState, useEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Link from "next/link";
 import LogInDialog from "@/components/dialog/LogInDialog";
 import { getFullURL } from "@/utilities/misc/getFullURL";
-import NewTweet from "../tweet/NewTweet";
+import NewPost from "../post/NewPost";
 import { AuthContext } from "@/contexts/auth-context";
 
 const Topbar = () => {
@@ -25,8 +24,6 @@ const Topbar = () => {
   const [isNewPostOpen, setIsNewPostOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const { token } = useContext(AuthContext);
-  const pathname = usePathname();
-  const isExplorePage = pathname.startsWith("/explore");
 
   const lastScrollY = useRef(0);
 
@@ -55,7 +52,7 @@ const Topbar = () => {
         <div
           className={`absolute inset-0 border-b border-solid border-[var(--border)] bg-[var(--background-primary)]/80 backdrop-blur-xl h-full gap-8 flex items-center justify-between px-4 pointer-events-auto `}
         >
-          <Link href="/explore" className="w-fit pl-2 gap-2 top-0 items-center flex" style={{ cursor: "pointer" }}>
+          <Link href="/explore" className="w-fit pl-2 gap-2 top-0 items-center flex cursor-pointer">
             <div className="relative w-8 h-8">
               <Image
                 className="object-contain transition-transform duration-200 group-hover:scale-110"
@@ -76,7 +73,7 @@ const Topbar = () => {
             {!token ? (
               <Button
                 onClick={() => setIsLogInOpen(true)}
-                className="text-base hover:bg-[var(--blue-secondary)] bg-[var(--blue)] text-[var(--text)] px-4 py-2 rounded-full text-center font-semibold hover:opacity-70 transition border border-solid border-[var(--border)]"
+                className="text-base hover:bg-[var(--blue-secondary)] bg-[var(--blue)] text-white px-4 py-2 rounded-full text-center font-semibold hover:opacity-70 transition border border-solid border-[var(--border)]"
               >
                 <LogIn className="w-4 h-4" />
                 <span className="hidden sm:inline">Log In</span>
@@ -93,11 +90,11 @@ const Topbar = () => {
                       Post
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="max-w-lg text-white">
+                  <DialogContent className="max-w-lg bg-[var(--background-primary)]/70 backdrop-blur-md rounded-2xl shadow-lg">
                     <DialogHeader>
                       <DialogTitle className="text-white">Create New Post</DialogTitle>
                     </DialogHeader>
-                    <NewTweet
+                    <NewPost
                       token={token}
                       handleSubmit={() => {
                         setIsNewPostOpen(false);
@@ -127,8 +124,6 @@ const Topbar = () => {
           </div>
         </div>
       </div>
-
-      <div className="h-16" />
       <LogInDialog open={isLogInOpen} handleLogInClose={() => setIsLogInOpen(false)} />
     </>
   );

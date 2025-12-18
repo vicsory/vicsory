@@ -6,6 +6,7 @@ import { UserProps, UserResponse } from "@/types/UserProps";
 import CustomSnackbar from "../misc/CustomSnackbar";
 import { SnackbarProps } from "@/types/SnackbarProps";
 import { AuthContext } from "@/contexts/auth-context";
+import { Button } from "../ui/button";
 
 export default function Follow({ profile }: { profile: UserProps }) {
     const [isFollowed, setIsFollowed] = useState(false);
@@ -128,11 +129,11 @@ export default function Follow({ profile }: { profile: UserProps }) {
     }, [isButtonDisabled]);
 
     const conditionalText = isFollowed ? (isHovered ? "Unfollow" : "Following") : "Follow";
-    const conditionalClass = isFollowed ? (isHovered ? "btn btn-danger-outline" : "btn btn-white") : "btn btn-dark";
+    const conditionalClass = isFollowed ? (isHovered ? "text-[var(--red)] text-base font-medium border-none shadow-none" : "text-[var(--text-secondary)] text-base font-medium border-none shadow-none") : "text-[var(--blue)] text-base font-medium border-none shadow-none";
 
     return (
         <>
-            <button
+            <Button
                 onClick={handleFollowclick}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
@@ -140,7 +141,7 @@ export default function Follow({ profile }: { profile: UserProps }) {
                 disabled={isButtonDisabled}
             >
                 {conditionalText}
-            </button>
+            </Button>
             {snackbar.open && (
                 <CustomSnackbar message={snackbar.message} severity={snackbar.severity} setSnackbar={setSnackbar} />
             )}

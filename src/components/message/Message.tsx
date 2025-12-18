@@ -36,7 +36,7 @@ export default function Message({ message, messagedUsername }: { message: Messag
                     <PreviewDialog open={isPreviewOpen} handlePreviewClose={handlePreviewClose} url={message.photoUrl} />
                 </>
             )}
-            <div className="message-date text-muted">{formatDate(message.createdAt)}</div>
+            <div className="message-date text-[var(--text-secondary)]">{formatDate(message.createdAt)}</div>
         </div>
     );
 }

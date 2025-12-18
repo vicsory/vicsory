@@ -4,13 +4,11 @@ import { FaArrowLeft } from "react-icons/fa";
 
 export default function BackToArrow({ title, url }: { title: string; url: string }) {
     return (
-        <div className="back-to">
-            <Link className="icon-hoverable" href={url}>
+        <div className="gap-4 flex items-center">
+            <Link className="text-[var(--text)] cursor-pointer" href={url}>
                 <FaArrowLeft />
             </Link>
-            <div className="top">
-                <span className="top-title">{title}</span>
-            </div>
+            <span className="text-xl text-[var(--text)]">{title}</span>
         </div>
     );
 }

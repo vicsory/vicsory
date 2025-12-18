@@ -22,14 +22,9 @@ export default function RightSidebar() {
   return (
     <aside className="hidden xl:flex flex-col flex-shrink-0 px-4 z-50 sticky top-16 h-[calc(100vh-4rem)]">
       <div className="flex flex-col gap-6 pt-6 overflow-y-auto">
-        {/* Search bar */}
         <Search />
-
-        {/* Suggestions */}
         {token && <WhoToFollow />}
         {token && <CompleteProfileReminder token={token} />}
-
-        {/* Login / Signup Reminder */}
         {!isPending && !token && (
           <div className="flex flex-col gap-4 p-4 rounded-2xl border border-solid border-[var(--border)]">
             <div className="flex gap-4">
@@ -42,7 +37,7 @@ export default function RightSidebar() {
               />
               <div className="flex flex-col">
                 <h2 className="text-2xl font-semibold text-[var(--text)]">Welcome to Vicsory</h2>
-                <p className="text-base text-[var(--text)]">
+                <p className="text-base font-medium text-[var(--text-secondary)]">
                   I am Jean Kael Augustin, CEO of Vicsory. I am excited to welcome you to the platform.
                 </p>
               </div>
@@ -60,13 +55,11 @@ export default function RightSidebar() {
                 target="_blank"
                 className="text-base bg-[var(--background-secondary)] text-[var(--text)] flex-1 px-4 py-2 rounded-full text-center font-semibold hover:opacity-70 transition border border-solid border-[var(--border)]"
               >
-                LinkedIn
+                Contact
               </Link>
             </div>
           </div>
         )}
-
-        {/* Legal / Footer */}
         <Legal />
       </div>
     </aside>

@@ -44,6 +44,13 @@ export type StringNullableFilter<$PrismaModel = never> = {
   not?: Prisma.NestedStringNullableFilter<$PrismaModel> | string | null
 }
 
+export type EnumUSER_CATEGORYFilter<$PrismaModel = never> = {
+  equals?: $Enums.USER_CATEGORY | Prisma.EnumUSER_CATEGORYFieldRefInput<$PrismaModel>
+  in?: $Enums.USER_CATEGORY[] | Prisma.ListEnumUSER_CATEGORYFieldRefInput<$PrismaModel>
+  notIn?: $Enums.USER_CATEGORY[] | Prisma.ListEnumUSER_CATEGORYFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUSER_CATEGORYFilter<$PrismaModel> | $Enums.USER_CATEGORY
+}
+
 export type BoolFilter<$PrismaModel = never> = {
   equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>
   not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean
@@ -101,6 +108,16 @@ export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedStringNullableFilter<$PrismaModel>
 }
 
+export type EnumUSER_CATEGORYWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.USER_CATEGORY | Prisma.EnumUSER_CATEGORYFieldRefInput<$PrismaModel>
+  in?: $Enums.USER_CATEGORY[] | Prisma.ListEnumUSER_CATEGORYFieldRefInput<$PrismaModel>
+  notIn?: $Enums.USER_CATEGORY[] | Prisma.ListEnumUSER_CATEGORYFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUSER_CATEGORYWithAggregatesFilter<$PrismaModel> | $Enums.USER_CATEGORY
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumUSER_CATEGORYFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumUSER_CATEGORYFilter<$PrismaModel>
+}
+
 export type BoolWithAggregatesFilter<$PrismaModel = never> = {
   equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>
   not?: Prisma.NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
@@ -149,6 +166,13 @@ export type NestedStringNullableFilter<$PrismaModel = never> = {
   startsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
   endsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
   not?: Prisma.NestedStringNullableFilter<$PrismaModel> | string | null
+}
+
+export type NestedEnumUSER_CATEGORYFilter<$PrismaModel = never> = {
+  equals?: $Enums.USER_CATEGORY | Prisma.EnumUSER_CATEGORYFieldRefInput<$PrismaModel>
+  in?: $Enums.USER_CATEGORY[] | Prisma.ListEnumUSER_CATEGORYFieldRefInput<$PrismaModel>
+  notIn?: $Enums.USER_CATEGORY[] | Prisma.ListEnumUSER_CATEGORYFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUSER_CATEGORYFilter<$PrismaModel> | $Enums.USER_CATEGORY
 }
 
 export type NestedBoolFilter<$PrismaModel = never> = {
@@ -221,6 +245,16 @@ export type NestedIntNullableFilter<$PrismaModel = never> = {
   gt?: number | Prisma.IntFieldRefInput<$PrismaModel>
   gte?: number | Prisma.IntFieldRefInput<$PrismaModel>
   not?: Prisma.NestedIntNullableFilter<$PrismaModel> | number | null
+}
+
+export type NestedEnumUSER_CATEGORYWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.USER_CATEGORY | Prisma.EnumUSER_CATEGORYFieldRefInput<$PrismaModel>
+  in?: $Enums.USER_CATEGORY[] | Prisma.ListEnumUSER_CATEGORYFieldRefInput<$PrismaModel>
+  notIn?: $Enums.USER_CATEGORY[] | Prisma.ListEnumUSER_CATEGORYFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUSER_CATEGORYWithAggregatesFilter<$PrismaModel> | $Enums.USER_CATEGORY
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumUSER_CATEGORYFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumUSER_CATEGORYFilter<$PrismaModel>
 }
 
 export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {

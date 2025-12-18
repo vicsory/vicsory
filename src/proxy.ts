@@ -12,9 +12,9 @@ export const proxy = async (request: NextRequest) => {
         "/unfollow",
         "/edit",
         "/delete",
-        "/retweet",
-        "/unretweet",
-        "/tweets/create",
+        "/repost",
+        "/unrepost",
+        "/posts/create",
         "/messages/create",
     ];
     const staticRoutesPrivate = ["/notifications", "/messages", "/home"];

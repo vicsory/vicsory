@@ -11,7 +11,7 @@ export type NotificationProps = {
     isRead: boolean;
 };
 
-export type NotificationTypes = "welcome" | "follow" | "like" | "reply" | "retweet" | "message";
+export type NotificationTypes = "welcome" | "follow" | "like" | "reply" | "repost" | "message";
 
 export type NotificationContent = null | {
     content: null | {

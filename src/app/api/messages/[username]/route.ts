@@ -39,6 +39,8 @@ export async function GET(request: NextRequest, { params: { username } }: { para
                         username: true,
                         photoUrl: true,
                         isPremium: true,
+                        isVip: true,
+                        isElite: true,
                     },
                 },
                 recipient: {
@@ -47,6 +49,8 @@ export async function GET(request: NextRequest, { params: { username } }: { para
                         username: true,
                         photoUrl: true,
                         isPremium: true,
+                        isVip: true,
+                        isElite: true,
                     },
                 },
             },

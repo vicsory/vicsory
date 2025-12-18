@@ -9,7 +9,37 @@
 * 🟢 You can import this file directly.
 */
 
+export const USER_CATEGORY = {
+  None: 'None',
+  Company: 'Company',
+  Startup: 'Startup',
+  Entrepreneur: 'Entrepreneur',
+  SmallBusiness: 'SmallBusiness',
+  Freelancer: 'Freelancer',
+  Creator: 'Creator',
+  Professional: 'Professional',
+  Student: 'Student',
+  Investor: 'Investor',
+  Marketing: 'Marketing',
+  Sales: 'Sales',
+  Engineering: 'Engineering',
+  Product: 'Product',
+  Design: 'Design',
+  Technology: 'Technology',
+  Media: 'Media',
+  Education: 'Education',
+  Consulting: 'Consulting',
+  NonProfit: 'NonProfit',
+  Government: 'Government',
+  HumanResources: 'HumanResources',
+  Operations: 'Operations',
+  Finance: 'Finance',
+  Legal: 'Legal',
+  Healthcare: 'Healthcare',
+  RealEstate: 'RealEstate',
+  Manufacturing: 'Manufacturing',
+  Retail: 'Retail',
+  Other: 'Other'
+} as const
 
-
-// This file is empty because there are no enums in the schema.
-export {}
+export type USER_CATEGORY = (typeof USER_CATEGORY)[keyof typeof USER_CATEGORY]

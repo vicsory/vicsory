@@ -19,7 +19,13 @@ export default function UnreadNotificationsBadge() {
     return (
         <>
             {lengthOfUnreadNotifications > 0 && (
-                <motion.span className="badge" variants={animationVariants} initial="initial" animate="animate" exit="exit">
+                <motion.span
+                    className="ml-2 flex h-5 w-5 items-center justify-center rounded-full bg-green-500 text-white text-xs font-semibold shadow-md"
+                    variants={animationVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                >
                     {lengthOfUnreadNotifications}
                 </motion.span>
             )}

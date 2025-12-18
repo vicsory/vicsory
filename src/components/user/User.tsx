@@ -40,7 +40,7 @@ export default function User({ user }: { user: UserProps }) {
                                     </span>
                                 )}
                             </span>
-                            <span className="text-muted">@{user.username}</span>
+                            <span className="text-[var(--text-secondary)]">@{user.username}</span>
                         </div>
                         {token && user.username !== token.username && <Follow profile={user} />}
                     </div>

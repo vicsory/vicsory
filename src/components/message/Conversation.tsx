@@ -92,16 +92,16 @@ export default function Conversation({ conversation, token, handleConversations 
                                 </span>
                             )}
                         </span>
-                        <span className="text-muted">@{username}</span>
+                        <span className="text-[var(--text-secondary)]">@{username}</span>
                     </Link>
                     <Tooltip title={formatDateExtended(lastMessage.createdAt)} placement="top">
-                        <span className="text-muted date">
+                        <span className="text-[var(--text-secondary)] date">
                             <span className="middle-dot">·</span>
                             {formatDate(lastMessage.createdAt)}
                         </span>
                     </Tooltip>
                 </section>
-                <div className="last-message text-muted">{lastMessage.text}</div>
+                <div className="last-message text-[var(--text-secondary)]">{lastMessage.text}</div>
             </div>
             <>
                 <button className="three-dots icon-hoverable" onClick={handleThreeDotsClick}>

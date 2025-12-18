@@ -9,7 +9,7 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/User'
-export type * from './models/Tweet'
+export type * from './models/Post'
 export type * from './models/Message'
 export type * from './models/Notification'
 export type * from './commonInputTypes'

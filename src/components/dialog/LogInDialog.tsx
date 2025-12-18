@@ -149,10 +149,10 @@ export default function LogInDialog({ open, handleLogInClose }: LogInDialogProps
             {isSignUpMode ? "Sign up for Vicsory" : "Sign in to Vicsory"}
           </DialogTitle>
           <p 
-            className="text-center text-sm text-[var(--text-secondary)]"
+            className="text-center text-base text-[var(--text-secondary)]"
           >
             {isSignUpMode 
-              ? "Create your account to join the conversation"
+              ? "Create your account to join the most successful people"
               : "Enter your credentials to access your account"}
           </p>
         </DialogHeader>
@@ -170,11 +170,11 @@ export default function LogInDialog({ open, handleLogInClose }: LogInDialogProps
                 onChange={formik.handleChange}
                 className="pl-6"
                 style={{
-                  backgroundColor: 'var(--grey)',
+                  backgroundColor: 'var(--background-secondary)',
                   borderColor: formik.touched.username && formik.errors.username 
                     ? 'var(--red)' 
                     : 'var(--border)',
-                  color: 'var(--text-secondary)',
+                  color: 'var(--text)',
                 }}
                 required
                 aria-label="Username"
@@ -204,11 +204,11 @@ export default function LogInDialog({ open, handleLogInClose }: LogInDialogProps
               value={formik.values.password}
               onChange={formik.handleChange}
               style={{
-                backgroundColor: 'var(--grey)',
+                backgroundColor: 'var(--background-secondary)',
                 borderColor: formik.touched.password && formik.errors.password 
                   ? 'var(--red)' 
                   : 'var(--border)',
-                color: 'var(--text-secondary)',
+                color: 'var(--text)',
               }}
               required
               aria-label="Password"
@@ -243,11 +243,11 @@ export default function LogInDialog({ open, handleLogInClose }: LogInDialogProps
                 value={formik.values.name}
                 onChange={formik.handleChange}
                 style={{
-                  backgroundColor: 'var(--grey)',
+                  backgroundColor: 'var(--background-secondary)',
                   borderColor: formik.touched.name && formik.errors.name 
                     ? 'var(--red)' 
                     : 'var(--border)',
-                  color: 'var(--text-secondary)',
+                  color: 'var(--text)',
                 }}
                 aria-label="Display name"
               />

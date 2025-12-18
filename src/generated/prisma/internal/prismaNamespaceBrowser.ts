@@ -52,7 +52,7 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
-  Tweet: 'Tweet',
+  Post: 'Post',
   Message: 'Message',
   Notification: 'Notification'
 } as const
@@ -79,31 +79,37 @@ export const UserScalarFieldEnum = {
   description: 'description',
   location: 'location',
   website: 'website',
+  whatsapp: 'whatsapp',
   photoUrl: 'photoUrl',
   headerUrl: 'headerUrl',
   username: 'username',
   password: 'password',
+  category: 'category',
   isPremium: 'isPremium',
+  isVip: 'isVip',
+  isElite: 'isElite',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  youtubePlayerUrl: 'youtubePlayerUrl',
+  youtubePlayerTitle: 'youtubePlayerTitle'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
-export const TweetScalarFieldEnum = {
+export const PostScalarFieldEnum = {
   id: 'id',
   text: 'text',
   createdAt: 'createdAt',
   authorId: 'authorId',
   photoUrl: 'photoUrl',
-  isRetweet: 'isRetweet',
-  retweetOfId: 'retweetOfId',
+  isRepost: 'isRepost',
+  repostOfId: 'repostOfId',
   isReply: 'isReply',
   repliedToId: 'repliedToId'
 } as const
 
-export type TweetScalarFieldEnum = (typeof TweetScalarFieldEnum)[keyof typeof TweetScalarFieldEnum]
+export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
 
 
 export const MessageScalarFieldEnum = {

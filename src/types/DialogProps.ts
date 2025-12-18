@@ -10,9 +10,9 @@ export type SignUpDialogProps = {
     handleSignUpClose: () => void;
 };
 
-export type NewTweetDialogProps = {
+export type NewPostDialogProps = {
     open: boolean;
-    handleNewTweetClose: () => void;
+    handleNewPostClose: () => void;
     token: UserProps;
 };
 

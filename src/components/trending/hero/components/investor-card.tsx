@@ -43,7 +43,7 @@ export default function InvestorCard() {
         </div>
 
         {/* RIGHT: Image */}
-        <div className="w-full border border-solid border-[var(--border-color)] md:w-1/2 h-48 md:h-64 flex items-center justify-center">
+        <div className="w-full border border-solid border-[var(--border)] md:w-1/2 h-48 md:h-64 flex items-center justify-center">
           <Image
             src="/assets/investors.png"
             alt="Investors"

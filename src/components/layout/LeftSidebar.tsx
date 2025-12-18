@@ -14,12 +14,10 @@ import {
     Settings,
     LogOut,
     MoreHorizontal,
-    LogIn,
 } from "lucide-react";
 
 import { BadgeBlue } from "../../../public/svg/verify-badge";
-import NewTweet from "../tweet/NewTweet";
-import LogInDialog from "../dialog/LogInDialog";
+import NewPost from "../post/NewPost";
 import LogOutDialog from "../dialog/LogOutDialog";
 import { logout } from "@/utilities/fetch";
 import { getFullURL } from "@/utilities/misc/getFullURL";
@@ -32,10 +30,12 @@ import { ProfileFill, ProfileOutline } from "../../../public/svg/profile";
 import { SchoolFill, SchoolOutline } from "../../../public/svg/school";
 import { SettingFill, SettingOutline } from "../../../public/svg/setting";
 import { AuthContext } from "@/contexts/auth-context";
+import Image from "next/image";
 
 // Reusable classNames
-const linkBase = "flex px-3 py-2 rounded-full hover:bg-[var(--background-secondary)] cursor-pointer";
-const dropdownItemBase = "px-4 py-2 rounded-lg hover:bg-[var(--background-secondary)] cursor-pointer";
+const linkBase = "flex px-3 py-2 rounded-full bg-[var(--background-primary)] hover:bg-[var(--background-secondary)] cursor-pointer";
+const dropdownItemBase = "flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-[var(--background-secondary)] cursor-pointer";
+
 
 // Reusable NavIcon component
 interface NavIconProps {
@@ -44,7 +44,7 @@ interface NavIconProps {
     IconFill: React.ComponentType<any>;
     IconOutline: React.ComponentType<any>;
     pathname: string;
-    children?: React.ReactNode; // optional badges or extras
+    children?: React.ReactNode;
 }
 
 const NavIcon = ({ href, label, IconFill, IconOutline, pathname, children }: NavIconProps) => {
@@ -52,7 +52,7 @@ const NavIcon = ({ href, label, IconFill, IconOutline, pathname, children }: Nav
 
     return (
         <Link href={href} className={linkBase}>
-            <div className={`inline-flex items-center ${isActive ? "text-[var(--text)]" : "text-[var(--text-secondary)]"}`}>
+            <div className={`inline-flex items-center ${isActive ? "text-[var(--text)] font-bold" : "text-[var(--text-secondary)]"}`}>
                 {isActive ? <IconFill className="w-6 h-6 mr-4" /> : <IconOutline className="w-6 h-6 mr-4" />}
                 <span>{label}</span>
                 {children && <>{children}</>}
@@ -61,11 +61,10 @@ const NavIcon = ({ href, label, IconFill, IconOutline, pathname, children }: Nav
     );
 };
 
-export default function LeftSidebar({ className = "" }: { className?: string }) {
+export default function LeftSidebar() {
     const [isNewPostOpen, setIsNewPostOpen] = useState(false);
     const [isLogOutOpen, setIsLogOutOpen] = useState(false);
     const [isLoggingOut, setIsLoggingOut] = useState(false);
-    const [isLogInOpen, setIsLogInOpen] = useState(false);
 
     const { token } = useContext(AuthContext);
     const router = useRouter();
@@ -84,7 +83,7 @@ export default function LeftSidebar({ className = "" }: { className?: string }) 
     };
 
     const navItems = [
-        { href: "/home", label: "Home", iconFill: HomeFill, iconOutline: HomeOutline, show: !!token },
+        { href: "/explore", label: "Home", iconFill: HomeFill, iconOutline: HomeOutline, show: true },
         { href: "/school", label: "Courses", iconFill: SchoolFill, iconOutline: SchoolOutline, show: true },
         { href: "/jobs", label: "Business", iconFill: BusinessFill, iconOutline: BusinessOutline, show: true },
         { href: "/notifications", label: "Notifications", iconFill: NotificationFill, iconOutline: NotificationOutline, show: !!token, badge: <UnreadNotificationsBadge /> },
@@ -95,8 +94,21 @@ export default function LeftSidebar({ className = "" }: { className?: string }) 
 
     return (
         <>
-            <aside className="hidden xl:flex flex-col flex-shrink-0 px-4 z-50 fixed top-16 h-[calc(100vh-4rem)]">
-                <div className="h-full flex flex-col gap-6">
+            <aside className="hidden xl:flex flex-col flex-shrink-0 px-4 z-50 top-4 fixed h-[calc(100vh-4rem)]">
+                <Link href="/explore" className="w-fit pl-2 gap-2 items-center flex" style={{ cursor: "pointer" }}>
+                    <div className="relative w-8 h-8">
+                        <Image
+                            className="object-contain transition-transform duration-200 group-hover:scale-110"
+                            alt="Vicsory logo"
+                            src="/assets/favicon.png"
+                            fill
+                            sizes="32px"
+                            priority
+                        />
+                    </div>
+                    <span className="text-2xl font-bold text-[var(--text)]">vicsory</span>
+                </Link>
+                <div className="h-full flex pt-6 flex-col gap-6">
                     <nav>
                         <ul className="flex flex-col gap-2 text-lg">
                             {navItems.map(({ href, label, iconFill, iconOutline, show, badge }) => {
@@ -130,7 +142,7 @@ export default function LeftSidebar({ className = "" }: { className?: string }) 
 
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
-                                    <div className="fixed bottom-6 flex items-center gap-3 rounded-full border border-solid border-[var(--border)] bg-[var(--background-primary)] w-fit px-4 py-3">
+                                    <div className="cursor-pointer fixed bottom-6 flex items-center gap-3 rounded-full border border-solid border-[var(--border)] bg-[var(--background-primary)] w-fit px-4 py-3">
                                         <Avatar className="w-10 h-10 border-2 border-solid border-[var(--border)] rounded-full">
                                             <AvatarImage src={token.photoUrl ? getFullURL(token.photoUrl) : "/assets/egg.jpg"} alt="" />
                                             <AvatarFallback>{token.username?.[0] || "U"}</AvatarFallback>
@@ -148,11 +160,11 @@ export default function LeftSidebar({ className = "" }: { className?: string }) 
                                     </div>
                                 </DropdownMenuTrigger>
 
-                                <DropdownMenuContent align="end" className="min-w-[200px] p-4 bg-[var(--background-primary)] border border-[var(--border)] rounded-xl z-50 text-[var(--text-secondary)]">
-                                    <DropdownMenuItem asChild className={dropdownItemBase}><Link href={`/${token.username}`} className="flex items-center gap-3"><User className="w-5 h-5" />Profile</Link></DropdownMenuItem>
-                                    <DropdownMenuItem asChild className={dropdownItemBase}><Link href={`/${token.username}/edit`} className="flex items-center gap-3"><Edit className="w-5 h-5" />Edit Profile</Link></DropdownMenuItem>
-                                    <DropdownMenuItem asChild className={dropdownItemBase}><Link href="/settings" className="flex items-center gap-3"><Settings className="w-5 h-5" />Settings</Link></DropdownMenuItem>
-                                    <DropdownMenuItem onClick={() => setIsLogOutOpen(true)} className={`${dropdownItemBase} flex items-center gap-3`}><LogOut className="w-5 h-5" />Log Out</DropdownMenuItem>
+                                <DropdownMenuContent align="end" className="min-w-[200px] p-4 border border-solid border-[var(--border)] rounded-xl z-50 text-[var(--text-secondary)]">
+                                    <DropdownMenuItem asChild className={dropdownItemBase}><Link href={`/${token.username}`}><User className="w-5 h-5" />Profile</Link></DropdownMenuItem>
+                                    <DropdownMenuItem asChild className={dropdownItemBase}><Link href={`/${token.username}/edit`}><Edit className="w-5 h-5" />Edit Profile</Link></DropdownMenuItem>
+                                    <DropdownMenuItem asChild className={dropdownItemBase}><Link href="/settings"><Settings className="w-5 h-5" />Settings</Link></DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => setIsLogOutOpen(true)} className={`${dropdownItemBase}`}><LogOut className="w-5 h-5" />Log Out</DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </>
@@ -166,11 +178,11 @@ export default function LeftSidebar({ className = "" }: { className?: string }) 
                         <DialogTrigger asChild>
                             <Button className="hidden" />
                         </DialogTrigger>
-                        <DialogContent className="max-w-lg bg-[var(--background-primary)]/70 backdrop-blur-md rounded-lg shadow-lg">
+                        <DialogContent className="max-w-lg bg-[var(--background-primary)]/70 backdrop-blur-md rounded-2xl shadow-lg">
                             <DialogHeader>
                                 <DialogTitle className="text-white">Create New Post</DialogTitle>
                             </DialogHeader>
-                            <NewTweet token={token} handleSubmit={() => setIsNewPostOpen(false)} />
+                            <NewPost token={token} handleSubmit={() => setIsNewPostOpen(false)} />
                         </DialogContent>
                     </Dialog>
                     <LogOutDialog open={isLogOutOpen} handleLogOutClose={() => setIsLogOutOpen(false)} logout={handleLogout} isLoggingOut={isLoggingOut} />

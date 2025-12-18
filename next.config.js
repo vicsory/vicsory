@@ -2,7 +2,11 @@
 
 const nextConfig = {
     images: {
-        domains: ["avbnbcnzyjbaugbbbjcc.supabase.co"],
+        domains: [
+            "avbnbcnzyjbaugbbbjcc.supabase.co",
+            "img.youtube.com",
+        ],
+        
     },
     async headers() {
         return [
