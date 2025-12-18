@@ -2,11 +2,11 @@ export type UserProps = {
   id: string;
   name: string;
   username: string;
-  description?: string | null;
-  location?: string | null;
-  website?: string | null;
-  whatsapp?: string | null;
-  category?: string | null;
+  description?: string;
+  location?: string;
+  website?: string;
+  whatsapp?: string;
+  category?: string;
 
   isPremium: boolean;
   isVip: boolean;
@@ -15,23 +15,23 @@ export type UserProps = {
   createdAt: Date;
   updatedAt: Date;
 
-  photoUrl?: string | null;
-  headerUrl?: string | null;
+  photoUrl?: string;
+  headerUrl?: string;
 
   followers: UserProps[];
   following: UserProps[];
 
-  x?: string | null;
-  tiktok?: string | null;
-  youtube?: string | null;
-  facebook?: string | null;
-  instagram?: string | null;
-  twitch?: string | null;
-  bluesky?: string | null;
+  x?: string;
+  tiktok?: string;
+  youtube?: string;
+  facebook?: string;
+  instagram?: string;
+  twitch?: string;
+  bluesky?: string;
 
-  youtubePlayerUrl?: string | null;
-  youtubePlayerTitle?: string | null;
-  youtubePlayerUrls?: { url: string; title: string }[] | null;
+  youtubePlayerUrl?: string;
+  youtubePlayerTitle?: string;
+  youtubePlayerUrls?: { url: string; title: string }[];
 };
 
 export type UserResponse = {
