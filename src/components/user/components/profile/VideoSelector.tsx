@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useContext } from "react";
 import { usePathname } from "next/navigation";
 import { AuthContext } from "@/contexts/auth-context";
+import Image from "next/image";
 
 interface Video {
   url: string;
@@ -82,7 +83,7 @@ export default function VideoSelector({ videos, setSelectedVideo, setIsPlaying, 
                   setIsPlaying(true);
                 }}
               >
-                <img
+                <Image
                   src={getThumbnailUrl(video.url)}
                   alt={video.title || "Video thumbnail"}
                   className="w-full h-32 object-cover rounded-lg"

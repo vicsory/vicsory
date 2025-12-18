@@ -121,7 +121,7 @@ export async function POST(
                 sender: {
                     username: verifiedToken.username,
                     name: verifiedToken.name,
-                    photoUrl: verifiedToken.photoUrl,
+                    photoUrl: verifiedToken.photoUrl || "",
                 },
                 content: {
                     id: postId,
