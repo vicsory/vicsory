@@ -37,6 +37,7 @@ model User {
   notifications      Notification[]
   youtubePlayerUrl   String?
   youtubePlayerTitle String?
+
 }
 
 model Post {
