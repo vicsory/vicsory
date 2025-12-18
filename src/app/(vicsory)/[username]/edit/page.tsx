@@ -15,10 +15,15 @@ export default function EditPage({ params: { username } }: { params: { username:
     if (!token) throw new Error("You must be logged in to view this page");
     if (username !== token.username) throw new Error("You are not authorized to view this page");
 
+    const normalizedToken = {
+        ...token,
+        youtubePlayerUrls: token.youtubePlayerUrls ?? undefined,
+    };
+
     return (
         <div>
             <BackToArrow title={username} url={`/${username}`} />
-            <EditProfile profile={token} refreshToken={refreshToken} />
+            <EditProfile profile={normalizedToken} refreshToken={refreshToken} />
         </div>
     );
 }
