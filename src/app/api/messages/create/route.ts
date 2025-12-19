@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
                 sender: {
                     username: verifiedToken.username,
                     name: verifiedToken.name,
-                    photoUrl: verifiedToken.photoUrl || "",
+                    photoUrl: verifiedToken.photoUrl,
                 },
                 content: null,
             };
