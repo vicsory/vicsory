@@ -31,7 +31,7 @@ export type UserProps = {
 
   youtubePlayerUrl: string;
   youtubePlayerTitle: string;
-  youtubePlayerUrls: { url: string; title: string }[];
+  youtubePlayerUrls?: { url: string; title: string }[];
 };
 
 export type UserResponse = {
