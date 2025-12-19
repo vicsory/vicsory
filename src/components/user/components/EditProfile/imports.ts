@@ -13,7 +13,6 @@ import {
   DraftingCompass, Gavel, Gift, GraduationCap, Hammer, Home, Joystick, Leaf, Megaphone, Mic, Microscope, PartyPopper,
   PawPrint, Rocket, Sparkles, Store, Sun, BadgeCheck, Play, VolumeX, Volume2, Rewind, FastForward, Repeat, Maximize
 } from "lucide-react";
-import { SiBluesky } from "react-icons/si";
 import { Tabs, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -27,6 +26,6 @@ export {
   ChefHat, Plane, Shirt, Vote, School, Dumbbell, Banknote, Baby, Bitcoin, BookOpen, Briefcase, Camera, Car, Clapperboard,
   DraftingCompass, Gavel, Gift, GraduationCap, Hammer, Home, Joystick, Leaf, Megaphone, Mic, Microscope, PartyPopper,
   PawPrint, Rocket, Sparkles, Store, Sun, BadgeCheck, Play, VolumeX, Volume2, Rewind, FastForward, Repeat, Maximize,
-  SiBluesky, Tabs, TabsList, TabsTrigger, Avatar, AvatarImage, AvatarFallback, Dialog, DialogContent, DialogHeader, DialogTitle,
+   Tabs, TabsList, TabsTrigger, Avatar, AvatarImage, AvatarFallback, Dialog, DialogContent, DialogHeader, DialogTitle,
   Tooltip, TooltipContent, TooltipProvider, TooltipTrigger
 };
